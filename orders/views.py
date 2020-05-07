@@ -9,3 +9,7 @@ def index(request):
 
 def signin(request):
     return render(request, "orders/signin.html")
+
+
+def signup(request):
+    return render(request, "orders/signup.html")
