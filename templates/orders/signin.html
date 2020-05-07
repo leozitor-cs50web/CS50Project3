@@ -1,0 +1,37 @@
+{% extends "orders/base.html" %}
+
+{% block head %}
+    {% load static %}
+    <title> Pizza Log In</title>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'orders/signin.css' %}"/>
+{% endblock %}
+
+{% block body %}
+    <body class="text-center">
+
+    <form class="form-signin" method="post">
+        <img class="mb-4 img-fluid" src="/static/img/pizzaLogo.png" alt="">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
+               autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="password" type="password" id="inputPassword" class="form-control mb-3" placeholder="Password"
+               required="">
+        <div class="d-flex checkbox mb-2 justify-content-start">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <div class="d-flex justify-content-center links"> Don't have an account? <a href="/register" class="ml-2">Sign
+            Up</a>
+        </div>
+        <div class="d-flex justify-content-center links"><a href="#">Forgot your password?</a>
+        </div>
+        <p class="mt-5 mb-3 text-muted">© 2020</p>
+    </form>
+
+    </body>
+{% endblock %}
