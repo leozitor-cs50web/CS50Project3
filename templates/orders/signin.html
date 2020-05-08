@@ -4,14 +4,14 @@
     {% load static %}
     <title> Pizza Log In</title>
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{% static 'orders/signin.css' %}"/>
+    <link rel="stylesheet" href="{% static 'orders/css/signin.css' %}"/>
 {% endblock %}
 
 {% block body %}
     <body class="text-center">
 
     <form class="form-signin" method="post">
-        <img class="mb-4 img-fluid" src="/static/img/pizzaLogo.png" alt="">
+        <img class="mb-4 img-fluid" src="{% static 'orders/img/pizzaLogo.png' %}" alt="">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""

@@ -4,13 +4,13 @@
     {% load static %}
     <title>Pizza Registration</title>
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{% static 'orders/signup.css' %}"/>
+    <link rel="stylesheet" href="{% static 'orders/css/signup.css' %}"/>
 {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="card bg-light align-items-center">
-            <img class="mt-4 img-fluid" src="/static/img/pizzaLogo.png" alt="" width="300px" height="269px">
+            <img class="mt-4 img-fluid" src="{% static 'orders/img/pizzaLogo.png' %}" alt="" width="300px" height="269px">
             <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center">Create Account</h4>
                 <p class="text-center">Get started with your free account</p>

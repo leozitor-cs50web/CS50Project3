@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pizzeria Pinocchio's - Contact us Page</title>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|PT+Serif:400,700|Roboto:100,300,400,500&display=swap"
+          rel="stylesheet">
+    <link href="{% static 'orders/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'orders/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'orders/css/superslides.css' %}" rel="stylesheet">
+    <link href="{% static 'orders/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'orders/css/owl.theme.default.min.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'orders/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'orders/css/style.css' %}">
+    <script src="https://kit.fontawesome.com/8bd94e436e.js"></script>
+</head>
+<body>
+<div id="main">
+    <div class="header-v1">
+        <div class="container">
+            <div class="menu-top">
+                <div class="left_block">
+                    <div class="phone_email">P: +1 (917) 2345678 / E: info@gmail.com</div>
+                </div>
+                <div class="right_block">
+                    <!--<div class="my_account">
+                            <a class="signin" href="">sign in</a>
+                        </div>-->
+                    <div class="my_account">
+                        <img src="{% static 'orders/img/avatar1.jpg' %}"> <i class="fas fa-chevron-down"></i>
+                        <div class="sf-account_1">
+                            <ul>
+                                <li><a href="dashboard.html">My Dashboard</a></li>
+                                <li><a href="my-orders.html">my orders</a></li>
+                                <li><a href="add-address.html">add addresses</a></li>
+                                <li><a href="profile.html">account details</a></li>
+                                <li><a href="login.html">log out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="my_cart_wrapper">
+
+                        <div class="my_cart_button">
+                            <a href="#">
+                                <img class="vert_line" src="{% static 'orders/img/vert-line.png' %}">
+                                <img class="pizza_cart" src="{% static 'orders/img/icons/cart.svg' %}">
+                                <span class="cart_circle">3</span>
+                            </a>
+                            <div class="cart_sum">$00.00</div>
+                        </div>
+                        <div class="my_cart_popup">
+                            <div class="my_cart_item clearfix">
+                                <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
+                                <figure>
+                                    <img src="{% static 'orders/img/cart01.jpg' %}" alt="" class="img-fluid">
+                                </figure>
+                                <div class="caption">
+                                    <div class="txt1">$26.00 x 1</div>
+                                    <div class="txt2"><a href="#">Pizza Papperino</a></div>
+                                </div>
+                            </div>
+                            <div class="my_cart_item clearfix">
+                                <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
+                                <figure>
+                                    <img src="{% static 'orders/img/cart02.jpg' %}" alt="" class="img-fluid">
+                                </figure>
+                                <div class="caption">
+                                    <div class="txt1">$0.99 x 1</div>
+                                    <div class="txt2"><a href="#">Orange Juice</a></div>
+                                </div>
+                            </div>
+                            <div class="my_cart_item clearfix">
+                                <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
+                                <figure>
+                                    <img src="{% static 'orders/img/cart03.jpg' %}" alt="" class="img-fluid">
+                                </figure>
+                                <div class="caption">
+                                    <div class="txt1">$3.89 x 2</div>
+                                    <div class="txt2"><a href="#">Ice Cream "Argonauto"</a></div>
+                                </div>
+                            </div>
+                            <div class="my_cart_total clearfix">
+                                <div class="left">Total :</div>
+                                <div class="right">$36.11</div>
+                            </div>
+                            <div class="my_cart_buttons">
+                                <a href="shopping-cart.html" class="my_cart_button2">View Cart</a>
+                                <a href="run-checkout.html" class="my_cart_button2">Check Out</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top_social">
+                        <img class="vert_line" src="{% static 'orders/img/vert-line.png' %}">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="header-inner_1 clearfix">
+                <header class="header_bg">
+                    <div class="logo">
+                        <a href="{% url 'index' %}">
+                            <img src="{% static 'orders/img/logo_top.png' %}">
+                        </a>
+                        <div class="logo_title_1">
+                            <div class="top_logo"><span>Pizzeria</span> Pinocchio's</div>
+                            <div class="logo_desc">Pizzas & Subs</div>
+                        </div>
+                    </div>
+                </header>
+
+                <nav class="navbar_one navbar navbar-expand-md clearfix">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav sf-menu clearfix">
+                            <li class="nav-item sub-menu">
+                                <a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                            <li class="nav-item sub-menu"><a href="about-fixed-menu.html" class="nav-link">About us <i
+                                    class="fas fa-chevron-down"></i></a>
+                                <div class="sf-mega">
+                                    <ul>
+                                        <li><a href="about-fixed-menu.html">With Fixed top menu</a></li>
+                                        <li><a href="about.html">With scrolled top menu</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item sub-menu"><a href="shop-filter-buttons.html" class="nav-link">shop <i
+                                    class="fas fa-chevron-down"></i></a>
+                                <div class="sf-mega">
+                                    <ul>
+                                        <li><a href="shop-filter-buttons.html">Without Sidebar</a></li>
+                                        <li><a href="shop-right-sidebar-buttons.html">Right Sidebar<i
+                                                class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                            <div class="sf-mega">
+                                                <ul>
+                                                    <li><a href="shop-right-sidebar.html">With Dropdown Sort</a></li>
+                                                    <li><a href="shop-right-sidebar-buttons.html">With button
+                                                        filters</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="shop-left-sidebar-buttons.html">left sidebar <i
+                                                class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                            <div class="sf-mega">
+                                                <ul>
+                                                    <li><a href="shop-left-sidebar.html">With Dropdown Sort</a></li>
+                                                    <li><a href="shop-left-sidebar-buttons.html">With button filters</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="pizza-description.html">Single Product</a></li>
+                                        <li><a href="shopping-cart.html">shopping cart</a></li>
+                                        <li><a href="run-checkout.html">checkout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item sub-menu">
+                                <a href="#" class="nav-link">Pages <i class="fas fa-chevron-down"></i></a>
+                                <div class="sf-mega">
+                                    <ul>
+                                        <li><a href="blog-left-sidebar.html">Blog<i class="fa fa-angle-right"
+                                                                                    aria-hidden="true"></i></a>
+                                            <div class="sf-mega">
+                                                <ul>
+                                                    <li><a href="blog-left-sidebar.html">Blog Left side</a></li>
+                                                    <li><a href="post-left-sidebar.html">Post Left side</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="mobile-app.html">mobile application <i class="fa fa-angle-right"
+                                                                                            aria-hidden="true"></i></a>
+                                            <div class="sf-mega">
+                                                <ul>
+                                                    <li><a href="mobile-app.html">With Fixed top menu</a></li>
+                                                    <li><a href="mobile-app-scroll.html">With scrolled top menu</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="thank-you.html">Success</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item"><a href="{% url 'contact' %}" class="active_1 nav-link">Contact us</a>
+                            </li>
+                        </ul>
+
+                        <!-- <div class="my_account">
+                             <a href="">sign in</a>
+                         </div>-->
+                        <!--------------- My Account ---------------->
+                        <!--<div class="my_account">
+                            <img src="'orders/img/avatar.jpg"> <i class="fas fa-chevron-down'"></i>
+                            <div class="sf-account">
+                                <ul>
+                                    <li><a href="index.html">Shop Right sidebar</a></li>
+                                    <li><a href="index.html">Shop Left sidebar</a></li>
+                                    <li><a href="index.html">Shop Without sidebar</a></li>
+                                    <li><a href="index.html">billing details</a></li>
+                                </ul>
+                            </div>
+                        </div>-->
+                    </div>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="pizza_breadcrumb">
+            <a href="{% url 'index' %}"><i class="fa fa-home"></i> Home</a> / <span>Contact us</span>
+        </div>
+
+        <section class="cont_info">
+            <div class="piz_title">
+                <div class="small_title"><h3>hello world!</h3></div>
+
+                <div class="big_title"><h1 class="cnt_big_title">contact us</h1><img
+                        src="{% static 'orders/img/italy.png' %}"></div>
+
+            </div>
+            <div class="title_devider">
+                <p class="line"></p>
+            </div>
+            <div class="under_title">
+                <p>Our phone numbers are 617-876-4897 or 617-876-0012
+
+                    Our fax number is 617-661-6188
+
+                    Find us on Twitter @PinocchiosPizz
+
+                    And Instagram @pinocchiospizza1
+
+                    Our mailing address is:
+
+                    Pinocchio's Pizza
+                    74 Winthrop Street
+                    Cambridge, MA 02138
+
+                    If you have any questions or comments or would like to get on our email list you can email us at
+                    pinocchiospizza1@gmail.com</p>
+            </div>
+        </section>
+        <section class="contact">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="title_info">
+                        <p>contact us</p>
+                        <span class="title">get in touch</span>
+                        <p class="contact_text">Nam at viverra risus, vitae fringilla neque. Proin commodo massa ante.
+                            <br>Maecenas posuere elit leo, ut pharetra ante gravida rutrum.</p>
+                    </div>
+                    <div class="contact_info">
+                        <div class="email_contact">
+                            <img src="{% static 'orders/img/ic3.png' %}" class="img-fluid">
+                            <p>Email: i pinocchiospizza1@gmail.com</p>
+                        </div>
+                        <div class="phonel_contact">
+                            <img src="{% static 'orders/img/ic2.png' %}" class="img-fluid">
+                            <p>Phone: 617-876-0012</p>
+                        </div>
+                        <div class="address_contact">
+                            <img src="{% static 'orders/img/ic1.png' %}" class="img-fluid">
+                            <p>74 Winthrop Street Cambridge, MA 02138</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-xs-12">
+                    <div class="map">
+                        <iframe src="https://snazzymaps.com/embed/177483" width="100%" height="526px"
+                                style="border:none;"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row top_margin_80">
+                <div class="col-md-4">
+                    <input class="text-left" type="text" name="name" placeholder="Name">
+                </div>
+                <div class="col-md-4">
+                    <input class="text-left" type="email" name="email" placeholder="Email">
+                </div>
+                <div class="col-md-4">
+                    <input class="text-left" type="url" name="website" placeholder="Website">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <textarea class="text-left" name="message" id="" rows="3" placeholder="Messages"></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" class="btn btn-outline-primary">Send Messages</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+    <!-------------------- FOOTER  -------------------------------------->
+    <footer>
+        <div class="bot1-wrapper top_margin_80">
+            <div class="container">
+                <div class="bot1 clearfix">
+                    <div class="logo2_wrapper">
+                        <img src="{% static 'orders/img/logo2.png' %}" alt="" class="img-fluid">
+                        <div class="logo_title">
+                            <div class="bottom_logo"><span>Pizzeria</span> TestaResto</div>
+                            <div class="bottom_logo_desc">delicious foods place</div>
+                        </div>
+                    </div>
+                    <div class="social-footer-wrapper">
+                        <ul class="social-footer clearfix">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                        </ul>
+                    </div>
+                    <!--<div class="devider"></div>-->
+                </div>
+            </div>
+        </div>
+        <div class="bot2-wrapper">
+            <div class="container">
+                <div class="bot2 clearfix">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="contact-us-block">
+                                <figure><img src="{% static 'orders/img/ic1.png' %}" alt="" class="img-fluid"></figure>
+                                <div class="txt1">50., I. Abashidze Sreet 0179 Tbilisi City, Georgia</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-us-block">
+                                <figure><img src="{% static 'orders/img/ic2.png' %}" alt="" class="img-fluid"></figure>
+                                <div class="txt1">Phone: (00) 123 456 789</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-us-block">
+                                <figure><img src="{% static 'orders/img/ic3.png' %}" alt="" class="img-fluid"></figure>
+                                <div class="txt1">Email: <a href="#">info.contact@gmail.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bot3-wrapper">
+            <div class="container">
+                <div class="bot3 clearfix">
+                    <ul class="menu-bot">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                    <div class="copyrights">Copyright @2019. All rights Revierves</div>
+                    <div class="created">Created with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                            href="https://gridgum.com" target="_blank">Gridgum</a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+<script src="{% static 'orders/js/app/owl.carousel.js' %}"></script>
+<script src="{% static 'orders/js/jquery.fancybox.js' %}"></script>
+<script src="{% static 'orders/js/jquery.min.js' %}"></script>
+<script src="{% static 'orders/js/jquery.appear.js' %}"></script>
+<script src="{% static 'orders/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'orders/js/responsiveslides.min.js' %}"></script>
+<script src="{% static 'orders/js/superfish.js' %}"></script>
+<script src="{% static 'orders/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'orders/js/scripts.js' %}"></script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmfgUdvxALnbUGg6WErn9FkhFRBPERwW4"></script>-->
+</html>

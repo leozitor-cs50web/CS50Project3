@@ -1,10 +1,716 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Index Base</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|PT+Serif:400,700|Roboto:100,300,400,500&display=swap"
+          rel="stylesheet">
+    <link href="{% static 'orders/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'orders/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'orders/css/superslides.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'orders/css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'orders/css/style.css' %}">
+
+    <script src="https://kit.fontawesome.com/8bd94e436e.js"></script>
+    <title>Pizzeria Pinocchio's</title>
 </head>
 <body>
+<div class="header-v1">
+    <div class="home_menu_wrapper">
+        <div class="header-inner clearfix">
+            <header>
+                <div class="logo">
+                    <a href="{% url 'index' %}">
+                        <img src="{% static 'orders/img/logo_top.png' %}">
+                    </a>
+                    <div class="logo_title">
+                        <div class="top_logo"><span>Pizzeria</span> Pinocchio's</div>
+                        <div class="logo_desc">Pizzas & Subs</div>
+                    </div>
+                </div>
+            </header>
+            <div class="my_cart_wrapper">
+
+                <div class="my_cart_button">
+                    <a href="#">
+
+                        <img class="vert_line" src="{% static 'orders/img/vert-line.png' %}" alt="">
+                        <img class="pizza_cart" src="{% static 'orders/img/icons/cart.svg' %}" alt="">
+
+                        <span>$</span>
+                        <span class="cart_circle">3</span>
+                    </a>
+                    <div class="cart_sum">$00.00</div>
+                </div>
+                <div class="my_cart_popup">
+                    <div class="my_cart_item clearfix">
+                        <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
+                        <figure>
+                            <img src="{% static 'orders/img/cart01.jpg' %}" alt="" class="img-fluid">
+                        </figure>
+                        <div class="caption">
+                            <div class="txt1">$26.00 x 1</div>
+                            <div class="txt2"><a href="#">Pizza Papperino</a></div>
+                        </div>
+                    </div>
+                    <div class="my_cart_item clearfix">
+                        <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
+                        <figure>
+                            <img src="{% static 'orders/img/cart02.jpg' %}" alt="" class="img-fluid">
+                        </figure>
+                        <div class="caption">
+                            <div class="txt1">$0.99 x 1</div>
+                            <div class="txt2"><a href="#">Orange Juice</a></div>
+                        </div>
+                    </div>
+                    <div class="my_cart_item clearfix">
+                        <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
+                        <figure>
+                            <img src="{% static 'orders/img/cart03.jpg' %}" alt="" class="img-fluid">
+                        </figure>
+                        <div class="caption">
+                            <div class="txt1">$3.89 x 2</div>
+                            <div class="txt2"><a href="#">Ice Cream "Argonauto"</a></div>
+                        </div>
+                    </div>
+                    <div class="my_cart_total clearfix">
+                        <div class="left">Total :</div>
+                        <div class="right">$36.11</div>
+                    </div>
+                    <div class="my_cart_buttons">
+                        <a href="shopping-cart.html" class="my_cart_button2">View Cart</a>
+                        <a href="run-checkout.html" class="my_cart_button2">Check Out</a>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar_one navbar navbar-expand-md clearfix">
+                <button class="navbar-toggler tp" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+                </button>
+                <div class="collapse navbar-collapse padd" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav sf-menu clearfix">
+                        <li class="nav-item actiur"><a href="{% url 'index' %}" class="active nav-link">Home</a></li>
+                        <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About us</a></li>
+                        <li class="nav-item sub-menu"><a href="shop-filter-buttons.html" class="nav-link">shop <i
+                                class="fas fa-chevron-down"></i></a>
+                            <div class="sf-mega">
+                                <ul>
+                                    <li><a href="shop-filter-buttons.html">Without Sidebar</a></li>
+                                    <li><a href="shop-right-sidebar-buttons.html">Right Sidebar<i
+                                            class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                        <div class="sf-mega">
+                                            <ul>
+                                                <li><a href="shop-right-sidebar.html">With Dropdown Sort</a></li>
+                                                <li><a href="shop-right-sidebar-buttons.html">With button filters</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><a href="shop-left-sidebar-buttons.html">left sidebar <i
+                                            class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                        <div class="sf-mega">
+                                            <ul>
+                                                <li><a href="shop-left-sidebar.html">With Dropdown Sort</a></li>
+                                                <li><a href="shop-left-sidebar-buttons.html">With button filters</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><a href="pizza-description.html">Single Product</a></li>
+                                    <li><a href="shopping-cart.html">shopping cart</a></li>
+                                    <li><a href="run-checkout.html">checkout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item sub-menu">
+                            <a href="#" class="nav-link">Pages <i class="fas fa-chevron-down"></i></a>
+                            <div class="sf-mega">
+                                <ul>
+                                    <li><a href="#">Blog<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                        <div class="sf-mega">
+                                            <ul>
+                                                <li><a href="blog-left-sidebar.html">Blog Left side</a></li>
+                                                <li><a href="post-left-sidebar.html">Post Left side</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><a href="mobile-app.html">mobile application <i class="fa fa-angle-right"
+                                                                                        aria-hidden="true"></i></a>
+                                        <div class="sf-mega">
+                                            <ul>
+                                                <li><a href="mobile-app.html">Fixed top menu</a></li>
+                                                <li><a href="mobile-app-scroll.html">Scrolled top menu</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li><a href="thank-you.html">Success</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact us</a></li>
+                    </ul>
+
+                    <div class="my_account myacc">
+                        <a href="{% url 'signin' %}">sign in</a>
+                    </div>
+                    <!--------------- My Account ---------------->
+                    <!--<div class="my_account myacc">
+                           <img src="img/avatar.jpg"> <i class="fas fa-chevron-down"></i>
+                           <div class="sf-account">
+                               <ul>
+                                   <li><a href="dashboard.html">My Dashboard</a></li>
+                                   <li><a href="my-orders.html">my orders</a></li>
+                                   <li><a href="add-address.html">add addresses</a></li>
+                                   <li><a href="profile.html">account details</a></li>
+                                   <li><a href="login.html">log out</a></li>
+                               </ul>
+                           </div>
+                       </div>-->
+                </div>
+
+            </nav>
+        </div>
+    </div>
+</div>
+<div id="home" class="">
+    <div id="slides_wrapper" class="">
+        <div id="slides">
+            <div class="slides-container">
+                <ul class="sliderr">
+                    <li>
+                        <img src="{% static 'orders/img/header/3.jpg' %}" class="img-fluid header_1">
+                        <img src="{% static 'orders/img/header/3_mobile.jpg' %}" class="img-fluid header_2">
+                        <div class="caption">
+                            <div class="container">
+                                <div class="txt1">Best - Place</div>
+                                <div class="txt2">Pizzeria</div>
+                                <div class="txt3">TestaResto.</div>
+                                <div class="txt4">One stop place for you to lorem ipsum dolor sit amet consectuere asep
+                                    adispiscing set diam like heaven one stop place for you to lorem ipsum dolor sit
+                                    amet consectuere adispiscing.
+                                </div>
+                                <button type="button" class="btn btn-outline-primary">Order now</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="{% static 'orders/img/header/4.jpg' %}" class="img-fluid header_1" alt="">
+                        <img src="{% static 'orders/img/header/4_mobile.jpg' %}" class="img-fluid header_2" alt="">
+                        <div class="caption">
+                            <div class="container">
+                                <div class="txt1">Best - Choise</div>
+                                <div class="txt2">Margarita</div>
+                                <div class="txt3">Italiano</div>
+                                <div class="txt4">One stop place for you to lorem ipsum dolor sit amet consectuere asep
+                                    adispiscing set diam like heaven one stop place for you to lorem ipsum dolor sit
+                                    amet consectuere adispiscing almapado inco.
+                                </div>
+                                <button type="button" class="btn btn-outline-primary">Order now</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="socialnet">
+                    <div class="vertical-social">
+                        <ul>
+                            <li><a href="about.html"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--<div class="slides-pagination">
+                    <ul>
+                        <li class="current">01</li>
+                        <li>02</li>
+                        <li>03</li>
+                    </ul>
+
+                </div>-->
+
+                <div class="down_arrow">
+                    <a href="#welcome" class="scroll-to"><img src="{% static 'orders/img/scroll-down.svg' %}" alt=""></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container tp">
+    <!--<div class="pizza_breadcrumb">
+        <a href="index.html"><i class="fa fa-home"></i> / Home</a> / <span>About us</span>
+    </div>-->
+
+    <div class="row margin_right">
+        <section class="we_are" id="welcome">
+            <div class="piz_title">
+                <div class="small_title"><h3>hello world!</h3></div>
+
+                <div class="big_title"><h1 class="we_big_title">we are Pinocchio's</h1><img
+                        src="{% static 'orders/img/italy.png' %}"
+                        class="img-fluid"></div>
+
+            </div>
+            <div class="title_devider">
+                <p class="line"></p>
+            </div>
+
+            <div class="content">
+                <p>Noch's has been in business for over 50 years! We've been feeding Harvard and the surrounding area
+                    since 1966!
+
+                    We sell award-winning sicilian-style pizza and mouth-watering steak subs! We have over 750 reviews
+                    on Yelp--- check it out!
+
+                    ***** April 6th,2020 UPDATE---Pinocchio's will now be closing every night at 9:00 pm following the
+                    recommended curfew set forth by Mayor Walsh. All orders must be for takeout......you can continue to
+                    come in to the shop to order or call in. For delivery you can continue to do so thru Grubhub,
+                    Doordash and Postmates.....get your orders in by 8:00. Our wishes to everyone to stay
+                    safe....maintain social distance and wash your hands!!!!***** <br>influence behaviour, and achieve
+                    brand objectives.</p>
+                <div class="shtamp_under">
+                    <img src="{% static 'orders/img/shtamp.png' %}" class="img-fluid shtamp" alt="">
+                    <img src="{% static 'orders/img/signature.png' %}" class="img-fluid signature" alt="">
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <section class="text-scroll tp">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="scroll_block">
+                    <h3><span class="animated-number" data-duration="2800" data-animation-delay="0">190</span>+</h3>
+                    <p>registered customers</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="scroll_block">
+                    <h3><span class="animated-number" data-duration="2500" data-animation-delay="0">120</span>+</h3>
+                    <p>Happy clients</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="scroll_block">
+                    <h3><span class="animated-number" data-duration="2000" data-animation-delay="0">50</span>+</h3>
+                    <p>web awards</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="scroll_block">
+                    <h3><span class="animated-number" data-duration="3500" data-animation-delay="0">240</span>+</h3>
+                    <p>cups of coffee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="pizza_menu">
+    <div class="row right_left">
+        <div class="col-xl-3 col-lg-6 full">
+            <div class="menu_block">
+                <div class="pizza_icon_line">
+                    <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                </div>
+                <div class="pizza_icon_color">
+                    <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid" >
+                </div>
+
+                <h3>Pizza Margarita</h3>
+                <p class=" description">Pellentesque pellentesque ex nunc, ac ornare justo elementum id. Nam auctor arcu
+                    quis fringilla vulputate quis tristique nulla.</p>
+                    <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
+                        <span>Pick Size</span>
+                        <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                    <div class="size_checkboxes">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                   value="option1">
+                            <label class="form-check-label" for="inlineRadio1"> 22cm / $19.90</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                   value="option2">
+                            <label class="form-check-label" for="inlineRadio2"> 29cm / $26.99</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                   value="option3">
+                            <label class="form-check-label" for="inlineRadio3"> 35cm / $29.99</label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"></i> add to cart
+                    </button>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_2.png' %}" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_2.png' %}" class="img-fluid">
+                    </div>
+
+                    <h3>Pizza Peperroni</h3>
+                    <p class="description">Pellentesque pellentesque ex nunc, ac ornare justo elementum id. Nam auctor
+                        arcu
+                        quis fringilla vulputate quis tristique nulla.</p>
+                    <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid" alt="">
+                        <span>Pick Size</span>
+                        <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                    <div class="size_checkboxes">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                                   value="option1">
+                            <label class="form-check-label" for="inlineRadio4"> 22cm / $19.90</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5"
+                                   value="option2">
+                            <label class="form-check-label" for="inlineRadio5"> 29cm / $26.99</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6"
+                                   value="option3">
+                            <label class="form-check-label" for="inlineRadio6"> 35cm / $29.99</label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"></i> add to cart
+                    </button>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_3.png' %}" class="img-fluid" alt="">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_3.png' %}" class="img-fluid" alt="">
+                    </div>
+
+                    <h3>Pizza Italiano</h3>
+                    <p class="description">Pellentesque pellentesque ex nunc, ac ornare justo elementum id. Nam auctor
+                        arcu
+                        quis fringilla vulputate quis tristique nulla.</p>
+                    <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid" alt="">
+                        <span>Pick Size</span>
+                        <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid" alt=""></div>
+                    <div class="size_checkboxes">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7"
+                                   value="option1">
+                            <label class="form-check-label" for="inlineRadio7"> 22cm / $19.90</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8"
+                                   value="option2">
+                            <label class="form-check-label" for="inlineRadio8"> 29cm / $26.99</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9"
+                                   value="option3">
+                            <label class="form-check-label" for="inlineRadio9"> 35cm / $29.99</label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"></i> add to cart
+                    </button>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_4.png' %}" class="img-fluid" alt="">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_5.png' %}" class="img-fluid" alt="">
+                    </div>
+
+                    <h3>Pizza Vegetarian</h3>
+                    <p class="description">Pellentesque pellentesque ex nunc, ac ornare justo elementum id. Nam auctor
+                        arcu
+                        quis fringilla vulputate quis tristique nulla.</p>
+                    <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid" alt="">
+                        <span>Pick Size</span>
+                        <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid" alt=""></div>
+                    <div class="size_checkboxes">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio10"
+                                   value="option1">
+                            <label class="form-check-label" for="inlineRadio10"> 22cm / $19.90</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio11"
+                                   value="option2">
+                            <label class="form-check-label" for="inlineRadio11"> 29cm / $26.99</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio12"
+                                   value="option3">
+                            <label class="form-check-label" for="inlineRadio12"> 35cm / $29.99</label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"></i> add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<div class="container">
+
+    <section class="ingredients">
+
+        <div class="piz_title">
+            <div class="small_title"><h3>hello world!</h3></div>
+
+            <div class="big_title"><h1 class="ingr_big_title">our ingredients</h1><img
+                    src="{% static 'orders/img/italy.png' %}" alt=""></div>
+
+        </div>
+        <div class="title_devider">
+            <p class="line"></p>
+        </div>
+
+        <div class="row">
+            <div class="content">
+                <div class="big_canvas">
+                    <div class="row right_left">
+                        <img src="{% static 'orders/img/big_canvas.png' %}" class="img-fluid canv" alt="">
+                    </div>
+                    <div class="row right_left">
+                        <div class="col-md-6 vegi">
+                            <img src="{% static 'orders/img/vegitable.png' %}" alt="">
+                        </div>
+                        <div class="col-md-6 cont">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
+                                viverra maecenas accumsan lacus vel facilisis.
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua quis.</p>
+
+                            <button type="button" class="btn btn-outline-primary">read more</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="pizza_menu">
+    <div class="row right_left">
+        <div class="col-xl-3 col-lg-6 full">
+            <div class="menu_block">
+                <img class="icon_line" src="{% static 'orders/img/menu/line/pizza.svg' %}" alt="">
+                <img class="icon_color" src="{% static 'orders/img/menu/pizza.svg' %}" alt="">
+                <h3>Pizza Italiano</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget cursus nisl.</p>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 full">
+            <div class="menu_block">
+                <img class="icon_line" src="{% static 'orders/img/menu/line/burger.svg' %}" alt="">
+                <img class="icon_color" src="{% static 'orders/img/menu/burger.svg' %}" alt="">
+                <h3>Fast food</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget cursus nisl.</p>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 full">
+            <div class="menu_block">
+                <img class="icon_line" src="{% static 'orders/img/menu/line/beer.svg' %}" alt="">
+                <img class="icon_color" src="{% static 'orders/img/menu/beer.svg' %}" alt="">
+                <h3>Craft Beer</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget cursus nisl.</p>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 full">
+            <div class="menu_block">
+                <img class="icon_line" src="{% static 'orders/img/menu/line/omelette.svg' %}" alt="">
+                <img class="icon_color" src="{% static 'orders/img/menu/omelette.svg' %}" alt="">
+                <h3>bacon omelette</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget cursus nisl.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container">
+    <section class="news">
+        <div class="blog_title">
+            <div class="small_title"><h3>hello world!</h3></div>
+
+            <div class="big_title">
+                <h1 class="blog_big_title">our blog</h1><img src="{% static 'orders/img/italy.png' %}" alt=""></div>
+
+        </div>
+        <div class=" title_devider">
+                <p class="line"></p>
+            </div>
+
+            <div class="content">
+                <div class="row no-flex">
+                    <div class="col-xl-4 col-lg-12 post_box">
+                        <a href="blog-left-sidebar.html">
+                            <img src="{% static 'orders/img/blog/img_1.jpg' %}" alt="" class="img-fluid">
+                            <div class="caption">
+                                <p>02 oct 2019</p>
+                                <h2>The difference between art and design</h2>
+                                <span class="author">by George Smith</span>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col-xl-4 col-lg-12 post_box">
+                        <a href="blog-left-sidebar.html">
+                            <img src="{% static 'orders/img/blog/img_2.jpg' %}" class="img-fluid" alt="">
+                            <div class="caption">
+                                <p>30 aug 2019</p>
+                                <h2>The difference between art and design</h2>
+                                <span class="author">by George Smith</span>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col-xl-4 col-lg-12 post_box">
+                        <a href="blog-left-sidebar.html">
+                            <img src="{% static 'orders/img/blog/img_3.jpg' %}" class="img-fluid" alt="">
+                            <div class="caption">
+                                <p>14 jun 2019</p>
+                                <h2>The difference between art and design</h2>
+                                <span class="author">by George Smith</span>
+                            </div>
+                        </a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+    </section>
+</div>
+<section class="newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box_1">
+                    <p>nesletter</p>
+                    <h1>Join our newsletter</h1>
+                </div>
+
+            </div>
+
+            <div class="col-md-5">
+                <div class="box_2">
+                    <form id="ajax-contact-form3" class="form-horizontal" action="javascript:;">
+                        <div class="form-group">
+                            <input type="text" class="custom-control" id="inputEmail" name="email" value
+                                   placeholder="Your Email Address">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="box_3">
+                    <button type="submit" class="btn btn-outline-primary">submit</button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-------------------- FOOTER  -------------------------------------->
+<footer>
+    <div class="bot1-wrapper">
+        <div class="container">
+            <div class="bot1 clearfix">
+                <div class="logo2_wrapper">
+                    <img src="{% static 'orders/img/logo2.png' %}" alt="" class="img-fluid">
+                    <div class="logo_title">
+                        <div class="bottom_logo"><span>Pizzeria</span> TestaResto</div>
+                        <div class="bottom_logo_desc">delicious foods place</div>
+                    </div>
+                </div>
+                <div class="social-footer-wrapper">
+                    <ul class="social-footer clearfix">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                    </ul>
+                </div>
+                <!--<div class="devider"></div>-->
+            </div>
+        </div>
+    </div>
+    <div class="bot2-wrapper">
+        <div class="container">
+            <div class="bot2 clearfix">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="contact-us-block">
+                            <figure><img src="{% static 'orders/img/ic1.png' %}" alt="" class="img-fluid"></figure>
+                            <div class="txt1">50., I. Abashidze Sreet 0179 Tbilisi City, Georgia</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-us-block">
+                            <figure><img src="{% static 'orders/img/ic2.png' %}" alt="" class="img-fluid"></figure>
+                            <div class="txt1">Phone: (00) 123 456 789</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-us-block">
+                            <figure><img src="{% static 'orders/img/ic3.png' %}" alt="" class="img-fluid"></figure>
+                            <div class="txt1">Email: <a href="#">info.contact@gmail.com</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bot3-wrapper">
+        <div class="container">
+            <div class="bot3 clearfix">
+                <ul class="menu-bot">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="{% url 'contact' %}">Contact us</a></li>
+                </ul>
+                <div class="copyrights">Copyright @2019. All rights Revierves</div>
+                <div class="created">Created with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                        href="https://gridgum.com" target="_blank">Gridgum</a></div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 </body>
+<script src="{% static 'orders/js/jquery.min.js' %}"></script>
+<script src="{% static 'orders/js/jquery.appear.js' %}"></script>
+<script src="{% static 'orders/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'orders/js/responsiveslides.min.js' %}"></script>
+<script src="{% static 'orders/js/superfish.js' %}"></script>
+<script src="{% static 'orders/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'orders/js/scripts.js' %}"></script>
 </html>
