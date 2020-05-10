@@ -15,7 +15,7 @@ class RegularPizza(models.Model):
         return f"{self.name} - {self.small} -{self.large}"
 
 
-class ScilianPizza(models.Model):
+class SicilianPizza(models.Model):
     name = models.CharField(max_length=64)
     small = models.DecimalField(max_digits=4, decimal_places=2)
     large = models.DecimalField(max_digits=4, decimal_places=2)
@@ -65,7 +65,7 @@ class Topping(models.Model):
         return f"{self.name}"
 
 
-class User_order(models.Model):
+class UserOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     order_number = models.IntegerField()
     topping_allowance = models.IntegerField(default=0)
@@ -86,7 +86,7 @@ class Order2(models.Model):
         return f"{self.name} - ${self.price} "
 
 
-class Order_counter(models.Model):
+class OrderCounter(models.Model):
     counter = models.IntegerField()
 
     def __str__(self):
