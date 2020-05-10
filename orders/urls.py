@@ -10,5 +10,4 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path("login/", views.login_view, name="login"),
     path("logout/", views.logout_view, name="logout"),
-    path("createuser/", views.create_user, name="createuser")
 ]

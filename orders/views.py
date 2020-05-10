@@ -22,7 +22,37 @@ def index(request):
 
 
 def signin(request):
-    return render(request, "orders/signin.html")
+    if request.method == 'POST':
+        username = request.POST["userName"]
+        first_name = request.POST["firstName"]
+        last_name = request.POST["lastName"]
+        email = request.POST["email"]
+        password = request.POST["password"]
+        conf_password = request.POST["confPassword"]
+        # verify password and confPassword is equal
+        if password != conf_password:
+            return render(request, "orders/signup.html",
+                          {"message": "Password and Repeat password are different! Try Again!"})
+        # check if user exists
+        if User.objects.filter(username=username).exists():
+            return render(request, "orders/signup.html",
+                          {"message": "Username already exist! Try another one!"})
+        elif User.objects.filter(email=email).exists():
+            return render(request, "orders/signup.html",
+                          {"message": "email already registered! Try another one!"})
+        else:
+            # creating sucessfully user in db
+            try:
+                user = User.objects.create_user(username, email, password)
+                user.first_name = first_name
+                user.last_name = last_name
+                user.save()
+                return render(request, "orders/signin.html", {"message": "userCreated"})
+            except:
+                return render(request, "orders/signup.html",
+                              {"message": "Please! Complete all the fields correctly!"})
+    else:
+        return render(request, "orders/signin.html")
 
 
 def login_view(request):
@@ -43,37 +73,6 @@ def logout_view(request):
 
 def signup(request):
     return render(request, "orders/signup.html")
-
-
-def create_user(request):
-    username = request.POST["userName"]
-    first_name = request.POST["firstName"]
-    last_name = request.POST["lastName"]
-    email = request.POST["email"]
-    password = request.POST["password"]
-    conf_password = request.POST["confPassword"]
-    # verify password and confPassword is equal
-    if password != conf_password:
-        return render(request, "orders/signup.html",
-                      {"message": "Password and Repeat password are different! Try Again!"})
-    # check if user exists
-    if User.objects.filter(username=username).exists():
-        return render(request, "orders/signup.html",
-                      {"message": "Username already exist! Try another one!"})
-    elif User.objects.filter(email=email).exists():
-        return render(request, "orders/signup.html",
-                      {"message": "email already registered! Try another one!"})
-    else:
-        # creating sucessfully user in db
-        try:
-            user = User.objects.create_user(username, email, password)
-            user.first_name = first_name
-            user.last_name = last_name
-            user.save()
-            return render(request, "orders/signin.html", {"message": "userCreated"})
-        except:
-            return render(request, "orders/signup.html",
-                          {"message": "Please! Complete all the fields correctly!"})
 
 
 def contact(request):
