@@ -8,9 +8,11 @@ from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
     print("Usuario Autenticado: {}".format(request.user.is_authenticated))
+    # if user is not authenticated
     if not request.user.is_authenticated:
         logged = False
         return render(request, "orders/index.html", {"message": None, "logged": logged})
+    # user authenticated
     logged = True
     context = {
         "user": request.user,
@@ -31,7 +33,7 @@ def login_view(request):
         login(request, user)
         return HttpResponseRedirect(reverse("index"))
     else:
-        return render(request, "orders/signin.html", {"message": "Invalid credentials."})
+        return render(request, "orders/signin.html", {"message": "invalidLogin"})
 
 
 def logout_view(request):
@@ -43,15 +45,35 @@ def signup(request):
     return render(request, "orders/signup.html")
 
 
-def createUser(request):
-    userName = request.POST["userName"]
-    firstName = request.POST["firstName"]
-    lastName = request.POST["lastName"]
+def create_user(request):
+    username = request.POST["userName"]
+    first_name = request.POST["firstName"]
+    last_name = request.POST["lastName"]
     email = request.POST["email"]
     password = request.POST["password"]
-    confPassword = request.POST["confPassword"]
-    user = User.objects.create_user(userName, email, password)
-
+    conf_password = request.POST["confPassword"]
+    # verify password and confPassword is equal
+    if password != conf_password:
+        return render(request, "orders/signup.html",
+                      {"message": "Password and Repeat password are different! Try Again!"})
+    # check if user exists
+    if User.objects.filter(username=username).exists():
+        return render(request, "orders/signup.html",
+                      {"message": "Username already exist! Try another one!"})
+    elif User.objects.filter(email=email).exists():
+        return render(request, "orders/signup.html",
+                      {"message": "email already registered! Try another one!"})
+    else:
+        # creating sucessfully user in db
+        try:
+            user = User.objects.create_user(username, email, password)
+            user.first_name = first_name
+            user.last_name = last_name
+            user.save()
+            return render(request, "orders/signin.html", {"message": "userCreated"})
+        except:
+            return render(request, "orders/signup.html",
+                          {"message": "Please! Complete all the fields correctly!"})
 
 
 def contact(request):
