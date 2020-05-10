@@ -22,6 +22,7 @@ def index(request):
 
 
 def signin(request):
+    # post if comes from sign up page, user created
     if request.method == 'POST':
         username = request.POST["userName"]
         first_name = request.POST["firstName"]
