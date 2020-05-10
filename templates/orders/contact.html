@@ -126,14 +126,7 @@
                         <ul class="nav navbar-nav sf-menu clearfix">
                             <li class="nav-item sub-menu">
                                 <a href="{% url 'index' %}" class="nav-link">Home</a></li>
-                            <li class="nav-item sub-menu"><a href="about-fixed-menu.html" class="nav-link">About us <i
-                                    class="fas fa-chevron-down"></i></a>
-                                <div class="sf-mega">
-                                    <ul>
-                                        <li><a href="about-fixed-menu.html">With Fixed top menu</a></li>
-                                        <li><a href="about.html">With scrolled top menu</a></li>
-                                    </ul>
-                                </div>
+                            <li class="nav-item sub-menu"><a href="{% url 'about' %}" class="nav-link">About us </a>
                             </li>
                             <li class="nav-item sub-menu"><a href="shop-filter-buttons.html" class="nav-link">shop <i
                                     class="fas fa-chevron-down"></i></a>
@@ -317,7 +310,7 @@
                     <div class="logo2_wrapper">
                         <img src="{% static 'orders/img/logo2.png' %}" alt="" class="img-fluid">
                         <div class="logo_title">
-                            <div class="bottom_logo"><span>Pizzeria</span> TestaResto</div>
+                            <div class="bottom_logo"><span>Pizzeria</span> Pinocchio's</div>
                             <div class="bottom_logo_desc">delicious foods place</div>
                         </div>
                     </div>
@@ -363,13 +356,13 @@
             <div class="container">
                 <div class="bot3 clearfix">
                     <ul class="menu-bot">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
                         <li><a href="#">Shop</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact us</a></li>
+                        <li><a href="{% url 'contact' %}">Contact us</a></li>
                     </ul>
-                    <div class="copyrights">Copyright @2019. All rights Revierves</div>
+                    <div class="copyrights">Copyright @2010. All rights Reserved</div>
                     <div class="created">Created with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
                             href="https://gridgum.com" target="_blank">Gridgum</a></div>
                 </div>

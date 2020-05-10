@@ -126,15 +126,9 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav sf-menu clearfix">
                             <li class="nav-item sub-menu">
-                                <a href="index.html" class="nav-link">Home</a></li>
-                            <li class="nav-item sub-menu"><a href="about-fixed-menu.html" class="active_1 nav-link">About
-                                us <i class="fas fa-chevron-down"></i></a>
-                                <div class="sf-mega">
-                                    <ul>
-                                        <li><a href="about-fixed-menu.html">With Fixed top menu</a></li>
-                                        <li><a href="about.html">With scrolled top menu</a></li>
-                                    </ul>
-                                </div>
+                                <a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                            <li class="nav-item sub-menu"><a href="{% url 'about' %}" class="active_1 nav-link">About
+                                us </a>
                             </li>
                             <li class="nav-item sub-menu"><a href="#" class="nav-link">shop <i
                                     class="fas fa-chevron-down"></i></a>
@@ -167,7 +161,7 @@
                                     </ul>
                                 </div>
                             </li>
-                                                        <li class="nav-item sub-menu">
+                            <li class="nav-item sub-menu">
                                 <a href="#" class="nav-link">Pages <i class="fas fa-chevron-down"></i></a>
                                 <div class="sf-mega">
                                     <ul>
@@ -193,7 +187,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item"><a href="contact.html" class="nav-link">Contact us</a></li>
+                            <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact us</a></li>
                         </ul>
 
                         <!-- <div class="my_account">
@@ -201,7 +195,7 @@
                          </div>-->
                         <!--------------- My Account ---------------->
                         <!--<div class="my_account">
-                            <img src="img/avatar.jpg"> <i class="fas fa-chevron-down"></i>
+                            <img src=" static 'orders/img/avatar.jpg' "> <i class="fas fa-chevron-down"></i>
                             <div class="sf-account">
                                 <ul>
                                     <li><a href="index.html">Shop Right sidebar</a></li>
@@ -219,7 +213,7 @@
     </div>
     <div class="container">
         <div class="pizza_breadcrumb">
-            <a href="index.html"><i class="fa fa-home"></i> / Home</a> / <span>About us</span>
+            <a href="{% url 'index' %}"><i class="fa fa-home"></i> / Home</a> / <span>About us</span>
         </div>
     </div>
     <div class="container">
@@ -227,7 +221,8 @@
             <div class="piz_title">
                 <div class="small_title"><h3>hello world!</h3></div>
 
-                <div class="big_title"><h1 class="about_big_title">we are testaresto</h1><img src="img/italy.png"></div>
+                <div class="big_title"><h1 class="about_big_title">we are Pinocchio's</h1><img
+                        src="{% static 'orders/img/italy.png' %}"></div>
 
             </div>
             <div class="title_devider">
@@ -235,18 +230,21 @@
             </div>
 
             <div class="content">
-                <p>Created in 2019, by designer Mecovache from Web Technology Studio is a global brand and design agency
-                    with offices in the creative hubs of London and San Francisco. I opened the agency after spotting a
-                    split in the creative industry.
-                    Studios were either boutique and beautiful, but only managing to work on a few projects or of a
-                    massive scale and impersonal with their client relationships.
-                    DesignStudio was created with the aim to fill this gap – delivering the quality of boutique, bespoke
-                    design to global brands and audiences.
-                    Using effective strategies and innovative creative thinking we engage audiences, encourage relevant
-                    conversation, <br>influence behaviour, and achieve brand objectives.</p>
+                <p>Noch's has been in business for over 50 years! We've been feeding Harvard and the surrounding area
+                    since 1966!
+
+                    We sell award-winning sicilian-style pizza and mouth-watering steak subs! We have over 750 reviews
+                    on Yelp--- check it out!
+
+
+                    ***** April 6th,2020 UPDATE---Pinocchio's will now be closing every night at 9:00 pm following the
+                    recommended curfew set forth by Mayor Walsh. All orders must be for takeout......you can continue to
+                    come in to the shop to order or call in. For delivery you can continue to do so thru Grubhub,
+                    Doordash and Postmates.....get your orders in by 8:00. Our wishes to everyone to stay
+                    safe....maintain social distance and wash your hands!!!!*****.</p>
                 <div class="shtamp_under">
-                    <img class="shtamp" src="img/shtamp.png">
-                    <img class="signature" src="img/signature.png">
+                    <img class="shtamp" src="{% static 'orders/img/shtamp.png' %}">
+                    <img class="signature" src="{% static 'orders/img/signature.png' %}">
                 </div>
             </div>
 
@@ -267,7 +265,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <img src="img/team/team1.jpg" class="img-fluid">
+                        <img src="{% static 'orders/img/team/team1.jpg' %}" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -284,7 +282,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <img src="img/team/team2.jpg" class="img-fluid">
+                        <img src="{% static 'orders/img/team/team2.jpg' %}" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -301,7 +299,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <img src="img/team/team3.jpg" class="img-fluid">
+                        <img src="{% static 'orders/img/team/team3.jpg' %}" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -318,7 +316,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <img src="img/team/team4.jpg" class="img-fluid">
+                        <img src="{% static 'orders/img/team/team4.jpg' %}" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -328,32 +326,32 @@
         <div class="row">
             <div class="col-lg-3 full">
                 <div class="menu_block">
-                    <img class="icon_line" src="img/menu/line/pizza.svg">
-                    <img class="icon_color" src="img/menu/pizza.svg">
+                    <img class="icon_line" src="{% static 'orders/img/menu/line/pizza.svg' %}">
+                    <img class="icon_color" src="{% static 'orders/img/menu/pizza.svg' %}">
                     <h3>Pizza Italiano</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget cursus nisl.</p>
                 </div>
             </div>
             <div class="col-lg-3 full">
                 <div class="menu_block">
-                    <img class="icon_line" src="img/menu/line/burger.svg">
-                    <img class="icon_color" src="img/menu/burger.svg">
+                    <img class="icon_line" src="{% static 'orders/img/menu/line/burger.svg' %}">
+                    <img class="icon_color" src="{% static 'orders/img/menu/burger.svg' %}">
                     <h3>Fast food</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget cursus nisl.</p>
                 </div>
             </div>
             <div class="col-lg-3 full">
                 <div class="menu_block">
-                    <img class="icon_line" src="img/menu/line/beer.svg">
-                    <img class="icon_color" src="img/menu/beer.svg">
+                    <img class="icon_line" src="{% static 'orders/img/menu/line/beer.svg' %}">
+                    <img class="icon_color" src="{% static 'orders/img/menu/beer.svg' %}">
                     <h3>Craft Beer</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget cursus nisl.</p>
                 </div>
             </div>
             <div class="col-lg-3 full">
                 <div class="menu_block">
-                    <img class="icon_line" src="img/menu/line/omelette.svg">
-                    <img class="icon_color" src="img/menu/omelette.svg">
+                    <img class="icon_line" src="{% static 'orders/img/menu/line/omelette.svg' %}">
+                    <img class="icon_color" src="{% static 'orders/img/menu/omelette.svg' %}">
                     <h3>bacon omelette</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget cursus nisl.</p>
                 </div>
@@ -396,11 +394,11 @@
                 <div class="text_block">
                     <p>"My experience with Podes is absolutely positive. The themes are beautifully designed and well
                         documented. ThemeFure provides quick and competent support."</p>
-                    <img class="tri-light" src="img/testimonials/tri-light.png">
-                    <img class="tri-red" src="img/testimonials/tri-red.png">
+                    <img class="tri-light" src="{% static 'orders/img/testimonials/tri-light.png' %}">
+                    <img class="tri-red" src="{% static 'orders/img/testimonials/tri-red.png' %}">
                 </div>
                 <div class="personal_block">
-                    <img src="img/testimonials/avatar1.jpg">
+                    <img src="{% static 'orders/img/testimonials/avatar1.jpg' %}">
                     <div class="avatar_info">
                         <h3>Nancy Franklin</h3>
                         <h4>UI/UX Web Designer</h4>
@@ -412,11 +410,11 @@
                     <div class="text_block">
                         <p>"My experience with Podes is absolutely positive. The themes are beautifully designed and
                             well documented. ThemeFure provides quick and competent support."</p>
-                        <img class="tri-light" src="img/testimonials/tri-light.png">
-                        <img class="tri-red" src="img/testimonials/tri-red.png">
+                        <img class="tri-light" src="{% static 'orders/img/testimonials/tri-light.png' %}">
+                        <img class="tri-red" src="{% static 'orders/img/testimonials/tri-red.png' %}">
                     </div>
                     <div class="personal_block">
-                        <img src="img/testimonials/avatar2.jpg">
+                        <img src="{% static 'orders/img/testimonials/avatar2.jpg' %}">
                         <div class="avatar_info">
                             <h3>George Smith</h3>
                             <h4>Web Developer</h4>
@@ -428,11 +426,11 @@
                 <div class="text_block">
                     <p>"My experience with Podes is absolutely positive. The themes are beautifully designed and well
                         documented. ThemeFure provides quick and competent support."</p>
-                    <img class="tri-light" src="img/testimonials/tri-light.png">
-                    <img class="tri-red" src="img/testimonials/tri-red.png">
+                    <img class="tri-light" src="{% static 'orders/img/testimonials/tri-light.png' %}">
+                    <img class="tri-red" src="{% static 'orders/img/testimonials/tri-red.png' %}">
                 </div>
                 <div class="personal_block">
-                    <img src="img/testimonials/avatar1.jpg">
+                    <img src="{% static 'orders/img/testimonials/avatar1.jpg' %}">
                     <div class="avatar_info">
                         <h3>Nancy Franklin</h3>
                         <h4>UI/UX Web Designer</h4>
@@ -444,11 +442,11 @@
                     <div class="text_block">
                         <p>"My experience with Podes is absolutely positive. The themes are beautifully designed and
                             well documented. ThemeFure provides quick and competent support."</p>
-                        <img class="tri-light" src="img/testimonials/tri-light.png">
-                        <img class="tri-red" src="img/testimonials/tri-red.png">
+                        <img class="tri-light" src="{% static 'orders/img/testimonials/tri-light.png' %}">
+                        <img class="tri-red" src="{% static 'orders/img/testimonials/tri-red.png' %}">
                     </div>
                     <div class="personal_block">
-                        <img src="img/testimonials/avatar2.jpg">
+                        <img src="{% static 'orders/img/testimonials/avatar2.jpg' %}">
                         <div class="avatar_info">
                             <h3>George Smith</h3>
                             <h4>Web Developer</h4>
@@ -460,11 +458,11 @@
                 <div class="text_block">
                     <p>"My experience with Podes is absolutely positive. The themes are beautifully designed and well
                         documented. ThemeFure provides quick and competent support."</p>
-                    <img class="tri-light" src="img/testimonials/tri-light.png">
-                    <img class="tri-red" src="img/testimonials/tri-red.png">
+                    <img class="tri-light" src="{% static 'orders/img/testimonials/tri-light.png' %}">
+                    <img class="tri-red" src="{% static 'orders/img/testimonials/tri-red.png' %}">
                 </div>
                 <div class="personal_block">
-                    <img src="img/testimonials/avatar1.jpg">
+                    <img src="{% static 'orders/img/testimonials/avatar1.jpg' %}">
                     <div class="avatar_info">
                         <h3>Nancy Franklin</h3>
                         <h4>UI/UX Web Designer</h4>
@@ -476,11 +474,11 @@
                     <div class="text_block">
                         <p>"My experience with Podes is absolutely positive. The themes are beautifully designed and
                             well documented. ThemeFure provides quick and competent support."</p>
-                        <img class="tri-light" src="img/testimonials/tri-light.png">
-                        <img class="tri-red" src="img/testimonials/tri-red.png">
+                        <img class="tri-light" src="{% static 'orders/img/testimonials/tri-light.png' %}">
+                        <img class="tri-red" src="{% static 'orders/img/testimonials/tri-red.png' %}">
                     </div>
                     <div class="personal_block">
-                        <img src="img/testimonials/avatar2.jpg">
+                        <img src="{% static 'orders/img/testimonials/avatar2.jpg' %}">
                         <div class="avatar_info">
                             <h3>George Smith</h3>
                             <h4>Web Developer</h4>
@@ -495,23 +493,23 @@
         <div class="container">
             <!-- <div class="row">
                  <div class="col-md-3">
-                     <img src="img/partners/ic3.svg" class="img-fluid">
+                     <img src="{% static 'orders/img/partners/ic3.svg' %}" class="img-fluid">
                  </div>
                  <div class="col-md-3">
-                     <img src="img/partners/ic4.svg" class="img-fluid">
+                     <img src="{% static 'orders/img/partners/ic4.svg' %}" class="img-fluid">
                  </div>
                  <div class="col-md-3">
-                     <img src="img/partners/ic3.svg" class="img-fluid">
+                     <img src="{% static 'orders/img/partners/ic3.svg' %}" class="img-fluid">
                  </div>
                  <div class="col-md-3">
-                     <img src="img/partners/ic4.svg" class="img-fluid">
+                     <img src="{% static 'orders/img/partners/ic4.svg' %}" class="img-fluid">
                  </div>
              </div>-->
             <ul class="partners_block">
-                <li><img src="img/partners/ic3.svg" class="img-fluid"></li>
-                <li><img src="img/partners/ic4.svg" class="img-fluid"></li>
-                <li><img src="img/partners/ic3.svg" class="img-fluid"></li>
-                <li><img src="img/partners/ic4.svg" class="img-fluid"></li>
+                <li><img src="{% static 'orders/img/partners/ic3.svg' %}" class="img-fluid"></li>
+                <li><img src="{% static 'orders/img/partners/ic4.svg' %}" class="img-fluid"></li>
+                <li><img src="{% static 'orders/img/partners/ic3.svg' %}" class="img-fluid"></li>
+                <li><img src="{% static 'orders/img/partners/ic4.svg' %}" class="img-fluid"></li>
             </ul>
         </div>
 
@@ -523,9 +521,9 @@
             <div class="container">
                 <div class="bot1 clearfix">
                     <div class="logo2_wrapper">
-                        <img src="img/logo2.png" alt="" class="img-fluid">
+                        <img src="{% static 'orders/img/logo2.png' %}" alt="" class="img-fluid">
                         <div class="logo_title">
-                            <div class="bottom_logo"><span>Pizzeria</span> TestaResto</div>
+                            <div class="bottom_logo"><span>Pizzeria</span> Pinocchio's</div>
                             <div class="bottom_logo_desc">delicious foods place</div>
                         </div>
                     </div>
@@ -547,19 +545,19 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="contact-us-block">
-                                <figure><img src="img/ic1.png" alt="" class="img-fluid"></figure>
+                                <figure><img src="{% static 'orders/img/ic1.png' %}" alt="" class="img-fluid"></figure>
                                 <div class="txt1">50., I. Abashidze Sreet 0179 Tbilisi City, Georgia</div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="contact-us-block">
-                                <figure><img src="img/ic2.png" alt="" class="img-fluid"></figure>
+                                <figure><img src="{% static 'orders/img/ic2.png' %}" alt="" class="img-fluid"></figure>
                                 <div class="txt1">Phone: (00) 123 456 789</div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="contact-us-block">
-                                <figure><img src="img/ic3.png" alt="" class="img-fluid"></figure>
+                                <figure><img src="{% static 'orders/img/ic3.png' %}" alt="" class="img-fluid"></figure>
                                 <div class="txt1">Email: <a href="#">info.contact@gmail.com</a></div>
                             </div>
                         </div>
@@ -571,13 +569,13 @@
             <div class="container">
                 <div class="bot3 clearfix">
                     <ul class="menu-bot">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
                         <li><a href="#">Shop</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact us</a></li>
+                        <li><a href=href="{% url 'contact' %}">Contact us</a></li>
                     </ul>
-                    <div class="copyrights">Copyright @2019. All rights Revierves</div>
+                    <div class="copyrights">Copyright @2020. All rights Reserved</div>
                     <div class="created">Created with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
                             href="https://gridgum.com" target="_blank">Gridgum</a></div>
                 </div>
