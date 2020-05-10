@@ -10,7 +10,8 @@
 {% block body %}
     <body class="text-center">
 
-    <form class="form-signin" method="post">
+    <form action="{% url 'index' %}" class="form-signin" method="post">
+        {% csrf_token %}
         <img class="mb-4 img-fluid" src="{% static 'orders/img/pizzaLogo.png' %}" alt="">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputEmail" class="sr-only">Email address</label>

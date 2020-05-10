@@ -10,35 +10,37 @@
 {% block body %}
     <div class="container">
         <div class="card bg-light align-items-center">
-            <img class="mt-4 img-fluid" src="{% static 'orders/img/pizzaLogo.png' %}" alt="" width="300px" height="269px">
+            <img class="mt-4 img-fluid" src="{% static 'orders/img/pizzaLogo.png' %}" alt="" width="300px"
+                 height="269px">
             <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center">Create Account</h4>
                 <p class="text-center">Get started with your free account</p>
-                <form action="{% url 'signup' %}" method="post">
+                <form action="{% url 'signin' %}" method="post">
+                    {% csrf_token %}
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                        <input name="fullName" class="form-control" placeholder="Full name" type="text">
+                        <input name="userName" class="form-control" placeholder="Username" type="text">
+                    </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input name="firstName" class="form-control" placeholder="First Name" type="text">
+                    </div> <!-- form-group// -->
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input name="lastName" class="form-control" placeholder="Last Name" type="text">
                     </div> <!-- form-group// -->
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
                         <input name="email" class="form-control" placeholder="Email address" type="email">
-                    </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-                        </div>
-                        <select class="custom-select" style="max-width:80px;">
-                            <option selected="">+55</option>
-                            <option value="1">+1</option>
-                            <option value="2">+54</option>
-                            <option value="3">+61</option>
-                        </select>
-                        <input name="telephone" class="form-control" placeholder="Phone number" type="text">
-                    </div> <!-- form-group// -->
+                    </div>  <!-- form-group// -->
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
