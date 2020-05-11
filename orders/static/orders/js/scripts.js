@@ -1,149 +1,140 @@
 /////////////////////// ready
-$(document).ready(function() {
-  /*----------------------------------------------------*/
-  // Superfish menu.
-  /*----------------------------------------------------*/
-  $('.sf-menu').superfish();
+$(document).ready(function () {
+    /*----------------------------------------------------*/
+    // Superfish menu.
+    /*----------------------------------------------------*/
+    $('.sf-menu').superfish();
 
 
-
-  var s = $('.sliderr');
-  if(s.length) {
-      s.responsiveSlides({
-          pager: true
-      });
-      $('.rslides_tabs').find('a').each(function () {
-          if(parseInt($(this).html()) < 10) {
-              $(this).html('0'+$(this).html());
-          }
-      });
-  }
-
-  /*----------------------------------------------------*/
-  // Scroll
-  /*----------------------------------------------------*/
-  $(".scroll-to").bind('click',function(event){
-
-      $("html, body").animate({
-        scrollTop: $($(this).attr("href")).offset().top-50
-      }, 1000);
-
-      event.preventDefault();
-  });
-
-  /*----------------------------------------------------*/
-  // Audio
-  /*----------------------------------------------------*/
-  var o = $('.audio1 audio');
-  if (o.length > 0) {
-    o.mediaelementplayer({
-      features: ['prevtrack', 'playpause', 'nexttrack', 'progress', 'current', 'volume', 'playlistfeature']
-    });
-    $('.audio1 .mejs-prevtrack-button').addClass('mejs-cust1-button');
-    $('.audio1 .mejs-nexttrack-button').addClass('mejs-cust2-button');
-  };
-
-  var o = $('.audio2 audio');
-  if (o.length > 0) {
-    o.mediaelementplayer({
-      features: ['playpause','progress']
-    });
-  };
-
-  var o = $('.audio3 audio');
-  if (o.length > 0) {
-    o.mediaelementplayer({
-      features: ['playpause']
-    });
-  };
-
-  var o = $('.audio4 audio');
-  if (o.length > 0) {
-    o.mediaelementplayer({
-      features: ['playpause','progress']
-    });
-  };
-
-  // Accordion.
-  var o = $(".accordion");
-  if (o.length > 0) {
-    o.accordion({
-      active: 0,
-      heightStyle: "content"
-    });
-  };
-
-  // Animate number.
-  var o = $('.animated-number');
-  if (o.length > 0) {
-    o.appear(function() {
-      var elem = $(this);
-      var b = elem.text();
-      var d = elem.data('duration');
-      var animationDelay = elem.data('animation-delay');
-      if ( !animationDelay ) { animationDelay = 0; }
-      elem.text("0");
-
-      setTimeout(function(){
-        elem.animate({ num: b }, {
-          duration: d,
-          step: function (num){
-            this.innerHTML = (num).toFixed(0)
-          }
+    var s = $('.sliderr');
+    if (s.length) {
+        s.responsiveSlides({
+            pager: true
         });
-      }, animationDelay);
-    });
-  };
-
-  /*----------------------------------------------------*/
-  // owlCarousel
-  /*----------------------------------------------------*/
-
-  var o = $('.owl-carousel-testimonials');
-  if (o.length > 0) {
-    o.owlCarousel({
-        responsive:{
-            0:{
-                items:1,
-                nav:true
-            },
-            600:{
-                items:2,
-                nav:false
-            },
-            1000:{
-                items:2,
-                nav:true,
-                loop:false
+        $('.rslides_tabs').find('a').each(function () {
+            if (parseInt($(this).html()) < 10) {
+                $(this).html('0' + $(this).html());
             }
-        },
-      loop: true,
-        navText: ['', ''],
-      //margin: 30
+        });
+    }
+
+    /*----------------------------------------------------*/
+    // Scroll
+    /*----------------------------------------------------*/
+    $(".scroll-to").bind('click', function (event) {
+
+        $("html, body").animate({
+            scrollTop: $($(this).attr("href")).offset().top - 50
+        }, 1000);
+
+        event.preventDefault();
     });
-  };
+
+    /*----------------------------------------------------*/
+    // Audio
+    /*----------------------------------------------------*/
+    var o = $('.audio1 audio');
+    if (o.length > 0) {
+        o.mediaelementplayer({
+            features: ['prevtrack', 'playpause', 'nexttrack', 'progress', 'current', 'volume', 'playlistfeature']
+        });
+        $('.audio1 .mejs-prevtrack-button').addClass('mejs-cust1-button');
+        $('.audio1 .mejs-nexttrack-button').addClass('mejs-cust2-button');
+    }
+    ;
+
+    var o = $('.audio2 audio');
+    if (o.length > 0) {
+        o.mediaelementplayer({
+            features: ['playpause', 'progress']
+        });
+    }
+    ;
+
+    var o = $('.audio3 audio');
+    if (o.length > 0) {
+        o.mediaelementplayer({
+            features: ['playpause']
+        });
+    }
+    ;
+
+    var o = $('.audio4 audio');
+    if (o.length > 0) {
+        o.mediaelementplayer({
+            features: ['playpause', 'progress']
+        });
+    }
+    ;
+
+    // Accordion.
+    var o = $(".accordion");
+    if (o.length > 0) {
+        o.accordion({
+            active: 0,
+            heightStyle: "content"
+        });
+    }
+    ;
+
+    // Animate number.
+    var o = $('.animated-number');
+    if (o.length > 0) {
+        o.appear(function () {
+            var elem = $(this);
+            var b = elem.text();
+            var d = elem.data('duration');
+            var animationDelay = elem.data('animation-delay');
+            if (!animationDelay) {
+                animationDelay = 0;
+            }
+            elem.text("0");
+
+            setTimeout(function () {
+                elem.animate({num: b}, {
+                    duration: d,
+                    step: function (num) {
+                        this.innerHTML = (num).toFixed(0)
+                    }
+                });
+            }, animationDelay);
+        });
+    }
+    ;
+
+    /*----------------------------------------------------*/
+    // owlCarousel
+    /*----------------------------------------------------*/
+
+    var o = $('.owl-carousel-testimonials');
+    if (o.length > 0) {
+        o.owlCarousel({
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true
+                },
+                600: {
+                    items: 2,
+                    nav: false
+                },
+                1000: {
+                    items: 2,
+                    nav: true,
+                    loop: false
+                }
+            },
+            loop: true,
+            navText: ['', ''],
+            //margin: 30
+        });
+    }
+    ;
 
 
-
-    $(document).ready(function(){
+    $(document).ready(function () {
         $(".owl-carousel").owlCarousel();
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });
@@ -152,16 +143,15 @@ $(document).ready(function() {
 $(window).on('load', function () {
 
 
-
 });
 
 /*----------------------------------------------------*/
 // Tabs.
 /*----------------------------------------------------*/
-$('.tabs a').click(function(e){
+$('.tabs a').click(function (e) {
     e.preventDefault();
     var $this = $(this),
-        tabgroup = '#'+$this.parents('.tabs').data('tabgroup'),
+        tabgroup = '#' + $this.parents('.tabs').data('tabgroup'),
         others = $this.closest('li').siblings(),
         target = $this.attr('href');
 
@@ -177,11 +167,11 @@ $('.tabs .active a').click();
 // Checkboxes.
 /*----------------------------------------------------*/
 
-$('input.form-check-input').on('change', function() {
+$('input.form-check-input').on('change', function () {
     $('input.form-check-input').not(this).prop('checked', false);
 });
 
-$('input.form-check-input-sizes').on('change', function() {
+$('input.form-check-input-sizes').on('change', function () {
     $('input.form-check-input-sizes').not(this).prop('checked', false);
 });
 
@@ -190,50 +180,48 @@ $('input.form-check-input-sizes').on('change', function() {
 // Touchspin.
 /*----------------------------------------------------*/
 
-$('.minus').on('click', function(){
+$('.minus').on('click', function () {
     var num = parseInt($('.counter-num').text());
     num--;
     //get rid of this to allow numbers less than 0
-    if(num<0){
+    if (num < 0) {
         num = 0;
     }
     $('.counter-num').text(num);
 })
-$('.plus').on('click', function(){
+$('.plus').on('click', function () {
     var num = parseInt($('.counter-num').text());
     num++;
     $('.counter-num').text(num);
 })
 
 
-
-$('.minus_0').on('click', function(){
+$('.minus_0').on('click', function () {
     var num = parseInt($('.counter-num_0').text());
     num--;
     //get rid of this to allow numbers less than 0
-    if(num<0){
+    if (num < 0) {
         num = 0;
     }
     $('.counter-num_0').text(num);
 })
-$('.plus_0').on('click', function(){
+$('.plus_0').on('click', function () {
     var num = parseInt($('.counter-num_0').text());
     num++;
     $('.counter-num_0').text(num);
 })
 
 
-
-$('.minus_1').on('click', function(){
+$('.minus_1').on('click', function () {
     var num = parseInt($('.counter-num_1').text());
     num--;
     //get rid of this to allow numbers less than 0
-    if(num<0){
+    if (num < 0) {
         num = 0;
     }
     $('.counter-num_1').text(num);
 })
-$('.plus_1').on('click', function(){
+$('.plus_1').on('click', function () {
     var num = parseInt($('.counter-num_1').text());
     num++;
     $('.counter-num_1').text(num);
@@ -253,16 +241,105 @@ $('.custom-control-input').on('change', function(){
     }
 });
 */
-$('#customCheck1').on('change', function(){
-    if($(this).prop('checked')){
+$('#customCheck1').on('change', function () {
+    if ($(this).prop('checked')) {
         $('.different_shipping').css('display', 'block');
-    }
-    else{
-        $('.different_shipping').css('display','none');
+    } else {
+        $('.different_shipping').css('display', 'none');
     }
 });
 
-/* -----------------------  index behavior   ----------------------*/
+/* -----------------------  index behavior   ---------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#pizzaSelect').onclick = () => {
+        pizzaMenu = document.querySelector('#pizzaSelect')
+        pizzaMenu.onclick = null
+        document.querySelector('#pizzaSelect').append(createPizzaMenu(pizzaMenu))
+    }
+});
+//create the pizza menu
+function createPizzaMenu(div) {
+    div.appendChild(createSizeDevider())
+    div.appendChild(createSizeCheckbox())
+    div.appendChild(createButton())
+    return div
+}
+// create devider of the pizza menu
+function createSizeDevider() {
+    const div = document.createElement('div')
+    const img = document.createElement('img')
+    const img2 = document.createElement('img')
+    const span = document.createElement('span')
+    img.className = "img-fluid"
+    img2.className = "img-fluid"
+    img.src = "/static/orders/img/menu/big/line.png"
+    img2.src = "/static/orders/img/menu/big/line.png"
+    span.innerHTML = "Pick Size"
+    div.className = "size_devider"
+    div.appendChild(img)
+    div.appendChild(span)
+    div.appendChild(img2)
+    return div
+}
+// create the check box of the pizza menu
+function createSizeCheckbox() {
+    const div = document.createElement('div')
+    div.className = "size_checkboxes"
+    div.innerHTML = "<table class=\"table table-borderless\">\n" +
+        "                        <thead>\n" +
+        "                        <tr>\n" +
+        "                            <th scope=\"col\">Name</th>\n" +
+        "                            <th scope=\"col\">Small</th>\n" +
+        "                            <th scope=\"col\">Large</th>\n" +
+        "\n" +
+        "                        </tr>\n" +
+        "                        </thead>\n" +
+        "                        <tbody>\n" +
+        "                        <tr>\n" +
+        "                            <th scope=\"row\">Cheese</th>\n" +
+        "                            <td>$ 12.70 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "                            <td>$ 17.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "\n" +
+        "                        </tr>\n" +
+        "                        <tr>\n" +
+        "                            <th scope=\"row\">1 Topping</th>\n" +
+        "                            <td>$ 13.70 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "                            <td>$ 19.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "\n" +
+        "                        </tr>\n" +
+        "                        <tr>\n" +
+        "                            <th scope=\"row\">2 Toppings</th>\n" +
+        "                            <td>$ 15.20 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "                            <td>$ 21.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "\n" +
+        "                        </tr>\n" +
+        "                        <tr>\n" +
+        "                            <th scope=\"row\">3 Toppings</th>\n" +
+        "                            <td>$ 16.20 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "                            <td>$ 23.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "\n" +
+        "                        </tr>\n" +
+        "                        <tr>\n" +
+        "                            <th scope=\"row\">Special</th>\n" +
+        "                            <td>$ 17.75 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "                            <td>$ 25.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
+        "\n" +
+        "                        </tr>\n" +
+        "                        </tbody>\n" +
+        "                    </table>"
+    return div
+}
+
+function createButton() {
+    const button = document.createElement('button')
+    const i = document.createElement('i')
+    button.className = "btn btn-outline-primary"
+    button.type = "button"
+    i.className = "fa fa-cart-plus"
+    button.innerHTML = "ad to cart"
+    button.appendChild(i)
+    return button
+}
 
 /* -----------------------  Google Map   ----------------------*/
 

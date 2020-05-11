@@ -525,17 +525,17 @@
         <div class="col-xl-3 col-lg-6 full">
             <div class="menu_block">
                 <div class="pizza_icon_line">
-                    <img src="/static/orders/img/menu/big/pizza_1.png" alt="" class="img-fluid">
+                    <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
                 </div>
                 <div class="pizza_icon_color">
-                    <img src="/static/orders/img/menu/big/pizza_color_1.png" alt="" class="img-fluid">
+                    <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
                 </div>
 
                 <h3>Regular pizza</h3>
 
-                <div class="size_devider"><img src="/static/orders/img/menu/big/line.png" class="img-fluid">
-                    <span>Option</span>
-                    <img src="/static/orders/img/menu/big/line.png" class="img-fluid"></div>
+                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
+                    <span>Pick Size</span>
+                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
                 <div class="size_checkboxes">
                     <table class="table table-borderless">
                         <thead>
@@ -549,33 +549,32 @@
                         <tbody>
                         <tr>
                             <th scope="row">Cheese</th>
-                            <td>$ 12.70
-                            </td>
-                            <td>$ 17.95</td>
+                            <td>$ 12.70 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
+                            <td>$ 17.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
 
                         </tr>
                         <tr>
                             <th scope="row">1 Topping</th>
-                            <td>$ 13.70</td>
-                            <td>$ 19.95</td>
+                            <td>$ 13.70 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
+                            <td>$ 19.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
 
                         </tr>
                         <tr>
                             <th scope="row">2 Toppings</th>
-                            <td>$ 15.20</td>
-                            <td>$ 21.95</td>
+                            <td>$ 15.20 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
+                            <td>$ 21.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
 
                         </tr>
                         <tr>
                             <th scope="row">3 Toppings</th>
-                            <td>$ 16.20</td>
-                            <td>$ 23.95</td>
+                            <td>$ 16.20 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
+                            <td>$ 23.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
 
                         </tr>
                         <tr>
                             <th scope="row">Special</th>
-                            <td>$ 17.75</td>
-                            <td>$ 25.95</td>
+                            <td>$ 17.75 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
+                            <td>$ 25.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
 
                         </tr>
                         </tbody>
@@ -590,45 +589,20 @@
         </div>
 
         <div class="col-xl-3 col-lg-6 full">
-            <div class="menu_block">
+            <div id="pizzaSelect" class="menu_block">
                 <div class="pizza_icon_line">
-                    <img src="{% static 'orders/img/menu/big/pizza_2.png' %}" class="img-fluid">
+                    <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
                 </div>
                 <div class="pizza_icon_color">
-                    <img src="{% static 'orders/img/menu/big/pizza_color_2.png' %}" class="img-fluid">
+                    <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
                 </div>
 
-                <h3>Pizza Peperroni</h3>
-                <p class="description">Pellentesque pellentesque ex nunc, ac ornare justo elementum id. Nam auctor
-                    arcu
-                    quis fringilla vulputate quis tristique nulla.</p>
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"
-                                               alt="">
-                    <span>Pick Size</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                <div class="size_checkboxes">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
-                               value="option1">
-                        <label class="form-check-label" for="inlineRadio4"> 22cm / $19.90</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5"
-                               value="option2">
-                        <label class="form-check-label" for="inlineRadio5"> 29cm / $26.99</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6"
-                               value="option3">
-                        <label class="form-check-label" for="inlineRadio6"> 35cm / $29.99</label>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"></i> add to cart
-                </button>
+                <h3>Sicilian pizza</h3>
+
             </div>
         </div>
         <div class="col-xl-3 col-lg-6 full">
-            <div class="menu_block">
+            <div class="menu_block">"
                 <div class="pizza_icon_line">
                     <img src="{% static 'orders/img/menu/big/pizza_3.png' %}" class="img-fluid" alt="">
                 </div>
