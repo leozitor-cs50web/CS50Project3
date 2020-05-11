@@ -336,8 +336,8 @@ function createButton() {
     button.className = "btn btn-outline-primary"
     button.type = "button"
     i.className = "fa fa-cart-plus"
-    button.innerHTML = "ad to cart"
     button.appendChild(i)
+    button.append("add to cart")
     return button
 }
 
