@@ -252,18 +252,19 @@ $('#customCheck1').on('change', function () {
 /* -----------------------  index behavior   ---------------------- */
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#pizzaSelect').onclick = () => {
-        pizzaMenu = document.querySelector('#pizzaSelect')
-        pizzaMenu.onclick = null
-        document.querySelector('#pizzaSelect').append(createPizzaMenu(pizzaMenu))
+        const pizzaMenu =  document.querySelector('#pizzaSelect')
+        createPizzaMenu(pizzaMenu)
+        document.querySelector('#pizzaSelect').onclick = null
     }
 });
-//create the pizza menu
+
+//create the pizza menu, just append the three parts from the component
 function createPizzaMenu(div) {
     div.appendChild(createSizeDevider())
     div.appendChild(createSizeCheckbox())
     div.appendChild(createButton())
-    return div
 }
+
 // create devider of the pizza menu
 function createSizeDevider() {
     const div = document.createElement('div')
@@ -281,53 +282,72 @@ function createSizeDevider() {
     div.appendChild(img2)
     return div
 }
+
 // create the check box of the pizza menu
 function createSizeCheckbox() {
     const div = document.createElement('div')
     div.className = "size_checkboxes"
-    div.innerHTML = "<table class=\"table table-borderless\">\n" +
-        "                        <thead>\n" +
-        "                        <tr>\n" +
-        "                            <th scope=\"col\">Name</th>\n" +
-        "                            <th scope=\"col\">Small</th>\n" +
-        "                            <th scope=\"col\">Large</th>\n" +
-        "\n" +
-        "                        </tr>\n" +
-        "                        </thead>\n" +
-        "                        <tbody>\n" +
-        "                        <tr>\n" +
-        "                            <th scope=\"row\">Cheese</th>\n" +
-        "                            <td>$ 12.70 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "                            <td>$ 17.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "\n" +
-        "                        </tr>\n" +
-        "                        <tr>\n" +
-        "                            <th scope=\"row\">1 Topping</th>\n" +
-        "                            <td>$ 13.70 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "                            <td>$ 19.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "\n" +
-        "                        </tr>\n" +
-        "                        <tr>\n" +
-        "                            <th scope=\"row\">2 Toppings</th>\n" +
-        "                            <td>$ 15.20 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "                            <td>$ 21.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "\n" +
-        "                        </tr>\n" +
-        "                        <tr>\n" +
-        "                            <th scope=\"row\">3 Toppings</th>\n" +
-        "                            <td>$ 16.20 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "                            <td>$ 23.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "\n" +
-        "                        </tr>\n" +
-        "                        <tr>\n" +
-        "                            <th scope=\"row\">Special</th>\n" +
-        "                            <td>$ 17.75 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "                            <td>$ 25.95 <a href=\"\"><img id=\"plusSign\" class=\"plus\" src=\"/static/orders/img/plus.png\"></a></td>\n" +
-        "\n" +
-        "                        </tr>\n" +
-        "                        </tbody>\n" +
-        "                    </table>"
+    // static variables, will input here the real variables soon
+    const head = ["Name", "Small", "Large"];
+    const name = ["Cheese", "1 Topping", "2 Topping"]
+    const small = ["$ 12.70", "$ 13.70", "$15.20"]
+    const large = ["$ 17.95", "$ 19.95", "$ 21.95"]
+    div.append(createTable(createTableRowHead(head), createTableRowBody(name, small, large)))
     return div
+}
+
+function createTable(head, body) {
+    const table = document.createElement('table')
+    table.className = " table table-borderless"
+    table.append(head)
+    table.append(body)
+    return table
+}
+
+function createTableRowHead(head) {
+    const tHead = document.createElement('thead')
+    const tr = document.createElement('tr')
+    for (let i = 0; i < head.length; i++) {
+        const th = document.createElement('th')
+        th.scope = "col"
+        th.innerHTML = head[i]
+        tr.append(th)
+    }
+    tHead.append(tr)
+    return tHead
+}
+
+function createTableRowBody(nameList, smallList, largeList) {
+    const tBody = document.createElement('tbody')
+    for (let i = 0; i < nameList.length; i++) {
+        tBody.appendChild(createTableRow(nameList[i], smallList[i], largeList[i]))
+    }
+    return tBody
+}
+
+function createTableRow(name, small, large) {
+    const tr = document.createElement('tr')
+    const th = document.createElement('th')
+    th.scope = "row"
+    th.innerHTML = name
+    tr.append(th)
+    const list = [small, large]
+    for (let i = 0; i < 2; i++) {
+        const td = document.createElement('td')
+        const a = document.createElement('a')
+        const img = document.createElement('img')
+        //TERA QUE MODIFICAR O HREF AQUI EM BREVE
+        a.href = ""
+        //AQUIIIIII ------------------------------------------------------------
+        img.id = "plusSign"
+        img.className = "plus ml-2"
+        img.src = "/static/orders/img/plus.png"
+        a.append(img)
+        td.append(`${list[i]}`)
+        td.append(a)
+        tr.append(td)
+    }
+    return tr
 }
 
 function createButton() {
