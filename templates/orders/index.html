@@ -519,6 +519,44 @@
 </div>
 
 <!--- debug choices --->
+{% if menu %}
+<section style="height: 0px" class="we_are">
+    <div class="piz_title">
+        <div class="small_title"><h3>Food Menu!</h3></div>
+
+        <div class="big_title"><h1 class="we_big_title">Order Here</h1><img
+                src="{% static 'orders/img/italy.png' %}"
+                class="img-fluid"></div>
+    </div>
+    <div class="title_devider">
+        <p class="line"></p>
+    </div>
+</section>
+
+<!--- Menu Render -->
+
+<section class="pizza_menu">
+    <div class="row right_left">
+        {% for food in menu %}
+            <div class="col-xl-3 col-lg-6 full">
+                <div id= "pizzaSelect" class="menu_block"> <!--ajustar esse pizza select para todos os tipos -->
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    </div>
+
+                    <h3>{{ food }}</h3>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+<!--- Debug Choices --->
+
 <section class="pizza_menu">
     <div class="row right_left">
 
@@ -533,68 +571,16 @@
 
                 <h3>Regular pizza</h3>
 
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
-                    <span>Pick Size</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                <div class="size_checkboxes">
-                    <table class="table table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Small</th>
-                            <th scope="col">Large</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">Cheese</th>
-                            <td>$ 12.70 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-                            <td>$ 17.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">1 Topping</th>
-                            <td>$ 13.70 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-                            <td>$ 19.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">2 Toppings</th>
-                            <td>$ 15.20 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-                            <td>$ 21.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">3 Toppings</th>
-                            <td>$ 16.20 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-                            <td>$ 23.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">Special</th>
-                            <td>$ 17.75 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-                            <td>$ 25.95 <a href=""><img id="plusSign" class='plus' src="{% static 'orders/img/plus.png' %}"></a></td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-
-
-                </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    add to cart
-                </button>
             </div>
         </div>
 
         <div class="col-xl-3 col-lg-6 full">
             <div id="pizzaSelect" class="menu_block">
                 <div class="pizza_icon_line">
-                    <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    <img src="{% static 'orders/img/menu/big/pizza_2.png' %}" alt="" class="img-fluid">
                 </div>
                 <div class="pizza_icon_color">
-                    <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    <img src="{% static 'orders/img/menu/big/pizza_color_2.png' %}" alt="" class="img-fluid">
                 </div>
 
                 <h3>Sicilian pizza</h3>
@@ -602,7 +588,7 @@
             </div>
         </div>
         <div class="col-xl-3 col-lg-6 full">
-            <div class="menu_block">"
+            <div class="menu_block">
                 <div class="pizza_icon_line">
                     <img src="{% static 'orders/img/menu/big/pizza_3.png' %}" class="img-fluid" alt="">
                 </div>
@@ -610,33 +596,8 @@
                     <img src="{% static 'orders/img/menu/big/pizza_color_3.png' %}" class="img-fluid" alt="">
                 </div>
 
-                <h3>Pizza Italiano</h3>
-                <p class="description">Pellentesque pellentesque ex nunc, ac ornare justo elementum id. Nam auctor
-                    arcu
-                    quis fringilla vulputate quis tristique nulla.</p>
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"
-                                               alt="">
-                    <span>Pick Size</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid" alt=""></div>
-                <div class="size_checkboxes">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7"
-                               value="option1">
-                        <label class="form-check-label" for="inlineRadio7"> 22cm / $19.90</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8"
-                               value="option2">
-                        <label class="form-check-label" for="inlineRadio8"> 29cm / $26.99</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9"
-                               value="option3">
-                        <label class="form-check-label" for="inlineRadio9"> 35cm / $29.99</label>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"></i> add to cart
-                </button>
+                <h3>Dinner Platters</h3>
+
             </div>
         </div>
         <div class="col-xl-3 col-lg-6 full">
@@ -648,40 +609,14 @@
                     <img src="{% static 'orders/img/menu/big/pizza_color_5.png' %}" class="img-fluid" alt="">
                 </div>
 
-                <h3>Pizza Vegetarian</h3>
-                <p class="description">Pellentesque pellentesque ex nunc, ac ornare justo elementum id. Nam auctor
-                    arcu
-                    quis fringilla vulputate quis tristique nulla.</p>
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"
-                                               alt="">
-                    <span>Pick Size</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid" alt=""></div>
-                <div class="size_checkboxes">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio10"
-                               value="option1">
-                        <label class="form-check-label" for="inlineRadio10"> 22cm / $19.90</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio11"
-                               value="option2">
-                        <label class="form-check-label" for="inlineRadio11"> 29cm / $26.99</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio12"
-                               value="option3">
-                        <label class="form-check-label" for="inlineRadio12"> 35cm / $29.99</label>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"></i> add to cart
-                </button>
+                <h3>Salads</h3>
+
             </div>
         </div>
     </div>
 </section>
 
-<!--- debug choices --->
-
+<!--- pizza Menu Default
 <section class="pizza_menu">
     <div class="row right_left">
         <div class="col-xl-3 col-lg-6 full">
@@ -836,7 +771,7 @@
         </div>
     </div>
 </section>
-
+--->
 
 <div class="container">
 

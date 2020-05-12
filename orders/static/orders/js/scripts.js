@@ -251,7 +251,7 @@ $('#customCheck1').on('change', function () {
 
 /* -----------------------  index behavior   ---------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#pizzaSelect').onclick = () => {
+    document.querySelectorAll('#pizzaSelect').onclick = () => {
         const pizzaMenu =  document.querySelector('#pizzaSelect')
         createPizzaMenu(pizzaMenu)
         document.querySelector('#pizzaSelect').onclick = null

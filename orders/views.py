@@ -4,6 +4,11 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatter, Topping, UserOrder, Order2, OrderCounter
+
+# need to change depending on the of food addition
+menu = ["Regular Pizza", "Sicilian Pizza", "Toppings", "Subs", "Pasta", "Salads", "Dinner Platters"]
+
 
 # Create your views here.
 def index(request):
@@ -14,9 +19,17 @@ def index(request):
         return render(request, "orders/index.html", {"message": None, "logged": logged})
     # user authenticated
     logged = True
+    # select all food available
+    regular_pizza = RegularPizza.objects.all()
+    sicilian_pizza = SicilianPizza.objects.all()
+    topping = Topping.objects.all()
+    #need to complete missing food
+
     context = {
         "user": request.user,
-        "logged": logged
+        "logged": logged,
+        "menu": menu,
+        "regular_pizza": regular_pizza
     }
     return render(request, "orders/index.html", context)
 
