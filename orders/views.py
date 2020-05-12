@@ -24,12 +24,17 @@ def index(request):
     sicilian_pizza = SicilianPizza.objects.all()
     topping = Topping.objects.all()
     #need to complete missing food
+    test = []
+    for i in RegularPizza.objects.all():
+        print(i.name)
+        test.append(i.name)
 
     context = {
         "user": request.user,
         "logged": logged,
         "menu": menu,
-        "regular_pizza": regular_pizza
+        "test": test   # "regular_pizza" : RegularPizza #testing
+
     }
     return render(request, "orders/index.html", context)
 
