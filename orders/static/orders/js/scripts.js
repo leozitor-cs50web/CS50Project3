@@ -252,27 +252,63 @@ $('#customCheck1').on('change', function () {
 /* -----------------------  index behavior   ---------------------- */
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#selectRegPizza').onclick = () => {
-        document.getElementById("regPizza").style.display = "block";
+        let state = document.getElementById("regPizza").style.display
+        if (state === "block"){
+            document.getElementById("regPizza").style.display = "none"
+        }else{
+            document.getElementById("regPizza").style.display = "block"
+        }
     }
     document.querySelector('#selectSiciPizza').onclick = () => {
-        document.getElementById("siciPizza").style.display = "block";
+        let state = document.getElementById("siciPizza").style.display
+        if (state === "block"){
+            document.getElementById("siciPizza").style.display = "none"
+        }else{
+            document.getElementById("siciPizza").style.display = "block"
+        }
     }
     document.querySelector('#selectSub').onclick = () => {
-        document.getElementById("sub").style.display = "block";
+let state = document.getElementById("sub").style.display
+        if (state === "block"){
+            document.getElementById("sub").style.display = "none"
+        }else{
+            document.getElementById("sub").style.display = "block"
+        }
     }
     document.querySelector('#selectPasta').onclick = () => {
-        document.getElementById("pasta").style.display = "block";
+        let state = document.getElementById("pasta").style.display
+        if (state === "block"){
+            document.getElementById("pasta").style.display = "none"
+        }else{
+            document.getElementById("pasta").style.display = "block"
+        }
     }
     document.querySelector('#selectSalad').onclick = () => {
-        document.getElementById("salad").style.display = "block";
+        let state = document.getElementById("salad").style.display
+        if (state === "block"){
+            document.getElementById("salad").style.display = "none"
+        }else{
+            document.getElementById("salad").style.display = "block"
+        }
     }
     document.querySelector('#selectDinnerPlatter').onclick = () => {
-        document.getElementById("dinnerPlatter").style.display = "block";
+       let state = document.getElementById("dinnerPlatter").style.display
+        if (state === "block"){
+            document.getElementById("dinnerPlatter").style.display = "none"
+        }else{
+            document.getElementById("dinnerPlatter").style.display = "block"
+        }
     }
     document.querySelector('#selectTopping').onclick = () => {
-        document.getElementById("topping").style.display = "block";
+        let state = document.getElementById("topping").style.display
+        if (state === "block"){
+            document.getElementById("topping").style.display = "none"
+        }else{
+            document.getElementById("topping").style.display = "block"
+        }
     }
 });
+
 /*
 //create the pizza menu, just append the three parts from the component
 function createPizzaMenu(div) {

@@ -10,7 +10,7 @@ from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatte
 
 # Create your views here.
 def index(request):
-    print("Usuario Autenticado: {}".format(request.user.is_authenticated))
+    #print("Usuario Autenticado: {}".format(request.user.is_authenticated))
     # if user is not authenticated
     if not request.user.is_authenticated:
         logged = False
@@ -38,7 +38,6 @@ def index(request):
         "topping": topping,
 
     }
-
     return render(request, "orders/index.html", context)
 
 

@@ -625,51 +625,6 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 full">
-                <div class="menu_block">
-                    <div id="selectSub" class="pizza_icon_line">
-                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
-                    </div>
-                    <div class="pizza_icon_color">
-                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
-                    </div>
-
-                    <h3>Sub</h3>
-                    <div style="display: none" id="sub">
-                        <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}"
-                                                       class="img-fluid">
-                            <span>Option</span>
-                            <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                        <div class="size_checkboxes">
-                            <table class="table table-borderless">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Small</th>
-                                    <th scope="col">Large</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                {% for i in sub %}
-                                    <tr>
-                                        <th scope="row">{{ i.name }}</th>
-                                        <td>$ {{ i.small }}</td>
-                                        <td>$ {{ i.large }}</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-
-
-                        </div>
-                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"
-                                                                                 aria-hidden="true"></i>
-                            add to cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 full">
                 <div id="selectPasta" class="menu_block">
                     <div class="pizza_icon_line">
                         <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
@@ -828,6 +783,50 @@
                                 {% for i in topping %}
                                     <tr>
                                         <th scope="row">{{ i.name }}</th>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"
+                                                                                 aria-hidden="true"></i>
+                            add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div id="selectSub" class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <h3>Sub</h3>
+                    <div style="display: none" id="sub">
+                        <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}"
+                                                       class="img-fluid">
+                            <span>Option</span>
+                            <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                        <div class="size_checkboxes">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Small</th>
+                                    <th scope="col">Large</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for i in sub %}
+                                    <tr>
+                                        <th scope="row">{{ i.name }}</th>
+                                        <td>$ {{ i.small }}</td>
+                                        <td>$ {{ i.large }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
