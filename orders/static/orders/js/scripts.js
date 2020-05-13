@@ -251,11 +251,26 @@ $('#customCheck1').on('change', function () {
 
 /* -----------------------  index behavior   ---------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById("regPizza").style.display = "block";
-     document.querySelector('#pizzaSelect').onclick = () => {
-        const pizzaMenu =  document.querySelector('#pizzaSelect')
-        createPizzaMenu(pizzaMenu) // change here
-        document.querySelector('#pizzaSelect').onclick = null
+    document.querySelector('#selectRegPizza').onclick = () => {
+        document.getElementById("regPizza").style.display = "block";
+    }
+    document.querySelector('#selectSiciPizza').onclick = () => {
+        document.getElementById("siciPizza").style.display = "block";
+    }
+    document.querySelector('#selectSub').onclick = () => {
+        document.getElementById("sub").style.display = "block";
+    }
+    document.querySelector('#selectPasta').onclick = () => {
+        document.getElementById("pasta").style.display = "block";
+    }
+    document.querySelector('#selectSalad').onclick = () => {
+        document.getElementById("salad").style.display = "block";
+    }
+    document.querySelector('#selectDinnerPlatter').onclick = () => {
+        document.getElementById("dinnerPlatter").style.display = "block";
+    }
+    document.querySelector('#selectTopping').onclick = () => {
+        document.getElementById("topping").style.display = "block";
     }
 });
 /*

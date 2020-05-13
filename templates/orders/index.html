@@ -537,305 +537,313 @@
     <!--- Menu Render -->
 
     <section class="pizza_menu">
-    <div class="row right_left">
-
-    <!--- IMPROVE HERE this logic soon --->
-    <div class="col-xl-3 col-lg-6 full">
-        <div class="menu_block">
-            <div class="pizza_icon_line">
-                <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
-            </div>
-            <div class="pizza_icon_color">
-                <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
-            </div>
-
-            <h3>Regular Pizza</h3>
-            <div style="display: none" id="regPizza">
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
-                    <span>Option</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                <div class="size_checkboxes">
-                    <table class="table table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Small</th>
-                            <th scope="col">Large</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {% for i in regular_pizza %}
-                            <tr>
-                                <th scope="row">{{ i.name }}</th>
-                                <td>$ {{ i.small }}</td>
-                                <td>$ {{ i.large }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-
-
+        <div class="row right_left">
+            <!--- IMPROVE HERE this logic soon --->
+            <div class="col-xl-3 col-lg-6 full">
+                <div id="selectRegPizza" class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <h3>Regular Pizza</h3>
+                    <div style="display: none" id="regPizza">
+                        <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}"
+                                                       class="img-fluid">
+                            <span>Option</span>
+                            <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                        <div class="size_checkboxes">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Small</th>
+                                    <th scope="col">Large</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in regular_pizza %}
+                                    <tr>
+                                        <th scope="row">{{ i.name }}</th>
+                                        <td>$ {{ i.small }}</td>
+                                        <td>$ {{ i.large }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"
+                                                                                 aria-hidden="true"></i>add to cart
+                        </button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    add to cart
-                </button>
             </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div id="selectSiciPizza" class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    </div>
 
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 full">
-        <div class="menu_block">
-            <div class="pizza_icon_line">
-                <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
-            </div>
-            <div class="pizza_icon_color">
-                <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
-            </div>
+                    <h3>Sicilian Pizza</h3>
+                    <div style="display: none" id="siciPizza">
+                        <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}"
+                                                       class="img-fluid">
+                            <span>Option</span>
+                            <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                        <div class="size_checkboxes">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Small</th>
+                                    <th scope="col">Large</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-            <h3>Sicilian Pizza</h3>
-            <div style="display: none" id="sicPizza">
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
-                    <span>Option</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                <div class="size_checkboxes">
-                    <table class="table table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Small</th>
-                            <th scope="col">Large</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {% for i in sicilian_pizza %}
-                            <tr>
-                                <th scope="row">{{ i.name }}</th>
-                                <td>$ {{ i.small }}</td>
-                                <td>$ {{ i.large }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                                {% for i in sicilian_pizza %}
+                                    <tr>
+                                        <th scope="row">{{ i.name }}</th>
+                                        <td>$ {{ i.small }}</td>
+                                        <td>$ {{ i.large }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
 
 
+                        </div>
+                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"
+                                                                                 aria-hidden="true"></i>
+                            add to cart
+                        </button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    add to cart
-                </button>
             </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 full">
-        <div class="menu_block">
-            <div class="pizza_icon_line">
-                <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
-            </div>
-            <div class="pizza_icon_color">
-                <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
-            </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div class="menu_block">
+                    <div id="selectSub" class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    </div>
 
-            <h3>Sub</h3>
-            <div style="display: none" id="sub">
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
-                    <span>Option</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                <div class="size_checkboxes">
-                    <table class="table table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Small</th>
-                            <th scope="col">Large</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <h3>Sub</h3>
+                    <div style="display: none" id="sub">
+                        <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}"
+                                                       class="img-fluid">
+                            <span>Option</span>
+                            <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                        <div class="size_checkboxes">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Small</th>
+                                    <th scope="col">Large</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                        {% for i in sub %}
-                            <tr>
-                                <th scope="row">{{ i.name }}</th>
-                                <td>$ {{ i.small }}</td>
-                                <td>$ {{ i.large }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                                {% for i in sub %}
+                                    <tr>
+                                        <th scope="row">{{ i.name }}</th>
+                                        <td>$ {{ i.small }}</td>
+                                        <td>$ {{ i.large }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
 
 
+                        </div>
+                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"
+                                                                                 aria-hidden="true"></i>
+                            add to cart
+                        </button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    add to cart
-                </button>
             </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 full">
-        <div class="menu_block">
-            <div class="pizza_icon_line">
-                <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
-            </div>
-            <div class="pizza_icon_color">
-                <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
-            </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div id="selectPasta" class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    </div>
 
-            <h3>Pasta</h3>
-            <div style="display: none" id="pasta">
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
-                    <span>Option</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                <div class="size_checkboxes">
-                    <table class="table table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">One Size</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <h3>Pasta</h3>
+                    <div style="display: none" id="pasta">
+                        <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}"
+                                                       class="img-fluid">
+                            <span>Option</span>
+                            <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                        <div class="size_checkboxes">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">One Size</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                        {% for i in pasta %}
-                            <tr>
-                                <th scope="row">{{ i.name }}</th>
-                                <td>$ {{ i.price }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                                {% for i in pasta %}
+                                    <tr>
+                                        <th scope="row">{{ i.name }}</th>
+                                        <td>$ {{ i.price }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
 
 
+                        </div>
+                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"
+                                                                                 aria-hidden="true"></i>
+                            add to cart
+                        </button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    add to cart
-                </button>
             </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 full">
-        <div class="menu_block">
-            <div class="pizza_icon_line">
-                <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
-            </div>
-            <div class="pizza_icon_color">
-                <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
-            </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div id="selectSalad" class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    </div>
 
-            <h3>salad</h3>
-            <div style="display: none" id="salad">
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
-                    <span>Option</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                <div class="size_checkboxes">
-                    <table class="table table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">One Size</th>
+                    <h3>salad</h3>
+                    <div style="display: none" id="salad">
+                        <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}"
+                                                       class="img-fluid">
+                            <span>Option</span>
+                            <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                        <div class="size_checkboxes">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">One Size</th>
 
-                        </tr>
-                        </thead>
-                        <tbody>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                        {% for i in salad %}
-                            <tr>
-                                <th scope="row">{{ i.name }}</th>
-                                <td>$ {{ i.price }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                                {% for i in salad %}
+                                    <tr>
+                                        <th scope="row">{{ i.name }}</th>
+                                        <td>$ {{ i.price }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
 
 
+                        </div>
+                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"
+                                                                                 aria-hidden="true"></i>
+                            add to cart
+                        </button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    add to cart
-                </button>
             </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 full">
-        <div class="menu_block">
-            <div class="pizza_icon_line">
-                <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
-            </div>
-            <div class="pizza_icon_color">
-                <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
-            </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div id="selectDinnerPlatter" class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    </div>
 
-            <h3>Dinner Platter</h3>
-            <div style="display: none" id="dinnerPlatter">
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
-                    <span>Option</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                <div class="size_checkboxes">
-                    <table class="table table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Small</th>
-                            <th scope="col">Large</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <h3>Dinner Platter</h3>
+                    <div style="display: none" id="dinnerPlatter">
+                        <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}"
+                                                       class="img-fluid">
+                            <span>Option</span>
+                            <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                        <div class="size_checkboxes">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Small</th>
+                                    <th scope="col">Large</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                        {% for i in dinner_platter %}
-                            <tr>
-                                <th scope="row">{{ i.name }}</th>
-                                <td>$ {{ i.small }}</td>
-                                <td>$ {{ i.large }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                                {% for i in dinner_platter %}
+                                    <tr>
+                                        <th scope="row">{{ i.name }}</th>
+                                        <td>$ {{ i.small }}</td>
+                                        <td>$ {{ i.large }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
 
 
+                        </div>
+                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"
+                                                                                 aria-hidden="true"></i>
+                            add to cart
+                        </button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    add to cart
-                </button>
             </div>
-        </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 full">
-        <div class="menu_block">
-            <div class="pizza_icon_line">
-                <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
-            </div>
-            <div class="pizza_icon_color">
-                <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
-            </div>
+            <div class="col-xl-3 col-lg-6 full">
+                <div id="selectTopping" class="menu_block">
+                    <div class="pizza_icon_line">
+                        <img src="{% static 'orders/img/menu/big/pizza_1.png' %}" alt="" class="img-fluid">
+                    </div>
+                    <div class="pizza_icon_color">
+                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" alt="" class="img-fluid">
+                    </div>
 
-            <h3>Topping</h3>
-            <div style="display: none" id="topping">
-                <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid">
-                    <span>Option</span>
-                    <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
-                <div class="size_checkboxes">
-                    <table class="table table-borderless">
-                        <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <h3>Topping</h3>
+                    <div style="display: none" id="topping">
+                        <div class="size_devider"><img src="{% static 'orders/img/menu/big/line.png' %}"
+                                                       class="img-fluid">
+                            <span>Option</span>
+                            <img src="{% static 'orders/img/menu/big/line.png' %}" class="img-fluid"></div>
+                        <div class="size_checkboxes">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                </tr>
+                                </thead>
+                                <tbody>
 
-                        {% for i in topping %}
-                            <tr>
-                                <th scope="row">{{ i.name }}</th>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                                {% for i in topping %}
+                                    <tr>
+                                        <th scope="row">{{ i.name }}</th>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
 
 
+                        </div>
+                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus"
+                                                                                 aria-hidden="true"></i>
+                            add to cart
+                        </button>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    add to cart
-                </button>
             </div>
         </div>
-    </div>
-
+    </section>
 {% endif %}
 <!--- Debug Choices --->
 <!--- pizza Menu modified default
