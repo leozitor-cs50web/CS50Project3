@@ -4,10 +4,8 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatter, Topping, UserOrder, Order2, OrderCounter
-
-# need to change depending on the of food addition
-menu = ["Regular Pizza", "Sicilian Pizza", "Toppings", "Subs", "Pasta", "Salads", "Dinner Platters"]
+from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatter, Topping, UserOrder, Order2, \
+    OrderCounter
 
 
 # Create your views here.
@@ -22,20 +20,25 @@ def index(request):
     # select all food available
     regular_pizza = RegularPizza.objects.all()
     sicilian_pizza = SicilianPizza.objects.all()
+    sub = Sub.objects.all()
+    pasta = Pasta.objects.all()
+    salad = Salad.objects.all()
+    dinner_platter = DinnerPlatter.objects.all()
     topping = Topping.objects.all()
-    #need to complete missing food
-    test = []
-    for i in RegularPizza.objects.all():
-        print(i.name)
-        test.append(i.name)
 
     context = {
         "user": request.user,
         "logged": logged,
-        "menu": menu,
-        "test": test   # "regular_pizza" : RegularPizza #testing
+        "regular_pizza": regular_pizza,
+        "sicilian_pizza": sicilian_pizza,
+        "sub": sub,
+        "pasta": pasta,
+        "salad": salad,
+        "dinner_platter": dinner_platter,
+        "topping": topping,
 
     }
+
     return render(request, "orders/index.html", context)
 
 

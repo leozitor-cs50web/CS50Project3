@@ -251,13 +251,14 @@ $('#customCheck1').on('change', function () {
 
 /* -----------------------  index behavior   ---------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#pizzaSelect').onclick = () => {
+    document.getElementById("regPizza").style.display = "block";
+     document.querySelector('#pizzaSelect').onclick = () => {
         const pizzaMenu =  document.querySelector('#pizzaSelect')
-        createPizzaMenu(pizzaMenu)
+        createPizzaMenu(pizzaMenu) // change here
         document.querySelector('#pizzaSelect').onclick = null
     }
 });
-
+/*
 //create the pizza menu, just append the three parts from the component
 function createPizzaMenu(div) {
     div.appendChild(createSizeDevider())
@@ -360,7 +361,7 @@ function createButton() {
     button.append("add to cart")
     return button
 }
-
+*/
 /* -----------------------  Google Map   ----------------------*/
 
 
