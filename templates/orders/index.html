@@ -566,8 +566,8 @@
                                 {% for i in regular_pizza %}
                                     <tr>
                                         <th scope="row">{{ i.name }}</th>
-                                        <td>$ {{ i.small }}</td>
-                                        <td>$ {{ i.large }}</td>
+                                        <td>$ {{ i.small }} <a href="{% url 'signin' %}"><img id="plusSign" class="plus" src="{% static 'orders/img/plus.png' %}"></a></td>
+                                        <td>$ {{ i.large }} <a href="{% url 'signin' %}"><img id="plusSign" class="plus" src="{% static 'orders/img/plus.png' %}"></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
