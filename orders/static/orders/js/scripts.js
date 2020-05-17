@@ -251,9 +251,10 @@ $('#customCheck1').on('change', function () {
 
 /* -----------------------  index behavior   ---------------------- */
 
-    function addItemChart() {
+function addItemChart() {
     document.getElementById("cart").append(createCartItem())
 }
+
 function createCartItem() {
     const divCartItem = document.createElement('div')
     const divCaption = document.createElement('div')
@@ -288,17 +289,16 @@ function createCartItem() {
 
     return divCartItem
 }
+
+
 // just to change padding when using nav3
 document.addEventListener('DOMContentLoaded', () => {
-    let list = []
-    
+
+    document.querySelector('#regPizzaClose').onclick = () => {
+        document.getElementById("regPizza").style.display = "none"
+    }
     document.querySelector('#selectRegPizza').onclick = () => {
-        let state = document.getElementById("regPizza").style.display
-        if (state === "block") {
-            document.getElementById("regPizza").style.display = "none"
-        } else {
-            document.getElementById("regPizza").style.display = "block"
-        }
+        document.getElementById("regPizza").style.display = "block"
     }
     document.querySelector('#selectSiciPizza').onclick = () => {
         let state = document.getElementById("siciPizza").style.display
@@ -338,14 +338,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById("dinnerPlatter").style.display = "none"
         } else {
             document.getElementById("dinnerPlatter").style.display = "block"
-        }
-    }
-    document.querySelector('#selectTopping').onclick = () => {
-        let state = document.getElementById("topping").style.display
-        if (state === "block") {
-            document.getElementById("topping").style.display = "none"
-        } else {
-            document.getElementById("topping").style.display = "block"
         }
     }
 });
