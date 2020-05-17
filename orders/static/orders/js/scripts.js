@@ -250,60 +250,61 @@ $('#customCheck1').on('change', function () {
 });
 
 /* -----------------------  index behavior   ---------------------- */
+// just to change padding when using nav3
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#selectRegPizza').onclick = () => {
         let state = document.getElementById("regPizza").style.display
-        if (state === "block"){
+        if (state === "block") {
             document.getElementById("regPizza").style.display = "none"
-        }else{
+        } else {
             document.getElementById("regPizza").style.display = "block"
         }
     }
     document.querySelector('#selectSiciPizza').onclick = () => {
         let state = document.getElementById("siciPizza").style.display
-        if (state === "block"){
+        if (state === "block") {
             document.getElementById("siciPizza").style.display = "none"
-        }else{
+        } else {
             document.getElementById("siciPizza").style.display = "block"
         }
     }
     document.querySelector('#selectSub').onclick = () => {
-let state = document.getElementById("sub").style.display
-        if (state === "block"){
+        let state = document.getElementById("sub").style.display
+        if (state === "block") {
             document.getElementById("sub").style.display = "none"
-        }else{
+        } else {
             document.getElementById("sub").style.display = "block"
         }
     }
     document.querySelector('#selectPasta').onclick = () => {
         let state = document.getElementById("pasta").style.display
-        if (state === "block"){
+        if (state === "block") {
             document.getElementById("pasta").style.display = "none"
-        }else{
+        } else {
             document.getElementById("pasta").style.display = "block"
         }
     }
     document.querySelector('#selectSalad').onclick = () => {
         let state = document.getElementById("salad").style.display
-        if (state === "block"){
+        if (state === "block") {
             document.getElementById("salad").style.display = "none"
-        }else{
+        } else {
             document.getElementById("salad").style.display = "block"
         }
     }
     document.querySelector('#selectDinnerPlatter').onclick = () => {
-       let state = document.getElementById("dinnerPlatter").style.display
-        if (state === "block"){
+        let state = document.getElementById("dinnerPlatter").style.display
+        if (state === "block") {
             document.getElementById("dinnerPlatter").style.display = "none"
-        }else{
+        } else {
             document.getElementById("dinnerPlatter").style.display = "block"
         }
     }
     document.querySelector('#selectTopping').onclick = () => {
         let state = document.getElementById("topping").style.display
-        if (state === "block"){
+        if (state === "block") {
             document.getElementById("topping").style.display = "none"
-        }else{
+        } else {
             document.getElementById("topping").style.display = "block"
         }
     }

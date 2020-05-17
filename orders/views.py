@@ -10,13 +10,12 @@ from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatte
 
 # Create your views here.
 def index(request):
-    #print("Usuario Autenticado: {}".format(request.user.is_authenticated))
+    # print("Usuario Autenticado: {}".format(request.user.is_authenticated))
     # if user is not authenticated
     if not request.user.is_authenticated:
-        logged = False
-        return render(request, "orders/index.html", {"message": None, "logged": logged})
+        return render(request, "orders/home.html", {"message": None})
     # user authenticated
-    logged = True
+
     # select all food available
     regular_pizza = RegularPizza.objects.all()
     sicilian_pizza = SicilianPizza.objects.all()
@@ -28,7 +27,6 @@ def index(request):
 
     context = {
         "user": request.user,
-        "logged": logged,
         "regular_pizza": regular_pizza,
         "sicilian_pizza": sicilian_pizza,
         "sub": sub,
@@ -38,7 +36,7 @@ def index(request):
         "topping": topping,
 
     }
-    return render(request, "orders/index.html", context)
+    return render(request, "orders/homeLogged.html", context)
 
 
 def signin(request):

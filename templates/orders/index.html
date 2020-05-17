@@ -1,3 +1,4 @@
+<!--- unused html --->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +37,7 @@
                                 <li><a href="my-orders.html">my orders</a></li>
                                 <li><a href="add-address.html">add addresses</a></li>
                                 <li><a href="profile.html">account details</a></li>
-                                <li><a href="logout">log out</a></li>
+                                <li><a href="{% url 'logout' %}">log out</a></li>
                             </ul>
                         </div>
                     </div>
@@ -374,79 +375,72 @@
     </div>
 {% endif %}
 
-{% if logged %}
-    <div id="home" style="padding-top: 182px" class="">
-{% else %}
-    <div id="home" class="">
-{% endif %}
+<div id="home" class="">
+    <div id="slides_wrapper" class="">
+        <div id="slides">
+            <div class="slides-container">
+                <ul class="sliderr">
+                    <li>
+                        <img src="{% static 'orders/img/header/3.jpg' %}" class="img-fluid header_1">
+                        <img src="{% static 'orders/img/header/3_mobile.jpg' %}" class="img-fluid header_2">
+                        <div class="caption">
+                            <div class="container">
+                                <div class="txt1">Best - Place</div>
+                                <div class="txt2">Pizzeria</div>
+                                <div class="txt3">Pinocchio's</div>
+                                <div class="txt4">Noch's has been in business for over 50 years! We've been feeding
+                                    Harvard and the surrounding area since 1966!
 
-<div id="slides_wrapper" class="">
-    <div id="slides">
-        <div class="slides-container">
-            <ul class="sliderr">
-                <li>
-                    <img src="{% static 'orders/img/header/3.jpg' %}" class="img-fluid header_1">
-                    <img src="{% static 'orders/img/header/3_mobile.jpg' %}" class="img-fluid header_2">
-                    <div class="caption">
-                        <div class="container">
-                            <div class="txt1">Best - Place</div>
-                            <div class="txt2">Pizzeria</div>
-                            <div class="txt3">Pinocchio's</div>
-                            <div class="txt4">Noch's has been in business for over 50 years! We've been feeding
-                                Harvard and the surrounding area since 1966!
-
-                                We sell award-winning sicilian-style pizza and mouth-watering steak subs! We have
-                                over 750 reviews on Yelp--- check it out!.
+                                    We sell award-winning sicilian-style pizza and mouth-watering steak subs! We have
+                                    over 750 reviews on Yelp--- check it out!.
+                                </div>
+                                <button href="{% url 'signin' %}" type="button" class="btn btn-outline-primary">Order
+                                    now
+                                </button>
                             </div>
-                            <button href="{% url 'signin' %}" type="button" class="btn btn-outline-primary">Order now
-                            </button>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <img src="{% static 'orders/img/header/4.jpg' %}" class="img-fluid header_1" alt="">
-                    <img src="{% static 'orders/img/header/4_mobile.jpg' %}" class="img-fluid header_2" alt="">
-                    <div class="caption">
-                        <div class="container">
-                            <div class="txt1">Best - Choise</div>
-                            <div class="txt2">Sicilian</div>
-                            <div class="txt3">Italiano</div>
-                            <div class="txt4">Our Sicilian pizza is a deep-dish or thick-crust pizza. We sell them
-                                in a 9-slice or a 15-slice size.
+                    </li>
+                    <li>
+                        <img src="{% static 'orders/img/header/4.jpg' %}" class="img-fluid header_1" alt="">
+                        <img src="{% static 'orders/img/header/4_mobile.jpg' %}" class="img-fluid header_2" alt="">
+                        <div class="caption">
+                            <div class="container">
+                                <div class="txt1">Best - Choise</div>
+                                <div class="txt2">Sicilian</div>
+                                <div class="txt3">Italiano</div>
+                                <div class="txt4">Our Sicilian pizza is a deep-dish or thick-crust pizza. We sell them
+                                    in a 9-slice or a 15-slice size.
+                                </div>
+                                <button href="{% url 'signin' %}" type="button" class="btn btn-outline-primary">Order
+                                    now
+                                </button>
                             </div>
-                            <button href="{% url 'signin' %}" type="button" class="btn btn-outline-primary">Order now
-                            </button>
                         </div>
+                    </li>
+                </ul>
+                <div class="socialnet">
+                    <div class="vertical-social">
+                        <ul>
+                            <li><a href="about.html"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        </ul>
                     </div>
-                </li>
-            </ul>
-            <div class="socialnet">
-                <div class="vertical-social">
+                </div>
+                <!--<div class="slides-pagination">
                     <ul>
-                        <li><a href="about.html"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li class="current">01</li>
+                        <li>02</li>
+                        <li>03</li>
                     </ul>
+                </div>-->
+                <div class="down_arrow">
+                    <a href="#welcome" class="scroll-to"><img src="{% static 'orders/img/scroll-down.svg' %}"
+                                                              alt=""></a>
                 </div>
             </div>
-
-            <!--<div class="slides-pagination">
-                <ul>
-                    <li class="current">01</li>
-                    <li>02</li>
-                    <li>03</li>
-                </ul>
-
-            </div>-->
-
-            <div class="down_arrow">
-                <a href="#welcome" class="scroll-to"><img src="{% static 'orders/img/scroll-down.svg' %}"
-                                                          alt=""></a>
-            </div>
-
         </div>
     </div>
-</div>
 </div>
 <div class="container tp">
     <!--<div class="pizza_breadcrumb">
@@ -533,9 +527,7 @@
             <p class="line"></p>
         </div>
     </section>
-
     <!--- Menu Render -->
-
     <section class="pizza_menu">
         <div class="row right_left">
             <!--- IMPROVE HERE this logic soon --->
@@ -566,8 +558,12 @@
                                 {% for i in regular_pizza %}
                                     <tr>
                                         <th scope="row">{{ i.name }}</th>
-                                        <td>$ {{ i.small }} <a href="{% url 'signin' %}"><img id="plusSign" class="plus" src="{% static 'orders/img/plus.png' %}"></a></td>
-                                        <td>$ {{ i.large }} <a href="{% url 'signin' %}"><img id="plusSign" class="plus" src="{% static 'orders/img/plus.png' %}"></a></td>
+                                        <td>$ {{ i.small }} <a id="regular_pizza_{{ i.id }}" href="{{ i.id }}"><img
+                                                id="plusSign" class="plus" src="{% static 'orders/img/plus.png' %}"></a>
+                                        </td>
+                                        <td>$ {{ i.large }} <a id="regular_pizza_{{ i.id }}" href="{{ i.id }}"><img
+                                                id="plusSign" class="plus" src="{% static 'orders/img/plus.png' %}"></a>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -1105,7 +1101,6 @@
     </section>
 </div>
 
-
 <section class="pizza_menu">
     <div class="row right_left">
         <div class="col-xl-3 col-lg-6 full">
@@ -1142,7 +1137,6 @@
         </div>
     </div>
 </section>
-
 
 <div class="container">
     <section class="news">
@@ -1305,6 +1299,7 @@
 </footer>
 
 </body>
+<script>const logged = "{{ logged }}"</script>
 <script src="{% static 'orders/js/jquery.min.js' %}"></script>
 <script src="{% static 'orders/js/jquery.appear.js' %}"></script>
 <script src="{% static 'orders/js/owl.carousel.min.js' %}"></script>

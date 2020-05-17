@@ -9,7 +9,6 @@ class OrdersTestCase(TestCase):
     def setUp(self):
         pass
 
-
     def acessAllPages(self):
         c = Client()
         response = c.get("/")

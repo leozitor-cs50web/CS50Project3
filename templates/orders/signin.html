@@ -9,7 +9,6 @@
 
 {% block body %}
     <body class="text-center">
-
     <form action="{% url 'login' %}" class="form-signin" method="post">
         {% csrf_token %}
         <img class="mb-4 img-fluid" src="{% static 'orders/img/pizzaLogo.png' %}" alt="">
