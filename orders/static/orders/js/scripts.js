@@ -250,8 +250,48 @@ $('#customCheck1').on('change', function () {
 });
 
 /* -----------------------  index behavior   ---------------------- */
+
+    function addItemChart() {
+    document.getElementById("cart").append(createCartItem())
+}
+function createCartItem() {
+    const divCartItem = document.createElement('div')
+    const divCaption = document.createElement('div')
+    const divTxt1 = document.createElement('div')
+    const divTxt2 = document.createElement('div')
+    const a = document.createElement('a')
+    const a2 = document.createElement('a')
+    const fig = document.createElement('figure')
+    const img = document.createElement('img')
+    const i = document.createElement('i')
+
+    divCartItem.className = "my_cart_item clearfix"
+    a.href = "" // NEED TO CHANGE SOON
+    a.className = "my_cart_item_close"
+    divCaption.className = "caption"
+    i.className = "fa fa-times"
+    img.src = "/static/orders/img/cart01.jpg"
+    img.className = "img-fluid"
+    a.append(i)
+    fig.append(img)
+    divTxt1.className = "txt1"
+    divTxt2.className = "txt2"
+    // NEED TO CHANGE SOON
+    a2.innerHTML = "pizza papperino"
+    divTxt1.innerHTML = "$26.00 x 1"
+    divTxt2.append(a2)
+    divCaption.append(divTxt1)
+    divCaption.append(divTxt2)
+    divCartItem.append(a)
+    divCartItem.append(fig)
+    divCartItem.append(divCaption)
+
+    return divCartItem
+}
 // just to change padding when using nav3
 document.addEventListener('DOMContentLoaded', () => {
+    let list = []
+    
     document.querySelector('#selectRegPizza').onclick = () => {
         let state = document.getElementById("regPizza").style.display
         if (state === "block") {
@@ -309,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 /* -----------------------  Google Map   ----------------------*/
 
 

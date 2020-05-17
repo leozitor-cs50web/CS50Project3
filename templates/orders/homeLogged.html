@@ -53,6 +53,7 @@
                         <div class="cart_sum">$00.00</div>
                     </div>
                     <div class="my_cart_popup">
+                        <div id="cart">
                         <div class="my_cart_item clearfix">
                             <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
                             <figure>
@@ -83,7 +84,8 @@
                                 <div class="txt2"><a href="#">Ice Cream "Argonauto"</a></div>
                             </div>
                         </div>
-                        <div class="my_cart_total clearfix">
+                        </div>
+                        <div id="cartTotal" class="my_cart_total clearfix">
                             <div class="left">Total :</div>
                             <div class="right">$36.11</div>
                         </div>
@@ -395,11 +397,11 @@
                             {% for i in regular_pizza %}
                                 <tr>
                                     <th scope="row">{{ i.name }}</th>
-                                    <td>$ {{ i.small }} <a id="regular_pizza_{{ i.id }}" href="{{ i.id }}"><img
-                                            id="plusSign" class="plus" src="{% static 'orders/img/plus.png' %}"></a>
+                                    <td>$ {{ i.small }} <a id="regular_pizza_{{ i.id }}" onclick="addItemChart()" ><img
+                                            id="plusSign" class="plus ml-2" src="{% static 'orders/img/plus.png' %}"></a>
                                     </td>
                                     <td>$ {{ i.large }} <a id="regular_pizza_{{ i.id }}" href="{{ i.id }}"><img
-                                            id="plusSign" class="plus" src="{% static 'orders/img/plus.png' %}"></a>
+                                            id="plusSign" class="plus ml-2" src="{% static 'orders/img/plus.png' %}"></a>
                                     </td>
                                 </tr>
                             {% endfor %}
