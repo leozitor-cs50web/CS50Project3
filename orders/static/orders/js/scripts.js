@@ -294,11 +294,13 @@ function createCartItem() {
 // just to change padding when using nav3
 document.addEventListener('DOMContentLoaded', () => {
 
-    document.querySelector('#regPizzaClose').onclick = () => {
-        document.getElementById("regPizza").style.display = "none"
-    }
     document.querySelector('#selectRegPizza').onclick = () => {
-        document.getElementById("regPizza").style.display = "block"
+         let state = document.getElementById("regPizza").style.display
+        if (state === "block") {
+            document.getElementById("regPizza").style.display = "none"
+        } else {
+            document.getElementById("regPizza").style.display = "block"
+        }
     }
     document.querySelector('#selectSiciPizza').onclick = () => {
         let state = document.getElementById("siciPizza").style.display

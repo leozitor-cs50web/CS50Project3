@@ -90,10 +90,10 @@ def logout_view(request):
     return render(request, "orders/index.html", {"message": "Logged out."})
 
 
-def additem(request, category, id):
+def additem(request, category, food_id, user_id):
 
     print(category)
-    print(id)
+    print(food_id)
 
 
 def signup(request):
