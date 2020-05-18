@@ -10,5 +10,5 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
-    path('additem/<str:category>/<int:id>', views.additem, name='additem')
+    path('additem/<str:category>/<int:food_id>', views.additem, name='additem')
 ]

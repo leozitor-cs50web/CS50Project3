@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatter, Topping, UserOrder, Order2, \
     OrderCounter
 
+counter = OrderCounter.objects.first()
+
 
 # Create your views here.
 def index(request):
@@ -15,6 +17,7 @@ def index(request):
     if not request.user.is_authenticated:
         return render(request, "orders/home.html", {"message": None})
     # user authenticated
+    userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number
 
     # select all food available
     regular_pizza = RegularPizza.objects.all()
@@ -66,6 +69,10 @@ def signin(request):
                 user.first_name = first_name
                 user.last_name = last_name
                 user.save()
+                order_number = UserOrder(user=user)
+                order_number.order_number = order_number.id
+                order_number.save()
+                counter.save()
                 return render(request, "orders/signin.html", {"message": "userCreated"})
             except:
                 return render(request, "orders/signup.html",
@@ -87,11 +94,11 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, "orders/index.html", {"message": "Logged out."})
+    return render(request, "orders/home.html", {"message": "Logged out."})
 
 
-def additem(request, category, food_id, user_id):
-
+def additem(request, category, food_id):
+    print(request.user)
     print(category)
     print(food_id)
 

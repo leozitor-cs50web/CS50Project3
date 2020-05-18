@@ -265,7 +265,6 @@
                                                 <tbody>
                                                 {% for i in regular_pizza %}
                                                     <tr>
-
                                                         <th scope="row">{{ i.name }}</th>
                                                         <td>$ {{ i.small }} <a id="regular_pizza_{{ i.id }}"
                                                                                onclick="addItemChart()"
@@ -274,7 +273,7 @@
                                                                 src="{% static 'orders/img/plus.png' %}"></a>
                                                         </td>
                                                         <td>$ {{ i.large }} <a id="regular_pizza_{{ i.id }}"
-                                                                               href="{{ i.id }}"><img
+                                                                               href="{% url 'additem' "regular_pizza" i.id  %}"><img
                                                                 id="plusSign" class="plus ml-2"
                                                                 src="{% static 'orders/img/plus.png' %}"></a>
                                                         </td>
@@ -685,10 +684,10 @@
     </footer>
 </div>
 
-<!--- Menu Render -->
+<!--- Menu Render
 <section class="pizza_menu">
     <div class="row right_left">
-        <!--- IMPROVE HERE this logic soon --->
+
         <div class="col-xl-3 col-lg-6 full">
             <div id="selectRegPizza2" class="menu_block">
                 <div class="pizza_icon_line">
@@ -952,6 +951,7 @@
         </div>
     </div>
 </section>
+--->
 </body>
 <script>
 
