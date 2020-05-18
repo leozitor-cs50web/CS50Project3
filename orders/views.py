@@ -2,12 +2,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.urls import reverse
+from django.db.models import Sum
 from django.contrib.auth.models import User
 
-from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatter, Topping, UserOrder, Order2, \
-    OrderCounter
-
-counter = OrderCounter.objects.first()
+from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatter, Topping, UserOrder, OrderItem
 
 
 # Create your views here.
@@ -16,8 +14,11 @@ def index(request):
     # if user is not authenticated
     if not request.user.is_authenticated:
         return render(request, "orders/home.html", {"message": None})
+
     # user authenticated
-    userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number
+    userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number # worry about the order is nos initiated
+    orderItems = OrderItem.objects.filter(number=userOrder)
+    total = list(orderItems.aggregate(Sum('price')).values())
 
     # select all food available
     regular_pizza = RegularPizza.objects.all()
@@ -37,8 +38,10 @@ def index(request):
         "salad": salad,
         "dinner_platter": dinner_platter,
         "topping": topping,
-
+        "items": orderItems,
+        "total": total
     }
+
     return render(request, "orders/homeLogged.html", context)
 
 
@@ -63,7 +66,7 @@ def signin(request):
             return render(request, "orders/signup.html",
                           {"message": "email already registered! Try another one!"})
         else:
-            # creating sucessfully user in db
+            # creating sucessfully user in db and also a order pointing it
             try:
                 user = User.objects.create_user(username, email, password)
                 user.first_name = first_name
@@ -72,7 +75,6 @@ def signin(request):
                 order_number = UserOrder(user=user)
                 order_number.order_number = order_number.id
                 order_number.save()
-                counter.save()
                 return render(request, "orders/signin.html", {"message": "userCreated"})
             except:
                 return render(request, "orders/signup.html",
@@ -98,9 +100,37 @@ def logout_view(request):
 
 
 def additem(request, category, food_id):
-    print(request.user)
-    print(category)
-    print(food_id)
+
+    #OrderItem(number=request.user.id, category=category, name=,price=)
+
+    # user authenticated
+    userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number
+    orderItems = OrderItem.objects.filter(number=userOrder)
+    total = list(orderItems.aggregate(Sum('price')).values())
+
+    # select all food available
+    regular_pizza = RegularPizza.objects.all()
+    sicilian_pizza = SicilianPizza.objects.all()
+    sub = Sub.objects.all()
+    pasta = Pasta.objects.all()
+    salad = Salad.objects.all()
+    dinner_platter = DinnerPlatter.objects.all()
+    topping = Topping.objects.all()
+
+    context = {
+        "user": request.user,
+        "regular_pizza": regular_pizza,
+        "sicilian_pizza": sicilian_pizza,
+        "sub": sub,
+        "pasta": pasta,
+        "salad": salad,
+        "dinner_platter": dinner_platter,
+        "topping": topping,
+        "items": orderItems,
+        "total": total
+    }
+
+    return render(request, "orders/homeLogged.html", context)
 
 
 def signup(request):

@@ -55,40 +55,32 @@
                         </div>
                         <div class="my_cart_popup">
                             <div id="cart">
-                                <div class="my_cart_item clearfix">
+                                <!---<div class="my_cart_item clearfix">
                                     <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
                                     <figure>
-                                        <img src="{% static 'orders/img/cart01.jpg' %}" alt="" class="img-fluid">
-                                    </figure>
-                                    <div class="caption">
-                                        <div class="txt1">$26.00 x 1</div>
-                                        <div class="txt2"><a href="#">Pizza Papperino</a></div>
-                                    </div>
-                                </div>
-                                <div class="my_cart_item clearfix">
-                                    <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
-                                    <figure>
-                                        <img src="{% static 'orders/img/cart02.jpg' %}" alt="" class="img-fluid">
-                                    </figure>
-                                    <div class="caption">
-                                        <div class="txt1">$0.99 x 1</div>
-                                        <div class="txt2"><a href="#">Orange Juice</a></div>
-                                    </div>
-                                </div>
-                                <div class="my_cart_item clearfix">
-                                    <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
-                                    <figure>
-                                        <img src="{% static 'orders/img/cart03.jpg' %}" alt="" class="img-fluid">
+                                        <img src="static 'orders/img/cart03.jpg'" alt="" class="img-fluid">
                                     </figure>
                                     <div class="caption">
                                         <div class="txt1">$3.89 x 2</div>
                                         <div class="txt2"><a href="#">Ice Cream "Argonauto"</a></div>
                                     </div>
-                                </div>
+                                </div> --->
+                                {% for item in items %}
+                                    <div class="my_cart_item clearfix">
+                                        <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
+                                        <figure>
+                                            <img src="{% static 'orders/img/cart01.jpg' %}" alt="" class="img-fluid">
+                                        </figure>
+                                        <div class="caption">
+                                            <div class="txt1">${{ item.price }} x 1</div>
+                                            <div class="txt2"><a href="#">{{ item.name }}</a></div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
                             </div>
                             <div id="cartTotal" class="my_cart_total clearfix">
                                 <div class="left">Total :</div>
-                                <div class="right">$36.11</div>
+                                <div class="right">${{ total }}</div>
                             </div>
                             <div class="my_cart_buttons">
                                 <a href="shopping-cart.html" class="my_cart_button2">View Cart</a>
@@ -245,13 +237,57 @@
                             <div class="row full_shop">
                                 <div class="col-md-4">
                                     <div class="product_block m-right">
-                                        <a id="selectRegPizza" >
+                                        <a id="selectRegPizza">
                                             <div class="pizza_full"><img
                                                     src="{% static 'orders/img/menu/big/pizza_color_1.png' %}"
                                                     class="img-fluid"></div>
                                             <h3>Regular Pizza</h3>
                                         </a>
-                                    <div style="display: none" id="regPizza">
+                                        <div style="display: none" id="regPizza">
+                                            <div class="size_devider"><span>Option</span></div>
+                                            <div class="size_checkboxes">
+                                                <table class="table table-borderless">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Small</th>
+                                                        <th scope="col">Large</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for i in regular_pizza %}
+                                                        <tr>
+                                                            <th scope="row">{{ i.name }}</th>
+                                                            <td>$ {{ i.small }} <a id="regular_pizza_{{ i.id }}"
+                                                                                   onclick="addItemChart()"
+                                                                                   href="{% url 'additem' "regular_pizza" i.id %}"><img
+                                                                    id="plusSign" class="plus ml-2"
+                                                                    src="{% static 'orders/img/plus.png' %}"></a>
+                                                            </td>
+                                                            <td>$ {{ i.large }} <a id="regular_pizza_{{ i.id }}"
+                                                                                   href="{% url 'additem' "regular_pizza" i.id %}"><img
+                                                                    id="plusSign" class="plus ml-2"
+                                                                    src="{% static 'orders/img/plus.png' %}"></a>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="product_block m-right">
+                                        <a href="pizza-description.html">
+                                            <div class="pizza_full"><img
+                                                    src="{% static 'orders/img/menu/big/pizza_color_2.png' %}"
+                                                    class="img-fluid"></div>
+                                            <h3>Sicilian Pizza</h3>
+
+                                        </a>
                                         <div class="size_devider"><span>Option</span></div>
                                         <div class="size_checkboxes">
                                             <table class="table table-borderless">
@@ -263,60 +299,17 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                {% for i in regular_pizza %}
+                                                {% for i in sicilian_pizza %}
                                                     <tr>
                                                         <th scope="row">{{ i.name }}</th>
-                                                        <td>$ {{ i.small }} <a id="regular_pizza_{{ i.id }}"
-                                                                               onclick="addItemChart()"
-                                                                               href="{% url 'additem' "regular_pizza" i.id  %}"><img
-                                                                id="plusSign" class="plus ml-2"
-                                                                src="{% static 'orders/img/plus.png' %}"></a>
-                                                        </td>
-                                                        <td>$ {{ i.large }} <a id="regular_pizza_{{ i.id }}"
-                                                                               href="{% url 'additem' "regular_pizza" i.id  %}"><img
-                                                                id="plusSign" class="plus ml-2"
-                                                                src="{% static 'orders/img/plus.png' %}"></a>
-                                                        </td>
+                                                        <td>$ {{ i.small }}</td>
+                                                        <td>$ {{ i.large }}</td>
                                                     </tr>
                                                 {% endfor %}
                                                 </tbody>
                                             </table>
+
                                         </div>
-
-                                    </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <div class="product_block m-right">
-                                        <a href="pizza-description.html">
-                                            <div class="pizza_full"><img src="{% static 'orders/img/menu/big/pizza_color_2.png' %}"
-                                                                         class="img-fluid"></div>
-                                            <h3>Sicilian Pizza</h3>
-
-                                        </a>
-                                        <div class="size_devider"><span>Option</span></div>
-                                                            <div class="size_checkboxes">
-                        <table class="table table-borderless">
-                            <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">Small</th>
-                                <th scope="col">Large</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for i in sicilian_pizza %}
-                                <tr>
-                                    <th scope="row">{{ i.name }}</th>
-                                    <td>$ {{ i.small }}</td>
-                                    <td>$ {{ i.large }}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-
-                    </div>
                                         <button type="button" class="btn btn-outline-primary full_but"><i
                                                 class="fa fa-cart-plus"></i> add to cart
                                         </button>
@@ -326,32 +319,33 @@
                                 <div class="col-md-4">
                                     <div class="product_block m-right">
                                         <a href="pizza-description.html">
-                                            <div class="pizza_full"><img src="{% static 'orders/img/menu/big/pizza_color_3.png' %}"
-                                                                         class="img-fluid"></div>
+                                            <div class="pizza_full"><img
+                                                    src="{% static 'orders/img/menu/big/pizza_color_3.png' %}"
+                                                    class="img-fluid"></div>
                                             <h3>Pasta</h3>
                                         </a>
                                         <div class="size_devider"><span>Option</span></div>
-                                              <div class="size_checkboxes">
-                        <table class="table table-borderless">
-                            <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">One Size</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                                        <div class="size_checkboxes">
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">One Size</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
 
-                            {% for i in pasta %}
-                                <tr>
-                                    <th scope="row">{{ i.name }}</th>
-                                    <td>$ {{ i.price }}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                                                {% for i in pasta %}
+                                                    <tr>
+                                                        <th scope="row">{{ i.name }}</th>
+                                                        <td>$ {{ i.price }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
 
 
-                    </div>
+                                        </div>
                                         <button type="button" class="btn btn-outline-primary full_but"><i
                                                 class="fa fa-cart-plus"></i> add to cart
                                         </button>
