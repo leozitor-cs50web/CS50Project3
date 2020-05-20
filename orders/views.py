@@ -8,17 +8,15 @@ from django.contrib.auth.models import User
 from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatter, Topping, UserOrder, OrderItem
 
 
-# Create your views here.
-def index(request):
-    # print("Usuario Autenticado: {}".format(request.user.is_authenticated))
-    # if user is not authenticated
-    if not request.user.is_authenticated:
-        return render(request, "orders/home.html", {"message": None})
-
-    # user authenticated
-    userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number # worry about the order is nos initiated
+def context_send(request):
+    """ simplify the context dictionary containing info for each request"""
+    userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number
     orderItems = OrderItem.objects.filter(number=userOrder)
-    total = list(orderItems.aggregate(Sum('price')).values())
+    total = list(orderItems.aggregate(Sum('price')).values())[0]
+    itemsCount = orderItems.count()
+    total = float(total)
+    total = "{:.2f}".format(total)
+    print(total)
 
     # select all food available
     regular_pizza = RegularPizza.objects.all()
@@ -39,8 +37,21 @@ def index(request):
         "dinner_platter": dinner_platter,
         "topping": topping,
         "items": orderItems,
-        "total": total
+        "total": total,
+        "itemsCount": itemsCount
     }
+    return context
+
+
+# Create your views here.
+def index(request):
+    # print("Usuario Autenticado: {}".format(request.user.is_authenticated))
+    # if user is not authenticated
+    if not request.user.is_authenticated:
+        return render(request, "orders/home.html", {"message": None})
+
+    # user authenticated
+    context = context_send(request)
 
     return render(request, "orders/homeLogged.html", context)
 
@@ -99,38 +110,24 @@ def logout_view(request):
     return render(request, "orders/home.html", {"message": "Logged out."})
 
 
-def additem(request, category, food_id):
-
-    #OrderItem(number=request.user.id, category=category, name=,price=)
-
+def add_item(request, category, name, price):
+    item = OrderItem(number=request.user.id, category=category, name=name, price=price)
+    item.save()
     # user authenticated
-    userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number
-    orderItems = OrderItem.objects.filter(number=userOrder)
-    total = list(orderItems.aggregate(Sum('price')).values())
-
-    # select all food available
-    regular_pizza = RegularPizza.objects.all()
-    sicilian_pizza = SicilianPizza.objects.all()
-    sub = Sub.objects.all()
-    pasta = Pasta.objects.all()
-    salad = Salad.objects.all()
-    dinner_platter = DinnerPlatter.objects.all()
-    topping = Topping.objects.all()
-
-    context = {
-        "user": request.user,
-        "regular_pizza": regular_pizza,
-        "sicilian_pizza": sicilian_pizza,
-        "sub": sub,
-        "pasta": pasta,
-        "salad": salad,
-        "dinner_platter": dinner_platter,
-        "topping": topping,
-        "items": orderItems,
-        "total": total
-    }
+    context = context_send(request)
 
     return render(request, "orders/homeLogged.html", context)
+
+
+def remove_item(request, item_id):
+
+    item = OrderItem.objects.get(id=item_id)
+    item.delete()
+    # user authenticated
+    context = context_send(request)
+
+    return render(request, "orders/homeLogged.html", context)
+
 
 
 def signup(request):
