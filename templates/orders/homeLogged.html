@@ -12,6 +12,7 @@
     <link href="{% static 'orders/css/superslides.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'orders/css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'orders/css/style.css' %}">
+    <link rel="icon" href="{% static 'orders/img/pizzaIcon.png' %}">
 
     <script src="https://kit.fontawesome.com/8bd94e436e.js"></script>
     <title>Pizzeria Pinocchio's</title>
@@ -67,7 +68,7 @@
                                 </div> --->
                                 {% for item in items %}
                                     <div class="my_cart_item clearfix">
-                                        <a href="{% url 'removeitem' item.id %}" class="my_cart_item_close"><i class="fa fa-times"></i></a>
+                                        <a href="{% url 'removeitem' item.id 'home'%}" class="my_cart_item_close"><i class="fa fa-times"></i></a>
                                         <figure>
                                             <img src="{% static 'orders/img/cart01.jpg' %}" alt="" class="img-fluid">
                                         </figure>
@@ -83,8 +84,8 @@
                                 <div class="right">$ {{ total }}</div>
                             </div>
                             <div class="my_cart_buttons">
-                                <a href="shopping-cart.html" class="my_cart_button2">View Cart</a>
-                                <a href="run-checkout.html" class="my_cart_button2">Check Out</a>
+                                <a href="{% url 'shoppingcart' %}" class="my_cart_button2">View Cart</a>
+                                <a href="{% url 'checkout' %}" class="my_cart_button2">Check Out</a>
                             </div>
                         </div>
                     </div>
@@ -152,8 +153,8 @@
                                             </div>
                                         </li>
                                         <li><a href="pizza-description.html">Single Product</a></li>
-                                        <li><a href="shopping-cart.html">shopping cart</a></li>
-                                        <li><a href="run-checkout.html">checkout</a></li>
+                                        <li><a href="{% url 'shoppingcart' %}">shopping cart</a></li>
+                                        <li><a href="{% url 'checkout' %}">checkout</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -260,12 +261,12 @@
                                                             <th scope="row">{{ i.name }}</th>
                                                             <td>$ {{ i.small }} <a id="regular_pizza_{{ i.id }}"
                                                                                    onclick="addItemChart()"
-                                                                                   href="{% url 'additem' "regular_pizza" i.name i.small %}"><img
+                                                                                   href="{% url 'additem' "Regular Pizza" i.name i.small "Small" %}"><img
                                                                     id="plusSign" class="plus ml-2"
                                                                     src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>
                                                             <td>$ {{ i.large }} <a id="regular_pizza_{{ i.id }}"
-                                                                                   href="{% url 'additem' "regular_pizza" i.name  i.large %}"><img
+                                                                                   href="{% url 'additem' "Sicilian Pizza" i.name  i.large "Large"%}"><img
                                                                     id="plusSign" class="plus ml-2"
                                                                     src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>
@@ -681,9 +682,6 @@
 </div>
 
 </body>
-<script>
-
-</script>
 <script src="{% static 'orders/js/jquery.min.js' %}"></script>
 <script src="{% static 'orders/js/jquery.appear.js' %}"></script>
 <script src="{% static 'orders/js/owl.carousel.min.js' %}"></script>

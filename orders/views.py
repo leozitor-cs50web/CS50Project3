@@ -16,8 +16,6 @@ def context_send(request):
     itemsCount = orderItems.count()
     total = float(total)
     total = "{:.2f}".format(total)
-    print(total)
-
     # select all food available
     regular_pizza = RegularPizza.objects.all()
     sicilian_pizza = SicilianPizza.objects.all()
@@ -110,24 +108,47 @@ def logout_view(request):
     return render(request, "orders/home.html", {"message": "Logged out."})
 
 
-def add_item(request, category, name, price):
+def add_item(request, category, name, price, size):
     item = OrderItem(number=request.user.id, category=category, name=name, price=price)
+    if category == 'Regular Pizza' or category == 'Sicilian Pizza':
+        if name == '1 topping':
+            item.topping_allowance = 1
+        if name == '2 toppings':
+            item.topping_allowance = 2
+        if name == '3 toppings':
+            item.topping_allowance = 3
+    if category != 'Pasta' or category != 'Salads':
+        item.size = size
     item.save()
-    # user authenticated
+    print(item)
     context = context_send(request)
 
     return render(request, "orders/homeLogged.html", context)
 
 
-def remove_item(request, item_id):
-
+def remove_item(request, item_id, option):
     item = OrderItem.objects.get(id=item_id)
     item.delete()
     # user authenticated
     context = context_send(request)
 
-    return render(request, "orders/homeLogged.html", context)
+    if option == 'cart':
+        return render(request, "orders/shoppingcart.html", context)
+    elif option == 'home':
+        return render(request, "orders/homeLogged.html", context)
+    elif option == 'checkout':
+        return render(request, "orders/checkout.html", context)
 
+
+
+def shoppingcart(request):
+    context = context_send(request)
+    return render(request, "orders/shoppingcart.html", context)
+
+
+def checkout(request):
+    context = context_send(request)
+    return render(request, "orders/checkout.html", context)
 
 
 def signup(request):
