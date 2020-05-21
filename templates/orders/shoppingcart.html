@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|PT+Serif:400,700|Roboto:100,300,400,500&display=swap"
           rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{% static 'orders/css/font-awesome.css' %}" rel="stylesheet">
@@ -284,17 +288,18 @@
                     </div>
                     <div class="col-md-2">
                         <div class="total">
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Small button
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
+                            <div class="btn-group">
+                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                        style="color: #fff;background-color: #007bff;border-color: #007bff;"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Small button
+                                </button>
+                                <div class="dropdown-menu">
+                                    {% for i in toppings %}
+                                        <a class="dropdown-item" href="#">{{ i.name }}</a>
+                                    {% endfor %}
                                 </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-1 text-center">

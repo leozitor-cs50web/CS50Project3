@@ -37,10 +37,10 @@ def context_send(request):
         "pasta": pasta,
         "salad": salad,
         "dinner_platter": dinner_platter,
-        "topping": topping,
+        "toppings": topping,
         "items": orderItems,
         "total": total,
-        "itemsCount": itemsCount
+        "itemsCount": itemsCount,
     }
     return context
 
