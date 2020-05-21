@@ -71,7 +71,8 @@
                                 </div> --->
                                 {% for item in items %}
                                     <div class="my_cart_item clearfix">
-                                        <a href="{% url 'removeitem' item.id 'checkout'%}" class="my_cart_item_close"><i
+                                        <a href="{% url 'removeitem' item.id 'checkout' %}"
+                                           class="my_cart_item_close"><i
                                                 class="fa fa-times"></i></a>
                                         <figure>
                                             <img src="{% static 'orders/img/cart01.jpg' %}" alt="" class="img-fluid">
@@ -339,10 +340,11 @@
                             <div class="row flex-tab">
                                 <div class="col-md-7">
                                     <div class="run_cart_item">
-                                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}" class="img-fluid">
+                                        <img src="{% static 'orders/img/menu/big/pizza_color_1.png' %}"
+                                             class="img-fluid">
                                         <div class="caption flex-column">
                                             <h5>{{ item.category }}</h5>
-                                            <p>Crust: {{ item.name}}</p>
+                                            <p>Option: {{ item.name }}</p>
                                             <p>Size: {{ item.size }}</p>
                                         </div>
                                     </div>

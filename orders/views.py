@@ -12,9 +12,13 @@ def context_send(request):
     """ simplify the context dictionary containing info for each request"""
     userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number
     orderItems = OrderItem.objects.filter(number=userOrder)
-    total = list(orderItems.aggregate(Sum('price')).values())[0]
+    print(orderItems)
+    if orderItems.count() == 0:
+        total = 0.00
+    else:
+        total = list(orderItems.aggregate(Sum('price')).values())[0]
+        total = float(total)
     itemsCount = orderItems.count()
-    total = float(total)
     total = "{:.2f}".format(total)
     # select all food available
     regular_pizza = RegularPizza.objects.all()
