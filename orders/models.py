@@ -87,6 +87,9 @@ class OrderItem(models.Model):
     price = models.DecimalField(max_digits=4, decimal_places=2)
     size = models.CharField(max_length=16, default="One Size")
     topping_allowance = models.IntegerField(default=0)
+    topping_1 = models.ForeignKey(Topping, on_delete=models.CASCADE, related_name="top1", default=21)
+    topping_2 = models.ForeignKey(Topping, on_delete=models.CASCADE, related_name="top2", default=21)
+    topping_3 = models.ForeignKey(Topping, on_delete=models.CASCADE, related_name="top3", default=21)
 
     def __str__(self):
         return f"{self.name} - ${self.price} Topping_allowance: {self.topping_allowance}"

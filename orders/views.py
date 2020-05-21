@@ -140,7 +140,6 @@ def remove_item(request, item_id, option):
         return render(request, "orders/checkout.html", context)
 
 
-
 def shoppingcart(request):
     context = context_send(request)
     return render(request, "orders/shoppingcart.html", context)
