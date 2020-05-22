@@ -124,7 +124,6 @@ def add_item(request, category, name, price, size):
     if category != 'Pasta' or category != 'Salads':
         item.size = size
     item.save()
-    print(item)
     context = context_send(request)
 
     return render(request, "orders/homeLogged.html", context)
