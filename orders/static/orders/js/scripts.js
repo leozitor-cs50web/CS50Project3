@@ -295,7 +295,7 @@ function createCartItem() {
 document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('#selectRegPizza').onclick = () => {
-         let state = document.getElementById("regPizza").style.display
+        let state = document.getElementById("regPizza").style.display
         if (state === "block") {
             document.getElementById("regPizza").style.display = "none"
         } else {
