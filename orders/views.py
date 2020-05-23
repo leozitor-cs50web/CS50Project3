@@ -128,7 +128,6 @@ def add_item(request, category, name, price, size):
 
     return render(request, "orders/homeLogged.html", context)
 
-
 def remove_item(request, item_id, option):
     item = OrderItem.objects.get(id=item_id)
     item.delete()
