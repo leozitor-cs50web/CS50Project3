@@ -10,44 +10,47 @@
 
 {% block body %}
     <!--- modal---->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Select Toppings</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body ">
-                    <select class="custom-select custom-select-sm mb-4" id="topping1" required>
-                        <option selected>Select</option>
-                        {% for top in toppings %}
-                            <option value="{{ top }}">{{ top }}</option>
-                        {% endfor %}
-                    </select>
-                    <select class="custom-select custom-select-sm mb-4" id="topping2" required>
-                        <option selected>Select</option>
-                        {% for top in toppings %}
-                            <option value="{{ top }}">{{ top }}</option>
-                        {% endfor %}
-                    </select>
-                    <select class="custom-select custom-select-sm" id="topping3" required>
-                        <option selected>Select</option>
-                        {% for top in toppings %}
-                            <option value="{{ top }}">{{ top }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save Choices</button>
+    <form action="{% url 'addtopping' %}" method="post">
+        {% csrf_token %}
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Select Toppings</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        <input type="hidden" id="modalId" name="modalId" value="">
+                        <select name="top1" class="custom-select custom-select-sm mb-4" id="topping1" required>
+                            <option selected>Select</option>
+                            {% for top in toppings %}
+                                <option value="{{ top.id }}">{{ top }}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="top2" class="custom-select custom-select-sm mb-4" id="topping2" required>
+                            <option name="top2" selected>Select</option>
+                            {% for top in toppings %}
+                                <option value="{{ top.id }}">{{ top }}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="top3" class="custom-select custom-select-sm" id="topping3" required>
+                            <option name="top3" selected>Select</option>
+                            {% for top in toppings %}
+                                <option value="{{ top.id }}">{{ top }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Choices</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </form>
     <div class="container">
         <div class="pizza_breadcrumb">
             <a href="index.html"><i class="fa fa-home"></i> Home</a> / <span>Shopping cart</span>
@@ -101,9 +104,14 @@
                                 <h4>{{ item.category }}</h4>
                                 <p>Crust: {{ item.name }}</p>
                                 <p>Size: {{ item.size }}</p>
-                                <button style="height: 100%; color: white" type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#exampleModalCenter">
-                                    Select Topping
-                                </button>
+                                {% if item.topping_allowance > 0 %}
+                                    <button onclick="modalIdSend({{ item.id }})" id="button{{ item.id }}"
+                                            style="height: 100%; color: white; background-color:#fb1f2d" type="button"
+                                            class="btn btn-primary mt-2" data-toggle="modal"
+                                            data-target="#exampleModalCenter">
+                                        Select Topping
+                                    </button>
+                                {% endif %}
                             </div>
 
                         </div>
@@ -193,6 +201,11 @@
     </div>
 {% endblock %}
 {% block js %}
+    <script>function modalIdSend(itemid) {
+        document.querySelector("[data-name=" + CSS.escape(itemid) + "]").onclick = () => {
+            document.querySelector("#modalId").attributes.setNamedItem(itemid)
+        }}
+    </script>
     <script src="{% static 'orders/js/app/owl.carousel.js' %}"></script>
     <script src="{% static 'orders/js/jquery.fancybox.js' %}"></script>
 

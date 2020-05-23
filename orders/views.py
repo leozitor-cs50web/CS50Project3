@@ -128,6 +128,22 @@ def add_item(request, category, name, price, size):
 
     return render(request, "orders/homeLogged.html", context)
 
+
+def add_topping(request):
+    top1 = request.POST["top1"]
+    top2 = request.POST["top2"]
+    top3 = request.POST["top3"]
+    item_id = request.POST["itemid"]
+
+    print(top1)
+    print(top2)
+    print(top3)
+    print(item_id)
+    context = context_send(request)
+
+    return render(request, "orders/shoppingcart.html", context)
+
+
 def remove_item(request, item_id, option):
     item = OrderItem.objects.get(id=item_id)
     item.delete()
