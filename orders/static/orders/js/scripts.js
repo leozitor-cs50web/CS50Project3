@@ -290,9 +290,14 @@ function createCartItem() {
     return divCartItem
 }
 
-// just to change padding when using nav3
-document.addEventListener('DOMContentLoaded', () =>
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#toppingButton').onclick = () => {
+        let state = document.querySelector('#toppingButton')
+        var myItemId = state.name
+        var modal = document.getElementById('itemId')
+        modal.value = myItemId
+    }
 
     document.querySelector('#selectRegPizza').onclick = () => {
         let state = document.getElementById("regPizza").style.display
