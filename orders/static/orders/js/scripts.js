@@ -292,13 +292,24 @@ function createCartItem() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#toppingButton').onclick = () => {
-        let state = document.querySelector('#toppingButton')
-        var myItemId = state.name
-        var modal = document.getElementById('itemId')
-        modal.value = myItemId
-    }
 
+    document.querySelectorAll('#toppingButton').forEach(function (button) {
+        button.onclick = function () {
+            let modal = document.getElementById('itemId')
+            let toppingAllowance = Number(button.value)
+            document.getElementById('topping2').style.display = "block"
+            document.getElementById('topping3').style.display = "block"
+            modal.value = button.name
+            if (toppingAllowance === 1) {
+                document.getElementById('topping2').style.display = "none"
+                document.getElementById('topping3').style.display = "none"
+            } else if (toppingAllowance === 2) {
+                document.getElementById('topping3').style.display = "none"
+            }
+
+
+        };
+    });
     document.querySelector('#selectRegPizza').onclick = () => {
         let state = document.getElementById("regPizza").style.display
         if (state === "block") {

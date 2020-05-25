@@ -20,8 +20,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" id="modalId" name="modalId" value="">
-                        <input style="color: black" type="text" name="itemId" id="itemId" value=""/>
+                        <input type="hidden" name="itemId" id="itemId" value="">
                         <select name="top1" class="custom-select custom-select-sm mb-4" id="topping1" required>
                             <option selected>Select</option>
                             {% for top in toppings %}
@@ -105,11 +104,22 @@
                                 {% if item.topping_allowance > 0 %}
                                     <button style="height: 100%; color: white; background-color:#fb1f2d" type="button"
                                             class="btn btn-primary mt-2" data-toggle="modal"
-                                            id="toppingButton" data-target="#exampleModalCenter" data-val
-                                            name="{{ item.id }}">
+                                            id="toppingButton" data-target="#exampleModalCenter"
+                                            value="{{ item.topping_allowance }}" name="{{ item.id }}">
                                         Select Topping
                                     </button>
-
+                                {% endif %}
+                                {% if  item.topping_allowance < 0 %}
+                                    <h4 class="mt-1" style="font-size: 15px;">Toppings Selected:</h4>
+                                    <p>- {{ item.topping_1 }}</p>
+                                    {% if item.topping_2_id == 21 %}
+                                    {% else %}
+                                        <p>- {{ item.topping_2 }}</p>
+                                    {% endif %}
+                                    {% if item.topping_3_id == 21 %}
+                                    {% else %}
+                                        <p>- {{ item.topping_3 }}</p>
+                                    {% endif %}
                                 {% endif %}
                             </div>
 
@@ -132,7 +142,7 @@
                         </div>
                     </div>
                     <div class="col-md-1 text-center">
-                        <a href="#"><img src="{% static 'orders/img/remove-icon.png' %}" class="img-fluid"></a>
+                        <a href="{% url 'removeitem' item.id 'cart' %}"><img src="{% static 'orders/img/remove-icon.png' %}" class="img-fluid"></a>
                     </div>
                 </div>
             {% endfor %}

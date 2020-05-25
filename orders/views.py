@@ -12,7 +12,7 @@ def context_send(request):
     """ simplify the context dictionary containing info for each request"""
     userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number
     orderItems = OrderItem.objects.filter(number=userOrder)
-    print(orderItems)
+    #print(orderItems)
     if orderItems.count() == 0:
         total = 0.00
     else:
@@ -53,6 +53,7 @@ def index(request):
         return render(request, "orders/home.html", {"message": None})
 
     # user authenticated
+
     context = context_send(request)
 
     return render(request, "orders/homeLogged.html", context)
@@ -130,18 +131,35 @@ def add_item(request, category, name, price, size):
 
 
 def add_topping(request):
-    top1 = request.POST["top1"]
-    top2 = request.POST["top2"]
-    top3 = request.POST["top3"]
-    item_id = request.POST["itemid"]
+    try:
+        item_id = int(request.POST["itemId"])
+        item = OrderItem.objects.get(id=item_id)
+        #querying toppings
+        top1 = int(request.POST["top1"])
+        topping = Topping.objects.get(id=top1)
+        item.topping_1 = topping
+        print(type(top1))        # debug
+        if item.topping_allowance > 1:
+            top2 = int(request.POST["top2"])
+            topping = Topping.objects.get(id=top2)
+            item.topping_2 = topping
+            print(top2)         # debug
+        if item.topping_allowance > 2:
+            top3 = int(request.POST["top3"])
+            topping = Topping.objects.get(id=top3)
+            item.topping_3 = topping
+            print(top3)         # debug
+        print(item_id)
+        print(item.topping_3)
 
-    print(top1)
-    print(top2)
-    print(top3)
-    print(item_id)
-    context = context_send(request)
+        item.topping_allowance = -1
+        item.save()
+        context = context_send(request)
 
-    return render(request, "orders/shoppingcart.html", context)
+        return render(request, "orders/shoppingcart.html", context)
+    except:
+        context = context_send(request)
+        return render(request, "orders/shoppingcart.html", context)
 
 
 def remove_item(request, item_id, option):
