@@ -40,48 +40,15 @@
                         <img class="pizza_cart" src="{% static 'orders/img/icons/cart.svg' %}" alt="">
 
                         <span>$</span>
-                        <span class="cart_circle">3</span>
+
                     </a>
-                    <div class="cart_sum">$00.00</div>
+                    <div class="cart_sum">$0.00</div>
                 </div>
                 <div class="my_cart_popup">
-                    <div class="my_cart_item clearfix">
-                        <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
-                        <figure>
-                            <img src="{% static 'orders/img/cart01.jpg' %}" alt="" class="img-fluid">
-                        </figure>
-                        <div class="caption">
-                            <div class="txt1">$26.00 x 1</div>
-                            <div class="txt2"><a href="#">Pizza Papperino</a></div>
-                        </div>
-                    </div>
-                    <div class="my_cart_item clearfix">
-                        <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
-                        <figure>
-                            <img src="{% static 'orders/img/cart02.jpg' %}" alt="" class="img-fluid">
-                        </figure>
-                        <div class="caption">
-                            <div class="txt1">$0.99 x 1</div>
-                            <div class="txt2"><a href="#">Orange Juice</a></div>
-                        </div>
-                    </div>
-                    <div class="my_cart_item clearfix">
-                        <a href="#" class="my_cart_item_close"><i class="fa fa-times"></i></a>
-                        <figure>
-                            <img src="{% static 'orders/img/cart03.jpg' %}" alt="" class="img-fluid">
-                        </figure>
-                        <div class="caption">
-                            <div class="txt1">$3.89 x 2</div>
-                            <div class="txt2"><a href="#">Ice Cream "Argonauto"</a></div>
-                        </div>
-                    </div>
-                    <div class="my_cart_total clearfix">
-                        <div class="left">Total :</div>
-                        <div class="right">$36.11</div>
-                    </div>
                     <div class="my_cart_buttons">
-                        <a href="shopping-cart.html" class="my_cart_button2">View Cart</a>
-                        <a href="run-checkout.html" class="my_cart_button2">Check Out</a>
+                        <h5 class="text-center"> First <b>Log in</b> or <b>Sign up</b></h5>
+                        <a href="{% url 'signup' %}" class="my_cart_button2">Sign up</a>
+                        <a href="{% url 'signin' %}" class="my_cart_button2">Sign in</a>
                     </div>
                 </div>
             </div>

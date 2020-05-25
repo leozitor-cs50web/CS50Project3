@@ -73,23 +73,24 @@ class Topping(models.Model):
 
 class UserOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    order_number = models.IntegerField(default=0)
     status = models.CharField(max_length=64, default='initiated')
 
     def __str__(self):
-        return f"{self.user} - {self.order_number} - {self.status} "
+        return f"{self.user} - id: {self.id} - {self.status} "
 
 
 class OrderItem(models.Model):
-    number = models.IntegerField(UserOrder)
+    number = models.ForeignKey(UserOrder, on_delete=models.CASCADE)
     category = models.CharField(max_length=64, null=True)
     name = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=4, decimal_places=2)
+    totalPrice = models.DecimalField(max_digits=4, decimal_places=2)
     size = models.CharField(max_length=16, default="One Size")
+    quantity = models.DecimalField(max_digits=3, decimal_places=0, default=1)
     topping_allowance = models.IntegerField(default=0)
-    topping_1 = models.ForeignKey(Topping, on_delete=models.CASCADE, related_name="top1", default=21)
-    topping_2 = models.ForeignKey(Topping, on_delete=models.CASCADE, related_name="top2", default=21)
-    topping_3 = models.ForeignKey(Topping, on_delete=models.CASCADE, related_name="top3", default=21)
+    topping_1 = models.CharField(max_length=32, default="none")
+    topping_2 = models.CharField(max_length=32, default="none")
+    topping_3 = models.CharField(max_length=32, default="none")
 
     def __str__(self):
         return f"{self.name} - ${self.price} Topping_allowance: {self.topping_allowance}"

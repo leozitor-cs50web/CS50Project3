@@ -179,55 +179,6 @@ $('input.form-check-input-sizes').on('change', function () {
 /*----------------------------------------------------*/
 // Touchspin.
 /*----------------------------------------------------*/
-
-$('.minus').on('click', function () {
-    var num = parseInt($('.counter-num').text());
-    num--;
-    //get rid of this to allow numbers less than 0
-    if (num < 0) {
-        num = 0;
-    }
-    $('.counter-num').text(num);
-})
-$('.plus').on('click', function () {
-    var num = parseInt($('.counter-num').text());
-    num++;
-    $('.counter-num').text(num);
-})
-
-
-$('.minus_0').on('click', function () {
-    var num = parseInt($('.counter-num_0').text());
-    num--;
-    //get rid of this to allow numbers less than 0
-    if (num < 0) {
-        num = 0;
-    }
-    $('.counter-num_0').text(num);
-})
-$('.plus_0').on('click', function () {
-    var num = parseInt($('.counter-num_0').text());
-    num++;
-    $('.counter-num_0').text(num);
-})
-
-
-$('.minus_1').on('click', function () {
-    var num = parseInt($('.counter-num_1').text());
-    num--;
-    //get rid of this to allow numbers less than 0
-    if (num < 0) {
-        num = 0;
-    }
-    $('.counter-num_1').text(num);
-})
-$('.plus_1').on('click', function () {
-    var num = parseInt($('.counter-num_1').text());
-    num++;
-    $('.counter-num_1').text(num);
-})
-
-
 // End Touchspin.
 /*----------------------------------------------------*/
 /*
@@ -251,48 +202,8 @@ $('#customCheck1').on('change', function () {
 
 /* -----------------------  index behavior   ---------------------- */
 
-function addItemChart() {
-    document.getElementById("cart").append(createCartItem())
-}
-
-function createCartItem() {
-    const divCartItem = document.createElement('div')
-    const divCaption = document.createElement('div')
-    const divTxt1 = document.createElement('div')
-    const divTxt2 = document.createElement('div')
-    const a = document.createElement('a')
-    const a2 = document.createElement('a')
-    const fig = document.createElement('figure')
-    const img = document.createElement('img')
-    const i = document.createElement('i')
-
-    divCartItem.className = "my_cart_item clearfix"
-    a.href = "" // NEED TO CHANGE SOON
-    a.className = "my_cart_item_close"
-    divCaption.className = "caption"
-    i.className = "fa fa-times"
-    img.src = "/static/orders/img/cart01.jpg"
-    img.className = "img-fluid"
-    a.append(i)
-    fig.append(img)
-    divTxt1.className = "txt1"
-    divTxt2.className = "txt2"
-    // NEED TO CHANGE SOON
-    a2.innerHTML = "pizza papperino"
-    divTxt1.innerHTML = "$26.00 x 1"
-    divTxt2.append(a2)
-    divCaption.append(divTxt1)
-    divCaption.append(divTxt2)
-    divCartItem.append(a)
-    divCartItem.append(fig)
-    divCartItem.append(divCaption)
-
-    return divCartItem
-}
-
-
 document.addEventListener('DOMContentLoaded', () => {
-
+    //setting button of each item to control the modal, send info and about select
     document.querySelectorAll('#toppingButton').forEach(function (button) {
         button.onclick = function () {
             let modal = document.getElementById('itemId')
@@ -306,10 +217,20 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (toppingAllowance === 2) {
                 document.getElementById('topping3').style.display = "none"
             }
-
-
         };
     });
+
+    document.querySelectorAll('.plusButton').forEach(function () {
+        let counter = self.document.querySelector('.counter')
+        self.document.querySelector('.countPlus').onclick = ()=>{
+            let increment = parseInt(counter.innerHTML) + 1
+            counter.innerHTML = `${increment}`
+        }
+        self.document.querySelector('.countMinus').onclick = ()=>{
+            let decrement = parseInt(counter.innerHTML) - 1
+            counter.innerHTML = `${decrement}`
+        }
+    })
     document.querySelector('#selectRegPizza').onclick = () => {
         let state = document.getElementById("regPizza").style.display
         if (state === "block") {

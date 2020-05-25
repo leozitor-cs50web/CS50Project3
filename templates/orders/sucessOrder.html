@@ -1,0 +1,49 @@
+{% extends "orders/baseGeneral.html" %}
+{% load static %}
+{% block head %}
+    <title>Pizzeria Pinnochio's</title>
+    <link rel="stylesheet" href="{% static 'orders/css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'orders/css/owl.theme.default.min.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="pizza_breadcrumb">
+            <a href="index.html"><i class="fa fa-home"></i> Home</a> / <span>Success</span>
+        </div>
+
+        <section class="thank_you">
+            <div class="piz_title">
+                <div class="small_title"><h3>hello world!</h3></div>
+
+                <div class="big_title"><h1 class="thk_big_title">thank you for ordering</h1><img src="{% static 'orders/img/italy.png' %}">
+                </div>
+
+            </div>
+            <div class="title_devider">
+                <p class="line"></p>
+            </div>
+            <div class="under_title">
+                <p>Thanks For choosing Pinocchio's! We've been feeding
+                                    Harvard and the surrounding area since 1966!.</p>
+            </div>
+        </section>
+
+
+        <section class="content top_margin_60-55">
+            <div class="order_ok">
+                <img src="{% static 'orders/img/ok.svg' %}">
+            </div>
+            <button type="button" class="btn btn-outline-primary">track your order</button>
+
+        </section>
+
+
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'orders/js/jquery.fancybox.js' %}"></script>
+    <script src="{% static 'orders/js/jquery.appear.js' %} "></script>
+    <script src="{% static 'orders/js/app/owl.carousel.js' %}"></script>
+{% endblock %}

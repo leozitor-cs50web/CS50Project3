@@ -10,13 +10,13 @@ from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatte
 
 def context_send(request):
     """ simplify the context dictionary containing info for each request"""
-    userOrder = UserOrder.objects.get(user=request.user, status='initiated').order_number
+    userOrder = UserOrder.objects.get(user=request.user, status='initiated')
     orderItems = OrderItem.objects.filter(number=userOrder)
     #print(orderItems)
     if orderItems.count() == 0:
         total = 0.00
     else:
-        total = list(orderItems.aggregate(Sum('price')).values())[0]
+        total = list(orderItems.aggregate(Sum('totalPrice')).values())[0]
         total = float(total)
     itemsCount = orderItems.count()
     total = "{:.2f}".format(total)
@@ -28,7 +28,6 @@ def context_send(request):
     salad = Salad.objects.all()
     dinner_platter = DinnerPlatter.objects.all()
     topping = Topping.objects.all()
-
     context = {
         "user": request.user,
         "regular_pizza": regular_pizza,
@@ -51,11 +50,8 @@ def index(request):
     # if user is not authenticated
     if not request.user.is_authenticated:
         return render(request, "orders/home.html", {"message": None})
-
     # user authenticated
-
     context = context_send(request)
-
     return render(request, "orders/homeLogged.html", context)
 
 
@@ -86,15 +82,26 @@ def signin(request):
                 user.first_name = first_name
                 user.last_name = last_name
                 user.save()
-                order_number = UserOrder(user=user)
-                order_number.order_number = order_number.id
-                order_number.save()
+                user_order = UserOrder.objects.create(user=user)
+                user_order.save()
                 return render(request, "orders/signin.html", {"message": "userCreated"})
             except:
                 return render(request, "orders/signup.html",
                               {"message": "Please! Complete all the fields correctly!"})
     else:
-        return render(request, "orders/signin.html")
+        if not request.user.is_authenticated:
+            return render(request, "orders/signin.html")
+        else:
+            context = context_send(request)
+            return render(request, "orders/homeLogged.html", context)
+
+
+def signup(request):
+    if not request.user.is_authenticated:
+        return render(request, "orders/signup.html")
+    else:
+        context = context_send(request)
+        return render(request, "orders/homeLogged.html", context)
 
 
 def login_view(request):
@@ -114,7 +121,13 @@ def logout_view(request):
 
 
 def add_item(request, category, name, price, size):
-    item = OrderItem(number=request.user.id, category=category, name=name, price=price)
+    userOrder = UserOrder.objects.get(user=request.user, status='initiated')
+    if OrderItem.objects.filter(number=userOrder, category=category, name=name, price=price).exists():
+        item = OrderItem.objects.get(number=userOrder, category=category, name=name, price=price)
+        item.quantity = int(item.quantity) + 1
+        item.totalPrice = float(item.quantity) * float(item.price)
+    else:
+        item = OrderItem(number=userOrder, category=category, name=name, price=price, totalPrice=price)
     if category == 'Regular Pizza' or category == 'Sicilian Pizza':
         if name == '1 topping':
             item.topping_allowance = 1
@@ -126,7 +139,6 @@ def add_item(request, category, name, price, size):
         item.size = size
     item.save()
     context = context_send(request)
-
     return render(request, "orders/homeLogged.html", context)
 
 
@@ -135,27 +147,22 @@ def add_topping(request):
         item_id = int(request.POST["itemId"])
         item = OrderItem.objects.get(id=item_id)
         #querying toppings
-        top1 = int(request.POST["top1"])
-        topping = Topping.objects.get(id=top1)
-        item.topping_1 = topping
-        print(type(top1))        # debug
+        top1 = request.POST["top1"]
+        item.topping_1 = top1
+        #print(type(top1))
         if item.topping_allowance > 1:
-            top2 = int(request.POST["top2"])
-            topping = Topping.objects.get(id=top2)
-            item.topping_2 = topping
-            print(top2)         # debug
+            top2 = request.POST["top2"]
+            item.topping_2 = top2
+           # print(top2)
         if item.topping_allowance > 2:
-            top3 = int(request.POST["top3"])
-            topping = Topping.objects.get(id=top3)
-            item.topping_3 = topping
-            print(top3)         # debug
-        print(item_id)
-        print(item.topping_3)
-
+            top3 = request.POST["top3"]
+            item.topping_3 = top3
+         #   print(top3)
+        #print(item_id)
+        #print(item.topping_3)
         item.topping_allowance = -1
         item.save()
         context = context_send(request)
-
         return render(request, "orders/shoppingcart.html", context)
     except:
         context = context_send(request)
@@ -181,13 +188,26 @@ def shoppingcart(request):
     return render(request, "orders/shoppingcart.html", context)
 
 
+def sucess(request):
+    user = request.user
+    order = UserOrder.objects.get(user=user, status='initiated')
+    # changes the order object parameter and creates a new one to the user
+    order.status = 'pending'# changing to pending
+    order.save()
+    order = UserOrder.objects.create(user=user)
+    order.save()
+    context = context_send(request)
+    return render(request, "orders/sucessOrder.html", context)
+
+
+def orders(request):
+    context = context_send(request)
+    return render(request, "orders/myOrders.html", context)
+
+
 def checkout(request):
     context = context_send(request)
     return render(request, "orders/checkout.html", context)
-
-
-def signup(request):
-    return render(request, "orders/signup.html")
 
 
 def contact(request):

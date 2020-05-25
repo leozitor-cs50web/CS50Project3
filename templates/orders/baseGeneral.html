@@ -45,8 +45,8 @@
                         <img src="{% static 'orders/img/avatar1.jpg' %}"> <i class="fas fa-chevron-down"></i>
                         <div class="sf-account_1">
                             <ul>
-                                <li><a href="dashboard.html">My Dashboard</a></li>
-                                <li><a href="my-orders.html">my orders</a></li>
+                                <li><a href="{% url 'orders' %}">My Dashboard</a></li>
+                                <li><a href="{% url 'orders' %}">my orders</a></li>
                                 <li><a href="add-address.html">add addresses</a></li>
                                 <li><a href="profile.html">account details</a></li>
                                 <li><a href="{% url 'logout' %}">log out</a></li>
@@ -83,7 +83,7 @@
                                             <img src="{% static 'orders/img/cart01.jpg' %}" alt="" class="img-fluid">
                                         </figure>
                                         <div class="caption">
-                                            <div class="txt1">$ {{ item.price }} x 1</div>
+                                            <div class="txt1">$ {{ item.price }} x {{ item.quantity }}</div>
                                             <div class="txt2"><a href="#">{{ item.name }} - {{ item.size }}</a></div>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li><a href="thank-you.html">Success</a></li>
+                                        <li><a href="{% url 'sucess' %}">Success</a></li>
                                     </ul>
                                 </div>
                             </li>
