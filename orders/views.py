@@ -13,7 +13,7 @@ def context_send(request):
     userOrder = UserOrder.objects.get(user=request.user, status='initiated')
     allUserOrders = UserOrder.objects.filter(user=request.user)
     orderItems = OrderItem.objects.filter(number=userOrder)
-    itemsCount =orderItems.count()
+    itemsCount = orderItems.count()
     # select all food available
     regular_pizza = RegularPizza.objects.all()
     sicilian_pizza = SicilianPizza.objects.all()
@@ -35,6 +35,29 @@ def context_send(request):
         "itemsCount": itemsCount,
         "allUserOrders": allUserOrders,
         "order": userOrder
+    }
+    return context
+
+
+def context_send_admin(request):
+    """ simplify the context dictionary containing info for each request"""
+    # select all food available
+    regular_pizza = RegularPizza.objects.all()
+    sicilian_pizza = SicilianPizza.objects.all()
+    sub = Sub.objects.all()
+    pasta = Pasta.objects.all()
+    salad = Salad.objects.all()
+    dinner_platter = DinnerPlatter.objects.all()
+    topping = Topping.objects.all()
+    context = {
+        "user": request.user,
+        "regular_pizza": regular_pizza,
+        "sicilian_pizza": sicilian_pizza,
+        "sub": sub,
+        "pasta": pasta,
+        "salad": salad,
+        "dinner_platter": dinner_platter,
+        "toppings": topping,
     }
     return context
 
@@ -144,20 +167,20 @@ def add_topping(request):
     try:
         item_id = int(request.POST["itemId"])
         item = OrderItem.objects.get(id=item_id)
-        #querying toppings
+        # querying toppings
         top1 = request.POST["top1"]
         item.topping_1 = top1
-        #print(type(top1))
+        # print(type(top1))
         if item.topping_allowance > 1:
             top2 = request.POST["top2"]
             item.topping_2 = top2
-           # print(top2)
+        # print(top2)
         if item.topping_allowance > 2:
             top3 = request.POST["top3"]
             item.topping_3 = top3
-         #   print(top3)
-        #print(item_id)
-        #print(item.topping_3)
+        #   print(top3)
+        # print(item_id)
+        # print(item.topping_3)
         item.topping_allowance = -1
         item.save()
         context = context_send(request)
@@ -196,7 +219,7 @@ def sucess(request):
     user = request.user
     order = UserOrder.objects.get(user=user, status='initiated')
     # changes the order object parameter and creates a new one to the user
-    order.status = 'pending'# changing to pending
+    order.status = 'pending'  # changing to pending
     order.save()
     order = UserOrder.objects.create(user=user)
     order.save()
@@ -216,17 +239,50 @@ def orders(request, order_page):
         allUserOrders = UserOrder.objects.filter(user=request.user)
         for i in range(0, user_orders_count - 10, 10):
             orderPageList.append(allUserOrders[user_orders_count - i - 10:user_orders_count - i])
-        orderPageList.append(allUserOrders[0:user_orders_count%10])
+        orderPageList.append(allUserOrders[0:user_orders_count % 10])
         context["allUserOrder"] = orderPageList[order_page - 1]
         context["allUserOrders"] = orderPageList
         return render(request, "orders/myOrders.html", context)
+
+
+def adminorders(request, order_type, order_page):
+    if not request.user.is_authenticated:
+        return render(request, "orders/home.html", {"message": None})
+    else:
+        context = context_send_admin(request)
+        if request.user.is_staff:
+            if order_type == 'initiated':
+                all_orders = UserOrder.objects.filter(status='initiated')
+                context["orderType"] = 'initiated'
+            elif order_type == 'pending':
+                all_orders = UserOrder.objects.filter(status='pending')
+                context["orderType"] = 'pending'
+            elif order_type == 'completed':
+                all_orders = UserOrder.objects.filter(status='completed')
+                context["orderType"] = 'completed'
+            else:
+                all_orders = UserOrder.objects.all()
+                context["orderType"] = 'all'
+            all_orders_count = all_orders.count()
+            context["allOrdersCount"] = all_orders_count
+            if all_orders_count < 11:
+                context["allUserOrder"] = all_orders
+                return render(request, "orders/adminOrders.html", context)
+            else:
+                orderPageList = []
+                for i in range(0, all_orders_count - 10, 10):
+                    orderPageList.append(all_orders[all_orders_count - i - 10:all_orders_count - i])
+                orderPageList.append(all_orders[0:all_orders_count % 10])
+                context["allUserOrder"] = orderPageList[order_page - 1]
+                context["allUserOrders"] = orderPageList
+                return render(request, "orders/adminOrders.html", context)
 
 
 def checkout(request):
     user = request.user
     order = UserOrder.objects.get(user=user, status='initiated')
     context = context_send(request)
-    #checking if the cart has at least 1 item
+    # checking if the cart has at least 1 item
     if OrderItem.objects.filter(number=order).exists():
         return render(request, "orders/checkout.html", context)
     else:

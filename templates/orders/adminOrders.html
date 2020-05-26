@@ -16,7 +16,8 @@
             <div class="piz_title">
                 <div class="small_title"><h3>dashboard</h3></div>
 
-                <div class="big_title"><h1 class="dash_big_title">my orders</h1><img src="{% static 'orders/img/italy.png' %}"></div>
+                <div class="big_title"><h1 class="dash_big_title">Users Orders</h1><img
+                        src="{% static 'orders/img/italy.png' %}"></div>
 
             </div>
             <div class="title_devider">
@@ -24,7 +25,7 @@
             </div>
             <div class="under_title">
                 <p>Thanks For choosing Pinocchio's! We've been feeding
-                                    Harvard and the surrounding area since 1966!.</p>
+                    Harvard and the surrounding area since 1966!.</p>
             </div>
         </section>
         <section class="dashboard">
@@ -32,10 +33,10 @@
                 <div class="col-md-3">
                     <h3 class="title">My Account</h3>
                     <ul>
-                        <li><a href="#"><i class="far fa-list-alt"></i> All Orders </a></li>
-                        <li class="active"><a href="#"><i class="far fa-file-alt"></i> Open Orders </a></li>
-                        <li><a href="#"><i class="far fa-map"></i> Placed Orders </a></li>
-                        <li><a href="#"><i class="far fa-user"></i> Completed Orders </a></li>
+                        <li {% if orderType == 'all' %}class="active"{% endif %}><a href="{% url 'adminorders' 'all' 1 %}"><i class="far fa-list-alt"></i> All Orders </a></li>
+                        <li {% if orderType == 'initiated' %}class="active"{% endif %}><a href="{% url 'adminorders' 'initiated' 1 %}"><i class="far fa-file-alt"></i> Open Orders </a></li>
+                        <li {% if orderType == 'pending' %}class="active"{% endif %}><a href="{% url 'adminorders' 'pending' 1 %}"><i class="far fa-list-alt"></i> Placed Orders </a></li>
+                        <li {% if orderType == 'completed' %}class="active"{% endif %}><a href="{% url 'adminorders' 'completed' 1 %}"><i class="far fa-list-alt"></i> Completed Orders </a></li>
                         <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out </a></li>
                     </ul>
                 </div>
@@ -45,42 +46,37 @@
                         <tr>
                             <th>Date</th>
                             <th class="transaction_th">transaction number</th>
-                            <th>invoice</th>
+                            <th>User</th>
                             <th>price</th>
                             <th class="status_th">status</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for order in allUserOrders %}
-                        <tr>
-                            <td>{{ order.date }}</td>
-                            <td class="transaction_td">2543FD564533ER{{  order.id }}</td>
-                            <td><a href="#"><i class="far fa-file-pdf"></i></a></td>
-                            <td>$ {{ order.totalPriceOrder }}</td>
-                            <td class="status_td"><span class="badge badge-warning">{{ order.status }}</span></td>
-                        </tr>
+                        {% for order in allUserOrder %}
+                            <tr>
+                                <td>{{ order.date }}</td>
+                                <td class="transaction_td">2543FD564533ER{{ order.id }}</td>
+                                <td>{{ order.user }}</td>
+                                <td>$ {{ order.totalPriceOrder }}</td>
+                                <td class="status_td"><span class="badge badge-warning">{{ order.status }}</span></td>
+                            </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                     <div class="row float-right margin_right_0">
                         <ur class="pagination right">
-
-                            <li class="page-item">
-                                <a class="page-link active" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">...</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">7</a>
-                            </li>
-
+                            {% if allOrdersCount <= 10 %}
+                                <li class="page-item">
+                                    <a class="page-link active" href="#">1</a>
+                                </li>
+                            {% else %}
+                                {% for i in allUserOrders %}
+                                    <li class="page-item">
+                                        <a class="page-link active"
+                                           href="{% url 'adminorders' orderType forloop.counter %}">{{ forloop.counter }}</a>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
                         </ur>
                     </div>
 
