@@ -16,7 +16,7 @@
             <div class="piz_title">
                 <div class="small_title"><h3>dashboard</h3></div>
 
-                <div class="big_title"><h1 class="dash_big_title">Users Orders</h1><img
+                <div class="big_title"><h1 class="dash_big_title">All Orders</h1><img
                         src="{% static 'orders/img/italy.png' %}"></div>
 
             </div>
@@ -58,7 +58,7 @@
                                 <td class="transaction_td">2543FD564533ER{{ order.id }}</td>
                                 <td>{{ order.user }}</td>
                                 <td>$ {{ order.totalPriceOrder }}</td>
-                                <td class="status_td"><span class="badge badge-warning">{{ order.status }}</span></td>
+                                <td class="status_td"><a href="#"><span class="badge badge-warning">{{ order.status }}</span></a></td>
                             </tr>
                         {% endfor %}
                         </tbody>

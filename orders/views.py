@@ -276,7 +276,21 @@ def adminorders(request, order_type, order_page):
                 context["allUserOrder"] = orderPageList[order_page - 1]
                 context["allUserOrders"] = orderPageList
                 return render(request, "orders/adminOrders.html", context)
+        else:
+            context = context_send_admin(request)
+            return render(request, "orders/homeLogged.html", context)
 
+
+def changeorders(request, order_id):
+    if not request.user.is_authenticated:
+        return render(request, "orders/home.html", {"message": None})
+    else:
+        if request.user.is_staff:
+            context = context_send_admin(request)
+            return render(request, "orders/adminOrder.html", context)
+        else:
+            context = context_send_admin(request)
+            return render(request, "orders/homeLogged.html", context)
 
 def checkout(request):
     user = request.user
