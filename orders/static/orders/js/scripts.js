@@ -219,9 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
     });
-    document.getElementById('customCheck1').onchange = () => {
-            document.getElementById('updateOrderButton').disabled = !this.checked
-    }
 
     // buttons plus and minus of shopping cart
     document.querySelectorAll('.plusButton').forEach(function (el) {
@@ -236,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
     //control check box
-
+    document.getElementById('updateOrderButton').disabled = true
     // control the of badge about status
     document.querySelectorAll('.status_td').forEach(function (el) {
         let badge = el.querySelector('.badge')

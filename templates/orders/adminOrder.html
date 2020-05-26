@@ -79,7 +79,7 @@
                                       placeholder="Message"></textarea>
                             <form class="mt-3">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                    <input type="checkbox" onchange="document.getElementById('updateOrderButton').disabled = !this.checked" class="custom-control-input" id="customCheck1"
                                            name="example2">
                                     <label class="custom-control-label" for="customCheck1"><h3 class="no_border">MARK ORDER AS COMPLETED?</h3></label>
                                 </div>
