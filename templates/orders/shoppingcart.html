@@ -158,9 +158,9 @@
                     <button type="button" class="btn btn-outline-primary-grey grey">update cart</button>
                 </div>
                 <div class="col-md-3">
-                    <button href="{% url 'checkout' %}" type="submit" class="btn btn-outline-primary-red">proceed to
-                        checkout
-                    </button>
+                    <form method="get" action="{% url 'checkout' %}">
+                        <button  type="submit" class="btn btn-outline-primary-red">proceed to checkout </button>
+                    </form>
                 </div>
             </div>
 

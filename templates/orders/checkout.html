@@ -182,7 +182,10 @@
                         <label><span>*</span> Sed pharetra nunc ultrices, elementum velit fringilla, fringilla risus.
                             Phase llus cursus est et nunc sagittis consectetur ac quis ante</label>
                     </div>
-                    <button href="{% url 'sucess' %}" type="button" class="btn btn-outline-primary">place order</button>
+                    <form method="get" action="{% url 'sucess' %}">
+                        <button type="submit" class="btn btn-outline-primary">place order
+                        </button>
+                    </form>
                 </div>
             </div>
 
