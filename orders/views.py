@@ -1,4 +1,6 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.urls import reverse
@@ -123,14 +125,17 @@ def signup(request):
 
 
 def login_view(request):
-    username = request.POST["username"]
-    password = request.POST["password"]
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+    if request.method == 'POST':
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("index"))
+        else:
+            return render(request, "orders/signin.html", {"message": "invalidLogin"})
     else:
-        return render(request, "orders/signin.html", {"message": "invalidLogin"})
+        return render(request, "orders/signin.html")
 
 
 def logout_view(request):
@@ -138,31 +143,37 @@ def logout_view(request):
     return render(request, "orders/home.html", {"message": "Logged out."})
 
 
+@login_required(login_url='login')
 def add_item(request, category, name, price, size):
-    userOrder = UserOrder.objects.get(user=request.user, status='initiated')
-    if OrderItem.objects.filter(number=userOrder, category=category, name=name, price=price).exists():
-        item = OrderItem.objects.get(number=userOrder, category=category, name=name, price=price)
-        item.quantity = int(item.quantity) + 1
-        item.totalPriceItem = float(item.quantity) * float(item.price)
-        userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) + float(item.price)
-    else:
-        item = OrderItem(number=userOrder, category=category, name=name, price=price, totalPriceItem=price)
-        userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) + float(item.price)
-    if category == 'Regular Pizza' or category == 'Sicilian Pizza':
-        if name == '1 topping':
-            item.topping_allowance = 1
-        if name == '2 toppings':
-            item.topping_allowance = 2
-        if name == '3 toppings':
-            item.topping_allowance = 3
-    if category != 'Pasta' or category != 'Salads':
-        item.size = size
-    item.save()
-    userOrder.save()
-    context = context_send(request)
-    return render(request, "orders/homeLogged.html", context)
+    try:
+        userOrder = UserOrder.objects.get(user=request.user, status='initiated')
+        if OrderItem.objects.filter(number=userOrder, category=category, name=name, price=price).exists():
+            item = OrderItem.objects.get(number=userOrder, category=category, name=name, price=price)
+            item.quantity = int(item.quantity) + 1
+            item.totalPriceItem = float(item.quantity) * float(item.price)
+            userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) + float(item.price)
+        else:
+            item = OrderItem(number=userOrder, category=category, name=name, price=price, totalPriceItem=price)
+            userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) + float(item.price)
+        if category == 'Regular Pizza' or category == 'Sicilian Pizza':
+            if name == '1 topping':
+                item.topping_allowance = 1
+            if name == '2 toppings':
+                item.topping_allowance = 2
+            if name == '3 toppings':
+                item.topping_allowance = 3
+        if category != 'Pasta' or category != 'Salads':
+            item.size = size
+        item.save()
+        userOrder.save()
+        context = context_send(request)
+        return render(request, "orders/homeLogged.html", context)
+    except:
+        context = context_send(request)
+        return render(request, "orders/homeLogged.html", context)
 
 
+@login_required(login_url='login')
 def add_topping(request):
     try:
         item_id = int(request.POST["itemId"])
@@ -190,6 +201,7 @@ def add_topping(request):
         return render(request, "orders/shoppingcart.html", context)
 
 
+@login_required(login_url='login')
 def remove_item(request, item_id, option):
     try:
         item = OrderItem.objects.get(id=item_id)
@@ -210,11 +222,13 @@ def remove_item(request, item_id, option):
         return render(request, "orders/checkout.html", context)
 
 
+@login_required(login_url='login')
 def shoppingcart(request):
     context = context_send(request)
     return render(request, "orders/shoppingcart.html", context)
 
 
+@login_required(login_url='login')
 def sucess(request):
     user = request.user
     order = UserOrder.objects.get(user=user, status='initiated')
@@ -227,6 +241,7 @@ def sucess(request):
     return render(request, "orders/sucessOrder.html", context)
 
 
+@login_required(login_url='login')
 def orders(request, order_page):
     context = context_send(request)
     user_orders = context["allUserOrders"]
@@ -245,53 +260,52 @@ def orders(request, order_page):
         return render(request, "orders/myOrders.html", context)
 
 
+@staff_member_required
 def adminorders(request, order_type, order_page):
-    if not request.user.is_authenticated:
-        return render(request, "orders/home.html", {"message": None})
+    context = context_send_admin(request)
+    if order_type == 'initiated':
+        all_orders = UserOrder.objects.filter(status='initiated')
+        context["orderType"] = 'initiated'
+    elif order_type == 'pending':
+        all_orders = UserOrder.objects.filter(status='pending')
+        context["orderType"] = 'pending'
+    elif order_type == 'completed':
+        all_orders = UserOrder.objects.filter(status='completed')
+        context["orderType"] = 'completed'
+    else:
+        all_orders = UserOrder.objects.all()
+        context["orderType"] = 'all'
+    all_orders_count = all_orders.count()
+    context["allOrdersCount"] = all_orders_count
+    if all_orders_count < 11:
+        context["allUserOrder"] = all_orders
+        return render(request, "orders/adminOrders.html", context)
+    else:
+        orderPageList = []
+        for i in range(0, all_orders_count - 10, 10):
+            orderPageList.append(all_orders[all_orders_count - i - 10:all_orders_count - i])
+        orderPageList.append(all_orders[0:all_orders_count % 10])
+        context["allUserOrder"] = orderPageList[order_page - 1]
+        context["allUserOrders"] = orderPageList
+        return render(request, "orders/adminOrders.html", context)
+
+
+@staff_member_required
+def changeorders(request, order_id):
+    if request.method == 'POST':
+        checkBox = request.POST["checkBox"]
+        print(checkBox)
+
+
     else:
         context = context_send_admin(request)
-        if request.user.is_staff:
-            if order_type == 'initiated':
-                all_orders = UserOrder.objects.filter(status='initiated')
-                context["orderType"] = 'initiated'
-            elif order_type == 'pending':
-                all_orders = UserOrder.objects.filter(status='pending')
-                context["orderType"] = 'pending'
-            elif order_type == 'completed':
-                all_orders = UserOrder.objects.filter(status='completed')
-                context["orderType"] = 'completed'
-            else:
-                all_orders = UserOrder.objects.all()
-                context["orderType"] = 'all'
-            all_orders_count = all_orders.count()
-            context["allOrdersCount"] = all_orders_count
-            if all_orders_count < 11:
-                context["allUserOrder"] = all_orders
-                return render(request, "orders/adminOrders.html", context)
-            else:
-                orderPageList = []
-                for i in range(0, all_orders_count - 10, 10):
-                    orderPageList.append(all_orders[all_orders_count - i - 10:all_orders_count - i])
-                orderPageList.append(all_orders[0:all_orders_count % 10])
-                context["allUserOrder"] = orderPageList[order_page - 1]
-                context["allUserOrders"] = orderPageList
-                return render(request, "orders/adminOrders.html", context)
-        else:
-            context = context_send_admin(request)
-            return render(request, "orders/homeLogged.html", context)
+        order = UserOrder.objects.get(id=order_id)
+        context["items"] = OrderItem.objects.filter(number=order)
+        context["order"] = order
+        return render(request, "orders/adminOrder.html", context)
 
 
-def changeorders(request, order_id):
-    if not request.user.is_authenticated:
-        return render(request, "orders/home.html", {"message": None})
-    else:
-        if request.user.is_staff:
-            context = context_send_admin(request)
-            return render(request, "orders/adminOrder.html", context)
-        else:
-            context = context_send_admin(request)
-            return render(request, "orders/homeLogged.html", context)
-
+@login_required(login_url='login')
 def checkout(request):
     user = request.user
     order = UserOrder.objects.get(user=user, status='initiated')

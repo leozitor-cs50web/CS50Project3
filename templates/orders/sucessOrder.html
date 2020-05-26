@@ -34,8 +34,8 @@
             <div class="order_ok">
                 <img src="{% static 'orders/img/ok.svg' %}">
             </div>
-            <form method="get" action="{% url 'orders' %}">
-            <button c type="submit" class="btn btn-outline-primary mb-5">track your order</button>
+            <form method="get" action="{% url 'orders' 1 %}">
+            <button  type="submit" class="btn btn-outline-primary mb-5">track your order</button>
             </form>
         </section>
 

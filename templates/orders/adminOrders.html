@@ -58,7 +58,7 @@
                                 <td class="transaction_td">2543FD564533ER{{ order.id }}</td>
                                 <td>{{ order.user }}</td>
                                 <td>$ {{ order.totalPriceOrder }}</td>
-                                <td class="status_td"><a href="#"><span class="badge badge-warning">{{ order.status }}</span></a></td>
+                                <td class="status_td"><a href="{% url 'changeorders'  order.id %}"><span class="badge badge-warning">{{ order.status }}</span></a></td>
                             </tr>
                         {% endfor %}
                         </tbody>

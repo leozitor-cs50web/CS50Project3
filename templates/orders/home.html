@@ -165,9 +165,9 @@
                                     We sell award-winning sicilian-style pizza and mouth-watering steak subs! We have
                                     over 750 reviews on Yelp--- check it out!.
                                 </div>
-                                <button href="{% url 'signin' %}" type="button" class="btn btn-outline-primary">Order
+                                <a href="{% url 'signin' %}"><button  type="button" class="btn btn-outline-primary">Order
                                     now
-                                </button>
+                                </button> </a>
                             </div>
                         </div>
                     </li>
@@ -182,9 +182,9 @@
                                 <div class="txt4">Our Sicilian pizza is a deep-dish or thick-crust pizza. We sell them
                                     in a 9-slice or a 15-slice size.
                                 </div>
-                                <button href="{% url 'signin' %}" type="button" class="btn btn-outline-primary">Order
+                                <a href="{% url 'signin' %}"><button href="{% url 'signin' %}" type="button" class="btn btn-outline-primary">Order
                                     now
-                                </button>
+                                </button></a>
                             </div>
                         </div>
                     </li>
@@ -457,72 +457,74 @@
 
 </section>
 <!-------------------- FOOTER  -------------------------------------->
-<footer>
-    <div class="bot1-wrapper">
-        <div class="container">
-            <div class="bot1 clearfix">
-                <div class="logo2_wrapper">
-                    <img src="{% static 'orders/img/logo2.png' %}" alt="" class="img-fluid">
-                    <div class="logo_title">
-                        <div class="bottom_logo"><span>Pizzeria</span> Pinocchio's</div>
-                        <div class="bottom_logo_desc">delicious foods place</div>
+ <footer>
+        <div class="bot1-wrapper">
+            <div class="container">
+                <div class="bot1 clearfix">
+                    <div class="logo2_wrapper">
+                        <img src="{% static 'orders/img/logo2.png' %}" alt="" class="img-fluid">
+                        <div class="logo_title">
+                            <div class="bottom_logo"><span>Pizzeria</span> Pinocchio's</div>
+                            <div class="bottom_logo_desc">Famous Pizza place in Harvard</div>
+                        </div>
+                    </div>
+                    <div class="social-footer-wrapper">
+                        <ul class="social-footer clearfix">
+                            <li><a href="https://www.facebook.com/Pinocchios-Pizza-Subs-66665703521/"><i
+                                    class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://twitter.com/pinocchiospizz"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="https://www.instagram.com/pinocchiospizza1/"><i
+                                    class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <!--<div class="devider"></div>-->
+                </div>
+            </div>
+        </div>
+        <div class="bot2-wrapper">
+            <div class="container">
+                <div class="bot2 clearfix">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="contact-us-block">
+                                <figure><img src="{% static 'orders/img/ic1.png' %}" alt="" class="img-fluid"></figure>
+                                <div class="txt1">74 Winthrop Street Cambridge, MA 02138</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-us-block">
+                                <figure><img src="{% static 'orders/img/ic2.png' %}" alt="" class="img-fluid"></figure>
+                                <div class="txt1">Phone: (617) 876-4897 or (617) 876-0012</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-us-block">
+                                <figure><img src="{% static 'orders/img/ic3.png' %}" alt="" class="img-fluid"></figure>
+                                <div class="txt1">Email: <a href="#">pinocchiospizza1@gmail.com</a></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="social-footer-wrapper">
-                    <ul class="social-footer clearfix">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+            </div>
+        </div>
+        <div class="bot3-wrapper">
+            <div class="container">
+                <div class="bot3 clearfix">
+                    <ul class="menu-bot">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'index' %}">Shop</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="{% url 'contact' %}">Contact us</a></li>
                     </ul>
-                </div>
-                <!--<div class="devider"></div>-->
-            </div>
-        </div>
-    </div>
-    <div class="bot2-wrapper">
-        <div class="container">
-            <div class="bot2 clearfix">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="contact-us-block">
-                            <figure><img src="{% static 'orders/img/ic1.png' %}" alt="" class="img-fluid"></figure>
-                            <div class="txt1">50., I. Abashidze Sreet 0179 Tbilisi City, Georgia</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="contact-us-block">
-                            <figure><img src="{% static 'orders/img/ic2.png' %}" alt="" class="img-fluid"></figure>
-                            <div class="txt1">Phone: (00) 123 456 789</div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="contact-us-block">
-                            <figure><img src="{% static 'orders/img/ic3.png' %}" alt="" class="img-fluid"></figure>
-                            <div class="txt1">Email: <a href="#">info.contact@gmail.com</a></div>
-                        </div>
-                    </div>
+                    <div class="copyrights">Copyright @2020. All rights Revierves</div>
+                    <div class="created">Created with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
+                            href="https://gridgum.com" target="_blank">Leozitor Floro de Souza</a></div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="bot3-wrapper">
-        <div class="container">
-            <div class="bot3 clearfix">
-                <ul class="menu-bot">
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="{% url 'contact' %}">Contact us</a></li>
-                </ul>
-                <div class="copyrights">Copyright @2019. All rights Revierves</div>
-                <div class="created">Created with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-                        href="https://gridgum.com" target="_blank">Gridgum</a></div>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 </body>
 <script src="{% static 'orders/js/jquery.min.js' %}"></script>

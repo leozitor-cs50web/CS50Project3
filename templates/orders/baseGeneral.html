@@ -283,7 +283,7 @@
                         <li><a href="#">Blog</a></li>
                         <li><a href="{% url 'contact' %}">Contact us</a></li>
                     </ul>
-                    <div class="copyrights">Copyright @2019. All rights Revierves</div>
+                    <div class="copyrights">Copyright @2020. All rights Revierves</div>
                     <div class="created">Created with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
                             href="https://gridgum.com" target="_blank">Leozitor Floro de Souza</a></div>
                 </div>
@@ -292,6 +292,8 @@
     </footer>
 </div>
 </body>
+{% block js %}
+{% endblock %}
 <script src="{% static 'orders/js/jquery.min.js' %}"></script>
 <script src="{% static 'orders/js/jquery.appear.js' %}"></script>
 <script src="{% static 'orders/js/owl.carousel.min.js' %}"></script>
