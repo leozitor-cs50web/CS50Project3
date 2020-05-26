@@ -45,8 +45,8 @@
                         <img src="{% static 'orders/img/avatar1.jpg' %}"> <i class="fas fa-chevron-down"></i>
                         <div class="sf-account_1">
                             <ul>
-                                <li><a href="{% url 'orders' %}">My Dashboard</a></li>
-                                <li><a href="{% url 'orders' %}">my orders</a></li>
+                                <li><a href="{% url 'orders'  1%}">My Dashboard</a></li>
+                                <li><a href="{% url 'orders'  1%}">my orders</a></li>
                                 <li><a href="add-address.html">add addresses</a></li>
                                 <li><a href="profile.html">account details</a></li>
                                 <li><a href="{% url 'logout' %}">log out</a></li>
@@ -61,7 +61,7 @@
                                 <img class="pizza_cart" src="{% static 'orders/img/icons/cart.svg' %}">
                                 <span class="cart_circle">{{ itemsCount }}</span>
                             </a>
-                            <div class="cart_sum">$ {{ total }}</div>
+                            <div class="cart_sum">$ {{ order.totalPriceOrder }}</div>
                         </div>
                         <div class="my_cart_popup">
                             <div id="cart">
@@ -91,7 +91,7 @@
                             </div>
                             <div id="cartTotal" class="my_cart_total clearfix">
                                 <div class="left">Total :</div>
-                                <div class="right">$ {{ total }}</div>
+                                <div class="right">$ {{ order.totalPriceOrder }}</div>
                             </div>
                             <div class="my_cart_buttons">
                                 <a href="{% url 'shoppingcart' %}" class="my_cart_button2">View Cart</a>

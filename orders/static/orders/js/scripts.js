@@ -219,17 +219,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
     });
-
-    document.querySelectorAll('.plusButton').forEach(function () {
-        let counter = self.document.querySelector('.counter')
-        self.document.querySelector('.countPlus').onclick = ()=>{
+    // buttons plus and minus of shopping cart
+    document.querySelectorAll('.plusButton').forEach(function (el) {
+        let counter = el.querySelector('.counter')
+        el.querySelector('.countPlus').onclick = () => {
             let increment = parseInt(counter.innerHTML) + 1
             counter.innerHTML = `${increment}`
         }
-        self.document.querySelector('.countMinus').onclick = ()=>{
+        el.querySelector('.countMinus').onclick = () => {
             let decrement = parseInt(counter.innerHTML) - 1
             counter.innerHTML = `${decrement}`
         }
+    })
+    // control the of badge about status
+    document.querySelectorAll('.status_td').forEach(function (el) {
+        let badge = el.querySelector('.badge')
+        let badgeType = badge.innerHTML
+        if (badgeType === 'initiated')
+            badge.className = "badge badge-primary"
+        else if (badgeType === 'pending')
+            badge.className = "badge badge-warning"
+        else if (badgeType === 'completed')
+            badge.className = "badge badge-success"
     })
     document.querySelector('#selectRegPizza').onclick = () => {
         let state = document.getElementById("regPizza").style.display

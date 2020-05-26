@@ -11,15 +11,9 @@ from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatte
 def context_send(request):
     """ simplify the context dictionary containing info for each request"""
     userOrder = UserOrder.objects.get(user=request.user, status='initiated')
+    allUserOrders = UserOrder.objects.filter(user=request.user)
     orderItems = OrderItem.objects.filter(number=userOrder)
-    #print(orderItems)
-    if orderItems.count() == 0:
-        total = 0.00
-    else:
-        total = list(orderItems.aggregate(Sum('totalPrice')).values())[0]
-        total = float(total)
-    itemsCount = orderItems.count()
-    total = "{:.2f}".format(total)
+    itemsCount =orderItems.count()
     # select all food available
     regular_pizza = RegularPizza.objects.all()
     sicilian_pizza = SicilianPizza.objects.all()
@@ -38,8 +32,9 @@ def context_send(request):
         "dinner_platter": dinner_platter,
         "toppings": topping,
         "items": orderItems,
-        "total": total,
         "itemsCount": itemsCount,
+        "allUserOrders": allUserOrders,
+        "order": userOrder
     }
     return context
 
@@ -125,9 +120,11 @@ def add_item(request, category, name, price, size):
     if OrderItem.objects.filter(number=userOrder, category=category, name=name, price=price).exists():
         item = OrderItem.objects.get(number=userOrder, category=category, name=name, price=price)
         item.quantity = int(item.quantity) + 1
-        item.totalPrice = float(item.quantity) * float(item.price)
+        item.totalPriceItem = float(item.quantity) * float(item.price)
+        userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) + float(item.price)
     else:
-        item = OrderItem(number=userOrder, category=category, name=name, price=price, totalPrice=price)
+        item = OrderItem(number=userOrder, category=category, name=name, price=price, totalPriceItem=price)
+        userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) + float(item.price)
     if category == 'Regular Pizza' or category == 'Sicilian Pizza':
         if name == '1 topping':
             item.topping_allowance = 1
@@ -138,6 +135,7 @@ def add_item(request, category, name, price, size):
     if category != 'Pasta' or category != 'Salads':
         item.size = size
     item.save()
+    userOrder.save()
     context = context_send(request)
     return render(request, "orders/homeLogged.html", context)
 
@@ -170,11 +168,17 @@ def add_topping(request):
 
 
 def remove_item(request, item_id, option):
-    item = OrderItem.objects.get(id=item_id)
-    item.delete()
-    # user authenticated
-    context = context_send(request)
+    try:
+        item = OrderItem.objects.get(id=item_id)
+        userOrder = UserOrder.objects.get(user=request.user, status='initiated')
+        userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) - float(item.totalPriceItem)
+        userOrder.save()
+        item.delete()
+    except:
+        context = context_send(request)
+        return render(request, "orders/homeLogged.html", context)
 
+    context = context_send(request)
     if option == 'cart':
         return render(request, "orders/shoppingcart.html", context)
     elif option == 'home':
@@ -200,14 +204,34 @@ def sucess(request):
     return render(request, "orders/sucessOrder.html", context)
 
 
-def orders(request):
+def orders(request, order_page):
     context = context_send(request)
-    return render(request, "orders/myOrders.html", context)
+    user_orders = context["allUserOrders"]
+    user_orders_count = user_orders.count()
+    context["allUserOrdersCount"] = user_orders_count
+    orderPageList = []
+    if user_orders_count < 11:
+        return render(request, "orders/myOrders.html", context)
+    else:
+        allUserOrders = UserOrder.objects.filter(user=request.user)
+        for i in range(0, user_orders_count - 10, 10):
+            orderPageList.append(allUserOrders[user_orders_count - i - 10:user_orders_count - i])
+        orderPageList.append(allUserOrders[0:user_orders_count%10])
+        context["allUserOrder"] = orderPageList[order_page - 1]
+        context["allUserOrders"] = orderPageList
+        return render(request, "orders/myOrders.html", context)
 
 
 def checkout(request):
+    user = request.user
+    order = UserOrder.objects.get(user=user, status='initiated')
     context = context_send(request)
-    return render(request, "orders/checkout.html", context)
+    #checking if the cart has at least 1 item
+    if OrderItem.objects.filter(number=order).exists():
+        return render(request, "orders/checkout.html", context)
+    else:
+        context["message"] = "You Should add at least one item, before checking out"
+        return render(request, "orders/homeLogged.html", context)
 
 
 def contact(request):

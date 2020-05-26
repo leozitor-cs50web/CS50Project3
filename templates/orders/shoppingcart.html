@@ -132,12 +132,12 @@
                     </div>
                     <div class="col-md-2 plusButton">
                         <button class="minus_1 countMinus"><i class="fa fa-angle-left"></i></button>
-                        <span class="counter-num_1 counter">{{ item.quantity }}</span>
+                        <span class="counter-num_1 counter">1</span>
                         <button class="plus_1 countPlus"><i class="fa fa-angle-right"></i></button>
                     </div>
                     <div class="col-md-2">
                         <div class="total">
-                            <p>$ {{ item.totalPrice }} </p>
+                            <p>$ {{ item.totalPriceItem }} </p>
                         </div>
                     </div>
                     <div class="col-md-1 text-center">
@@ -159,7 +159,7 @@
                 </div>
                 <div class="col-md-3">
                     <form method="get" action="{% url 'checkout' %}">
-                        <button  type="submit" class="btn btn-outline-primary-red">proceed to checkout </button>
+                        <button type="submit" class="btn btn-outline-primary-red">proceed to checkout</button>
                     </form>
                 </div>
             </div>
@@ -192,7 +192,7 @@
                         <h4>cart totals</h4>
                         <div class="price_amount">
                             <span>cart total:</span>
-                            <p>$ {{ total }}</p>
+                            <p>$ {{ order.totalPriceOrder }}</p>
                         </div>
                         <div class="shipping_price">
                             <span>shipping & hadling:</span>
@@ -201,7 +201,7 @@
 
                         <div class="order_total">
                             <span>order total:</span>
-                            <p>$ {{ total }}</p>
+                            <p>$ {{ order.totalPriceOrder }}</p>
                         </div>
                     </div>
                 </div>
