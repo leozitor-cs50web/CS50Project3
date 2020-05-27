@@ -38,6 +38,11 @@
                     <!--<div class="my_account">
                             <a class="signin" href="">sign in</a>
                         </div>-->
+                {% if staff %}
+                    <div class="my_account">
+                        <a class="signin" href="{% url 'adminorders' 'all' '1'%}" style="color: white;background-color: #de3434;"> ADMIN ORDERS </a>
+                    </div>
+                {% endif %}
                     <div class="my_account">
                         <a class="signin">{{ user.first_name }}</a>
                     </div>
@@ -45,9 +50,8 @@
                         <img src="{% static 'orders/img/avatar1.jpg' %}"> <i class="fas fa-chevron-down"></i>
                         <div class="sf-account_1">
                             <ul>
-                                <li><a href="{% url 'orders'  1%}">My Dashboard</a></li>
-                                <li><a href="{% url 'orders'  1%}">my orders</a></li>
-                                <li><a href="add-address.html">add addresses</a></li>
+                                <li><a href="{% url 'orders'  1 %}">My Dashboard</a></li>
+                                <li><a href="{% url 'orders'  1 %}">my orders</a></li>
                                 <li><a href="profile.html">account details</a></li>
                                 <li><a href="{% url 'logout' %}">log out</a></li>
                             </ul>

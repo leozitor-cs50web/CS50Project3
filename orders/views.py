@@ -24,6 +24,11 @@ def context_send(request):
     salad = Salad.objects.all()
     dinner_platter = DinnerPlatter.objects.all()
     topping = Topping.objects.all()
+    #  check if the button of admin appears or not
+    if request.user.is_staff:
+        staff = True
+    else:
+        staff = False
     context = {
         "user": request.user,
         "regular_pizza": regular_pizza,
@@ -36,13 +41,15 @@ def context_send(request):
         "items": orderItems,
         "itemsCount": itemsCount,
         "allUserOrders": allUserOrders,
-        "order": userOrder
+        "order": userOrder,
+        "staff": staff
     }
     return context
 
 
 def context_send_admin(request):
     """ simplify the context dictionary containing info for each request"""
+    itemsCount = OrderItem.objects.filter(number=UserOrder.objects.get(user=request.user, status='initiated')).count()
     # select all food available
     regular_pizza = RegularPizza.objects.all()
     sicilian_pizza = SicilianPizza.objects.all()
@@ -51,6 +58,11 @@ def context_send_admin(request):
     salad = Salad.objects.all()
     dinner_platter = DinnerPlatter.objects.all()
     topping = Topping.objects.all()
+    #  check if the button of admin appears or not
+    if request.user.is_staff:
+        staff = True
+    else:
+        staff = False
     context = {
         "user": request.user,
         "regular_pizza": regular_pizza,
@@ -60,6 +72,8 @@ def context_send_admin(request):
         "salad": salad,
         "dinner_platter": dinner_platter,
         "toppings": topping,
+        "itemsCount": itemsCount,
+        "staff": staff
     }
     return context
 
@@ -292,16 +306,18 @@ def adminorders(request, order_type, order_page):
 
 @staff_member_required
 def changeorders(request, order_id):
+    order = UserOrder.objects.get(id=order_id)
+    context = context_send_admin(request)
+    context["items"] = OrderItem.objects.filter(number=order)
+    context["order"] = order
     if request.method == 'POST':
-        checkBox = request.POST["checkBox"]
-        print(checkBox)
-
-
+        if UserOrder.objects.filter(id=order_id, status="pending").exists():
+            order.status = "completed"
+            order.save()
+            return render(request, "orders/adminOrder.html", context)
+        else:
+            return render(request, "orders/adminOrder.html", context)
     else:
-        context = context_send_admin(request)
-        order = UserOrder.objects.get(id=order_id)
-        context["items"] = OrderItem.objects.filter(number=order)
-        context["order"] = order
         return render(request, "orders/adminOrder.html", context)
 
 

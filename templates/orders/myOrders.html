@@ -56,7 +56,7 @@
                                 <td class="transaction_td">2543FD564533ER{{ order.id }}</td>
                                 <td><a href="#"><i class="far fa-file-pdf"></i></a></td>
                                 <td>$ {{ order.totalPriceOrder }}</td>
-                                <td class="status_td"><span class="badge badge-warning">{{ order.status }}</span></td>
+                                <td class="status_td"><span id="badge" class="badge badge-warning">{{ order.status }}</span></td>
                             </tr>
                         {% endfor %}
                         </tbody>

@@ -34,7 +34,7 @@
                     <h3 class="title">My Account</h3>
                     <ul>
                         <li {% if orderType == 'all' %}class="active"{% endif %}><a href="{% url 'adminorders' 'all' 1 %}"><i class="far fa-list-alt"></i> All Orders </a></li>
-                        <li {% if orderType == 'initiated' %}class="active"{% endif %}><a href="{% url 'adminorders' 'initiated' 1 %}"><i class="far fa-file-alt"></i> Open Orders </a></li>
+                        <li {% if orderType == 'initiated' %}class="active"{% endif %}><a href="{% url 'adminorders' 'initiated' 1 %}"><i class="far fa-list-alt"></i> Open Orders </a></li>
                         <li {% if orderType == 'pending' %}class="active"{% endif %}><a href="{% url 'adminorders' 'pending' 1 %}"><i class="far fa-list-alt"></i> Placed Orders </a></li>
                         <li {% if orderType == 'completed' %}class="active"{% endif %}><a href="{% url 'adminorders' 'completed' 1 %}"><i class="far fa-list-alt"></i> Completed Orders </a></li>
                         <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out </a></li>
@@ -58,7 +58,7 @@
                                 <td class="transaction_td">2543FD564533ER{{ order.id }}</td>
                                 <td>{{ order.user }}</td>
                                 <td>$ {{ order.totalPriceOrder }}</td>
-                                <td class="status_td"><a href="{% url 'changeorders'  order.id %}"><span class="badge badge-warning">{{ order.status }}</span></a></td>
+                                <td class="status_td"><a href="{% url 'changeorders'  order.id %}"><span id="badge" class="badge badge-warning">{{ order.status }}</span></a></td>
                             </tr>
                         {% endfor %}
                         </tbody>

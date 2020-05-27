@@ -232,18 +232,15 @@ document.addEventListener('DOMContentLoaded', () => {
             counter.innerHTML = `${decrement}`
         }
     })
-    //control check box
-    document.getElementById('updateOrderButton').disabled = true
     // control the of badge about status
-    document.querySelectorAll('.status_td').forEach(function (el) {
-        let badge = el.querySelector('.badge')
-        let badgeType = badge.innerHTML
-        if (badgeType === 'initiated')
-            badge.className = "badge badge-primary"
-        else if (badgeType === 'pending')
-            badge.className = "badge badge-warning"
-        else if (badgeType === 'completed')
-            badge.className = "badge badge-success"
+    document.querySelectorAll('#badge').forEach(function (el) {
+        let badge = el.innerHTML
+        if (badge === 'initiated')
+            el.className = "badge badge-primary"
+        else if (badge === 'pending')
+            el.className = "badge badge-warning"
+        else if (badge === 'completed')
+            el.className = "badge badge-success"
     })
     document.querySelector('#selectRegPizza').onclick = () => {
         let state = document.getElementById("regPizza").style.display
