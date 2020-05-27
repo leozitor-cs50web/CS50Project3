@@ -41,14 +41,14 @@
                         <div class="col-md-12">
                             <div class="row full_shop">
                                 <div class="col-md-4 mb-3">
-                                    <div class="product_block m-right">
-                                        <a id="selectRegPizza">
+                                    <div class="product_block m-right menuSelection">
+                                        <a class="selectOption">
                                             <div class="pizza_full"><img
                                                     src="{% static 'orders/img/menu/big/pizza_color_1.png' %}"
                                                     class="img-fluid"></div>
                                             <h3>Regular Pizza</h3>
                                         </a>
-                                        <div style="display: none" id="regPizza">
+                                        <div style="display: none" class="openMenu">
                                             <div class="size_devider"><span>Option</span></div>
                                             <div class="size_checkboxes">
                                                 <table class="table table-borderless">
@@ -64,12 +64,12 @@
                                                         <tr>
                                                             <th scope="row">{{ i.name }}</th>
                                                             <td>$ {{ i.small }} <a
-                                                                    href="{% url 'additem' "Regular Pizza" i.name i.small "Small" %}"><img
+                                                                    href="{% url 'additem' "Regular Pizza" i.name  i.small "Small" %}"><img
                                                                     id="plusSign" class="plus ml-2"
                                                                     src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>
-                                                            <td>$ {{ i.large }} <a id="regular_pizza_{{ i.id }}"
-                                                                                   href="{% url 'additem' "Regular Pizza" i.name  i.large "Large" %}"><img
+                                                            <td>$ {{ i.large }} <a
+                                                                    href="{% url 'additem' "Regular Pizza" i.name  i.large "Large" %}"><img
                                                                     id="plusSign" class="plus ml-2"
                                                                     src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>
@@ -81,16 +81,16 @@
 
                                         </div>
                                     </div>
-                                </div> <!--- need to change the ids and behaviour at last --->
+                                </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="product_block m-right">
-                                        <a id="selectOption">
+                                    <div class="product_block m-right menuSelection">
+                                        <a class="selectOption">
                                             <div class="pizza_full"><img
                                                     src="{% static 'orders/img/menu/big/pizza_color_2.png' %}"
                                                     class="img-fluid"></div>
                                             <h3>Sicilian Pizza</h3>
                                         </a>
-                                        <div style="display: none" id="openMenu">
+                                        <div style="display: none" class="openMenu">
                                             <div class="size_devider"><span>Option</span></div>
                                             <div class="size_checkboxes">
                                                 <table class="table table-borderless">
@@ -105,13 +105,13 @@
                                                     {% for i in sicilian_pizza %}
                                                         <tr>
                                                             <th scope="row">{{ i.name }}</th>
-                                                            <td>$ {{ i.small }} <a
+                                                            <td>${{ i.small }}<a
                                                                     href="{% url 'additem' "Sicilian Pizza" i.name i.small "Small" %}"><img
                                                                     id="plusSign" class="plus ml-2"
                                                                     src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>
-                                                            <td>$ {{ i.large }} <a
-                                                                    href="{% url 'additem' "Sicilian Pizza" i.name  i.large "Large" %}"><img
+                                                            <td>${{ i.large }}<a
+                                                                    href="{% url 'additem' "Sicilian Pizza" i.name i.large "Large" %}"><img
                                                                     id="plusSign" class="plus ml-2"
                                                                     src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>
@@ -125,56 +125,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="product_block m-right">
-                                        <a id="selectOption">
-                                            <div class="pizza_full"><img
-                                                    src="{% static 'orders/img/menu/big/pizza_color_3.png' %}"
-                                                    class="img-fluid"></div>
-                                            <h3>Subs</h3>
-                                        </a>
-                                        <div style="display: none" id="openMenu">
-                                            <div class="size_devider"><span>Option</span></div>
-                                            <div class="size_checkboxes">
-                                                <table class="table table-borderless">
-                                                    <thead>
-                                                    <tr>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Small</th>
-                                                        <th scope="col">Large</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    {% for i in sub %}
-                                                        <tr>
-                                                            <th scope="row">{{ i.name }}</th>
-                                                            <td>$ {{ i.small }} <a
-                                                                    href="{% url 'additem' "Sub" i.name i.small "Small" %}"><img
-                                                                    id="plusSign" class="plus ml-2"
-                                                                    src="{% static 'orders/img/plus.png' %}"></a>
-                                                            </td>
-                                                            <td>$ {{ i.large }} <a
-                                                                    href="{% url 'additem' "sub" i.name  i.large "Large" %}"><img
-                                                                    id="plusSign" class="plus ml-2"
-                                                                    src="{% static 'orders/img/plus.png' %}"></a>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="product_block m-right">
-                                        <a id="selectOption">
+                                    <div class="product_block m-right menuSelection">
+                                        <a class="selectOption">
                                             <div class="pizza_full"><img
                                                     src="{% static 'orders/img/menu/big/pizza_color_4.png' %}"
                                                     class="img-fluid"></div>
                                             <h3>Pasta</h3>
                                         </a>
-                                        <div style="display: none" id="openMenu">
+                                        <div style="display: none" class="openMenu">
                                             <div class="size_devider"><span>Option</span></div>
                                             <div class="size_checkboxes">
                                                 <table class="table table-borderless">
@@ -185,11 +143,11 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    {% for i in Pasta %}
+                                                    {% for i in pasta %}
                                                         <tr>
                                                             <th scope="row">{{ i.name }}</th>
-                                                            <td>$ {{ i.price }} <a
-                                                                    href="{% url 'additem' "Pasta" i.name i.small "One Size" %}"><img
+                                                            <td>${{ i.price }}<a
+                                                                    href="{% url 'additem' "Pasta" i.name  i.price "one Size" %}"><img
                                                                     id="plusSign" class="plus ml-2"
                                                                     src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>
@@ -203,14 +161,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="product_block m-right">
-                                        <a id="selectOption">
+                                    <div class="product_block m-right menuSelection">
+                                        <a class="selectOption">
                                             <div class="pizza_full"><img
                                                     src="{% static 'orders/img/menu/big/pizza_color_5.png' %}"
                                                     class="img-fluid"></div>
                                             <h3>Salads</h3>
                                         </a>
-                                        <div style="display: none" id="openMenu">
+                                        <div style="display: none" class="openMenu">
                                             <div class="size_devider"><span>Option</span></div>
                                             <div class="size_checkboxes">
                                                 <table class="table table-borderless">
@@ -221,10 +179,13 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    {% for i in Salad %}
+                                                    {% for i in salad %}
                                                         <tr>
                                                             <th scope="row">{{ i.name }}</th>
-                                                            <td>$ {{ i.price }} <a href="{% url 'additem' "Salad" i.name i.price "One Size" %}"><img id="plusSign" class="plus ml-2" src="{% static 'orders/img/plus.png' %}"></a>
+                                                            <td>${{ i.price }}<a
+                                                                    href="{% url 'additem' "Salad" i.name i.price "One Size" %}"><img
+                                                                    id="plusSign" class="plus ml-2"
+                                                                    src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>
                                                         </tr>
                                                     {% endfor %}
@@ -236,14 +197,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
-                                    <div class="product_block m-right">
-                                        <a id="selectOption">
+                                    <div class="product_block m-right menuSelection">
+                                        <a class="selectOption">
                                             <div class="pizza_full"><img
                                                     src="{% static 'orders/img/menu/big/pizza_color_2.png' %}"
                                                     class="img-fluid"></div>
                                             <h3>Dinner Platters</h3>
                                         </a>
-                                        <div style="display: none" id="openMenu">
+                                        <div style="display: none" class="openMenu">
                                             <div class="size_devider"><span>Option</span></div>
                                             <div class="size_checkboxes">
                                                 <table class="table table-borderless">
@@ -258,13 +219,51 @@
                                                     {% for i in dinner_platter %}
                                                         <tr>
                                                             <th scope="row">{{ i.name }}</th>
-                                                            <td>$ {{ i.small }} <a
-                                                                    href="{% url 'additem' "Dinner Platter" i.name i.small "Small" %}"><img
+                                                            <td>${{ i.small }}<a href="{% url 'additem' "Dinner Platter" i.name i.small "Small" %}"><img
                                                                     id="plusSign" class="plus ml-2"
                                                                     src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>
-                                                            <td>$ {{ i.large }} <a
-                                                                    href="{% url 'additem' "Dinner Platter" i.name  i.large "Large" %}"><img
+                                                            <td>${{ i.large }}<a href="{% url 'additem' "Dinner Platter" i.name  i.large "Large" %}"><img
+                                                                    id="plusSign" class="plus ml-2"
+                                                                    src="{% static 'orders/img/plus.png' %}"></a>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="product_block m-right menuSelection">
+                                        <a class="selectOption">
+                                            <div class="pizza_full"><img
+                                                    src="{% static 'orders/img/menu/big/pizza_color_3.png' %}"
+                                                    class="img-fluid"></div>
+                                            <h3>Subs</h3>
+                                        </a>
+                                        <div style="display: none" class="openMenu">
+                                            <div class="size_devider"><span>Option</span></div>
+                                            <div class="size_checkboxes">
+                                                <table class="table table-borderless">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Small</th>
+                                                        <th scope="col">Large</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for i in sub %}
+                                                        <tr>
+                                                            <th scope="row">{{ i.name }}</th>
+                                                            <td>${{ i.small }}<a href="{% url 'additem' "Sub" i.name i.small "Small" %}"><img
+                                                                    id="plusSign" class="plus ml-2"
+                                                                    src="{% static 'orders/img/plus.png' %}"></a>
+                                                            </td>
+                                                            <td>${{ i.large }}<a href="{% url 'additem' "sub" i.name  i.large "Large" %}"><img
                                                                     id="plusSign" class="plus ml-2"
                                                                     src="{% static 'orders/img/plus.png' %}"></a>
                                                             </td>

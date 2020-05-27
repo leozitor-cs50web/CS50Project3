@@ -203,7 +203,7 @@ $('#customCheck1').on('change', function () {
 /* -----------------------  index behavior   ---------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     //setting button of each item to control the modal, send info and about select
     document.querySelectorAll('#toppingButton').forEach(function (button) {
         button.onclick = function () {
@@ -243,54 +243,18 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (badge === 'completed')
             el.className = "badge badge-success"
     })
-    document.querySelector('#selectRegPizza').onclick = () => {
-        let state = document.getElementById("regPizza").style.display
-        if (state === "block") {
-            document.getElementById("regPizza").style.display = "none"
-        } else {
-            document.getElementById("regPizza").style.display = "block"
+    // control the food menu selection opening behaviour
+    document.querySelectorAll('.menuSelection').forEach(function(el){
+        let button = el.querySelector('.selectOption')
+        button.onclick = () => {
+            let infoMenu = el.querySelector('.openMenu').style.display
+            if (infoMenu === "block") {
+                el.querySelector('.openMenu').style.display = "none"
+            } else {
+                el.querySelector('.openMenu').style.display = "block"
+            }
         }
-    }
-    document.querySelector('#selectSiciPizza').onclick = () => {
-        let state = document.getElementById("siciPizza").style.display
-        if (state === "block") {
-            document.getElementById("siciPizza").style.display = "none"
-        } else {
-            document.getElementById("siciPizza").style.display = "block"
-        }
-    }
-    document.querySelector('#selectSub').onclick = () => {
-        let state = document.getElementById("sub").style.display
-        if (state === "block") {
-            document.getElementById("sub").style.display = "none"
-        } else {
-            document.getElementById("sub").style.display = "block"
-        }
-    }
-    document.querySelector('#selectPasta').onclick = () => {
-        let state = document.getElementById("pasta").style.display
-        if (state === "block") {
-            document.getElementById("pasta").style.display = "none"
-        } else {
-            document.getElementById("pasta").style.display = "block"
-        }
-    }
-    document.querySelector('#selectSalad').onclick = () => {
-        let state = document.getElementById("salad").style.display
-        if (state === "block") {
-            document.getElementById("salad").style.display = "none"
-        } else {
-            document.getElementById("salad").style.display = "block"
-        }
-    }
-    document.querySelector('#selectDinnerPlatter').onclick = () => {
-        let state = document.getElementById("dinnerPlatter").style.display
-        if (state === "block") {
-            document.getElementById("dinnerPlatter").style.display = "none"
-        } else {
-            document.getElementById("dinnerPlatter").style.display = "block"
-        }
-    }
+    })
 });
 
 /* -----------------------  Google Map   ----------------------*/

@@ -68,7 +68,7 @@ class UserOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.CharField(max_length=64, default='initiated')  # initiated - pending - completed
     date = models.DateField(auto_now_add=True)
-    totalPriceOrder = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+    totalPriceOrder = models.DecimalField(max_digits=6, decimal_places=2, default=0)
 
     def __str__(self):
         return f"{self.user} - date: {self.date} - id: {self.id} - status: {self.status} - total: {self.totalPriceOrder}"
@@ -79,7 +79,7 @@ class OrderItem(models.Model):
     category = models.CharField(max_length=64, null=True)
     name = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=4, decimal_places=2)
-    totalPriceItem = models.DecimalField(max_digits=4, decimal_places=2)
+    totalPriceItem = models.DecimalField(max_digits=6, decimal_places=2)
     size = models.CharField(max_length=16, default="One Size")
     quantity = models.DecimalField(max_digits=3, decimal_places=0, default=1)
     topping_allowance = models.IntegerField(default=0)

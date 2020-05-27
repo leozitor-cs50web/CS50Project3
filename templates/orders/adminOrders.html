@@ -52,7 +52,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for order in allUserOrder %}
+                        {% for order in allUserOrder reversed%}
                             <tr>
                                 <td>{{ order.date }}</td>
                                 <td class="transaction_td">2543FD564533ER{{ order.id }}</td>

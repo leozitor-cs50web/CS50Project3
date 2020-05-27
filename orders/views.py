@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.db.models import Sum
 from django.contrib.auth.models import User
+from decimal import *
 
 from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatter, Topping, UserOrder, OrderItem
 
@@ -159,32 +160,29 @@ def logout_view(request):
 
 @login_required(login_url='login')
 def add_item(request, category, name, price, size):
-    try:
         userOrder = UserOrder.objects.get(user=request.user, status='initiated')
         if OrderItem.objects.filter(number=userOrder, category=category, name=name, price=price).exists():
             item = OrderItem.objects.get(number=userOrder, category=category, name=name, price=price)
             item.quantity = int(item.quantity) + 1
-            item.totalPriceItem = float(item.quantity) * float(item.price)
-            userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) + float(item.price)
+            item.totalPriceItem = item.totalPriceItem + Decimal(item.price)
+            userOrder.totalPriceOrder = userOrder.totalPriceOrder + Decimal(item.price)
         else:
             item = OrderItem(number=userOrder, category=category, name=name, price=price, totalPriceItem=price)
-            userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) + float(item.price)
-        if category == 'Regular Pizza' or category == 'Sicilian Pizza':
-            if name == '1 topping':
-                item.topping_allowance = 1
-            if name == '2 toppings':
-                item.topping_allowance = 2
-            if name == '3 toppings':
-                item.topping_allowance = 3
-        if category != 'Pasta' or category != 'Salad':
-            item.size = size
+            userOrder.totalPriceOrder = userOrder.totalPriceOrder + Decimal(item.price)
+            if category == 'Regular Pizza' or category == 'Sicilian Pizza':
+                if name == '1 topping':
+                    item.topping_allowance = 1
+                elif name == '2 toppings':
+                    item.topping_allowance = 2
+                elif name == '3 toppings':
+                    item.topping_allowance = 3
+            if category != 'Pasta' or category != 'Salad':
+                item.size = size
         item.save()
         userOrder.save()
         context = context_send(request)
         return render(request, "orders/homeLogged.html", context)
-    except:
-        context = context_send(request)
-        return render(request, "orders/homeLogged.html", context)
+
 
 
 @login_required(login_url='login')
@@ -220,7 +218,7 @@ def remove_item(request, item_id, option):
     try:
         item = OrderItem.objects.get(id=item_id)
         userOrder = UserOrder.objects.get(user=request.user, status='initiated')
-        userOrder.totalPriceOrder = float(userOrder.totalPriceOrder) - float(item.totalPriceItem)
+        userOrder.totalPriceOrder = userOrder.totalPriceOrder - Decimal(item.totalPriceItem)
         userOrder.save()
         item.delete()
     except:
