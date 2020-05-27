@@ -2,6 +2,8 @@
 
 Web Programming with Python and JavaScript
 
+Video showing the website: https://www.youtube.com/watch?v=7J7tzFkpWI8
+
 This project is a "simulation Fodd delivery" website based on Famous Havard Pizzeria Pinnochio's, made in django.
 The layout is build in Bootstrap 4 and some javascript is used to control some menus and functions.
 
