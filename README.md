@@ -2,14 +2,29 @@
 
 Web Programming with Python and JavaScript
 
-This project 
+This project is a "simulation Fodd delivery" website based on Famous Havard Pizzeria Pinnochio's, made in django.
+The layout is build in Bootstrap 4 and some javascript is used to control some menus and functions.
 
- This project is a fully funcional food ordering system made in django. Beside python I did use bootstrap 4 for better control of all DOMs elements. No javascript has been used.
+`baseGeneral.html` and `baseGeneral` are the templates that other pages inherits from.
 
-index.hmlt login.html signin.html menu.html extends layout.html file my_orders.html and orders_manager shows list of all orders models.py contain all data structures urls.py contain routes to functions views.py cotain main program and fuctions which renders html files
+`contact.html`, `about.html` and `contact.html` are pages only for information about the restaurant.
 
-Also in static folder there are pictures and style.css file which contain additional styling for html
+`home.html` is the index page for a nonlogged user, otherwise `homeLogged.html` is the page for when the user logs in
+ and displays the menu, shopping cart and other things.
+ 
+ `signin.html` is the page for user login, `signup.html`is the page for user registration.
+ 
+ `shoppingcart.html` is the page where user check all the choices inserted in the cart.
+ 
+ `myOrders.html` is the page for the user check all order he did and also the current status of each one.
+ 
+ `adminOrders.html` and `adminOrder.html` is the page with permission only for staff and website administrator, this 
+ way the administrator can check info about all orders and also change and open order to status completed.
 
-Program automatically create superuser account at first start
+main javascript files are `scripts.js` and `scripts.js2` controlling all the button selection and order status behavior
 
-My personal touch allowing site administrator to mark orders as complete and allowing users to see the status of their pending or completed orders
+For *Special* pizzas choices i made a random 3 toppings selection, when the user choose it, the server randomize the 3 
+topping options that will be used on the pizza.
+
+My personal feature added, is the possibility for the administrator set an order as completed and for the user to check the
+current status about his order.
