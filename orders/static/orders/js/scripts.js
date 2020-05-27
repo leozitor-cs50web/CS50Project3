@@ -203,6 +203,7 @@ $('#customCheck1').on('change', function () {
 /* -----------------------  index behavior   ---------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
+    
     //setting button of each item to control the modal, send info and about select
     document.querySelectorAll('#toppingButton').forEach(function (button) {
         button.onclick = function () {

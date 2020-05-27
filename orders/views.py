@@ -176,7 +176,7 @@ def add_item(request, category, name, price, size):
                 item.topping_allowance = 2
             if name == '3 toppings':
                 item.topping_allowance = 3
-        if category != 'Pasta' or category != 'Salads':
+        if category != 'Pasta' or category != 'Salad':
             item.size = size
         item.save()
         userOrder.save()
