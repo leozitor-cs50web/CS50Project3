@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.db.models import Sum
 from django.contrib.auth.models import User
 from decimal import *
+import random
 
 from .models import RegularPizza, SicilianPizza, Sub, Pasta, Salad, DinnerPlatter, Topping, UserOrder, OrderItem
 
@@ -176,6 +177,17 @@ def add_item(request, category, name, price, size):
                     item.topping_allowance = 2
                 elif name == '3 toppings':
                     item.topping_allowance = 3
+                elif name == 'Special':
+                    item.topping_allowance = -1
+                    #Special has 3 random topppings
+                    randID = random.randrange(1, 19)
+                    item.topping_1 = Topping.objects.get(id=randID)
+                    randID = random.randrange(1, 19)
+                    item.topping_2 = Topping.objects.get(id=randID)
+                    randID = random.randrange(1, 19)
+                    item.topping_3 = Topping.objects.get(id=randID)
+                    item.topping_allowance = -1
+
             if category != 'Pasta' or category != 'Salad':
                 item.size = size
         item.save()
